@@ -19,7 +19,7 @@ const slides: Slide[] = [
   {
     image: "/images/gogatsu-sai.jpg",
     alt: "五月祭での瀧本ゼミ",
-    title: "様々な政策の社会実装に真剣に取り組みます",
+    title: "様々な社会課題の解決に真剣に取り組んでいます",
     titleColor: "#FFFFFF",
     cta: { label: "取り組み", href: "#actions" },
   },

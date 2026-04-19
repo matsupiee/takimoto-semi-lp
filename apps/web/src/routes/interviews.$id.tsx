@@ -11,18 +11,17 @@ export const Route = createFileRoute("/interviews/$id")({
     return { interview };
   },
   head: ({ loaderData }) => ({
-    meta: loaderData
-      ? [{ title: `${loaderData.interview.title} | 滝本ゼミ` }]
-      : [],
+    meta: loaderData ? [{ title: `${loaderData.interview.title} | 滝本ゼミ` }] : [],
   }),
 });
 
 function InterviewDetailPage() {
   const { interview } = Route.useLoaderData();
-  const publishedAt = new Date(interview.publishedAt).toLocaleDateString(
-    "ja-JP",
-    { year: "numeric", month: "long", day: "numeric" },
-  );
+  const publishedAt = new Date(interview.publishedAt).toLocaleDateString("ja-JP", {
+    year: "numeric",
+    month: "long",
+    day: "numeric",
+  });
 
   return (
     <div className="min-h-screen bg-white">

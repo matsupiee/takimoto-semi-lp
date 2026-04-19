@@ -10,7 +10,9 @@
 
 import { Route as rootRouteImport } from './routes/__root'
 import { Route as IndexRouteImport } from './routes/index'
+import { Route as NewsIndexRouteImport } from './routes/news.index'
 import { Route as InterviewsIndexRouteImport } from './routes/interviews.index'
+import { Route as NewsIdRouteImport } from './routes/news.$id'
 import { Route as InterviewsIdRouteImport } from './routes/interviews.$id'
 
 const IndexRoute = IndexRouteImport.update({
@@ -18,9 +20,19 @@ const IndexRoute = IndexRouteImport.update({
   path: '/',
   getParentRoute: () => rootRouteImport,
 } as any)
+const NewsIndexRoute = NewsIndexRouteImport.update({
+  id: '/news/',
+  path: '/news/',
+  getParentRoute: () => rootRouteImport,
+} as any)
 const InterviewsIndexRoute = InterviewsIndexRouteImport.update({
   id: '/interviews/',
   path: '/interviews/',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const NewsIdRoute = NewsIdRouteImport.update({
+  id: '/news/$id',
+  path: '/news/$id',
   getParentRoute: () => rootRouteImport,
 } as any)
 const InterviewsIdRoute = InterviewsIdRouteImport.update({
@@ -32,31 +44,45 @@ const InterviewsIdRoute = InterviewsIdRouteImport.update({
 export interface FileRoutesByFullPath {
   '/': typeof IndexRoute
   '/interviews/$id': typeof InterviewsIdRoute
+  '/news/$id': typeof NewsIdRoute
   '/interviews/': typeof InterviewsIndexRoute
+  '/news/': typeof NewsIndexRoute
 }
 export interface FileRoutesByTo {
   '/': typeof IndexRoute
   '/interviews/$id': typeof InterviewsIdRoute
+  '/news/$id': typeof NewsIdRoute
   '/interviews': typeof InterviewsIndexRoute
+  '/news': typeof NewsIndexRoute
 }
 export interface FileRoutesById {
   __root__: typeof rootRouteImport
   '/': typeof IndexRoute
   '/interviews/$id': typeof InterviewsIdRoute
+  '/news/$id': typeof NewsIdRoute
   '/interviews/': typeof InterviewsIndexRoute
+  '/news/': typeof NewsIndexRoute
 }
 export interface FileRouteTypes {
   fileRoutesByFullPath: FileRoutesByFullPath
-  fullPaths: '/' | '/interviews/$id' | '/interviews/'
+  fullPaths: '/' | '/interviews/$id' | '/news/$id' | '/interviews/' | '/news/'
   fileRoutesByTo: FileRoutesByTo
-  to: '/' | '/interviews/$id' | '/interviews'
-  id: '__root__' | '/' | '/interviews/$id' | '/interviews/'
+  to: '/' | '/interviews/$id' | '/news/$id' | '/interviews' | '/news'
+  id:
+    | '__root__'
+    | '/'
+    | '/interviews/$id'
+    | '/news/$id'
+    | '/interviews/'
+    | '/news/'
   fileRoutesById: FileRoutesById
 }
 export interface RootRouteChildren {
   IndexRoute: typeof IndexRoute
   InterviewsIdRoute: typeof InterviewsIdRoute
+  NewsIdRoute: typeof NewsIdRoute
   InterviewsIndexRoute: typeof InterviewsIndexRoute
+  NewsIndexRoute: typeof NewsIndexRoute
 }
 
 declare module '@tanstack/react-router' {
@@ -68,11 +94,25 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof IndexRouteImport
       parentRoute: typeof rootRouteImport
     }
+    '/news/': {
+      id: '/news/'
+      path: '/news'
+      fullPath: '/news/'
+      preLoaderRoute: typeof NewsIndexRouteImport
+      parentRoute: typeof rootRouteImport
+    }
     '/interviews/': {
       id: '/interviews/'
       path: '/interviews'
       fullPath: '/interviews/'
       preLoaderRoute: typeof InterviewsIndexRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/news/$id': {
+      id: '/news/$id'
+      path: '/news/$id'
+      fullPath: '/news/$id'
+      preLoaderRoute: typeof NewsIdRouteImport
       parentRoute: typeof rootRouteImport
     }
     '/interviews/$id': {
@@ -88,8 +128,19 @@ declare module '@tanstack/react-router' {
 const rootRouteChildren: RootRouteChildren = {
   IndexRoute: IndexRoute,
   InterviewsIdRoute: InterviewsIdRoute,
+  NewsIdRoute: NewsIdRoute,
   InterviewsIndexRoute: InterviewsIndexRoute,
+  NewsIndexRoute: NewsIndexRoute,
 }
 export const routeTree = rootRouteImport
   ._addFileChildren(rootRouteChildren)
   ._addFileTypes<FileRouteTypes>()
+
+import type { getRouter } from './router.tsx'
+import type { createStart } from '@tanstack/react-start'
+declare module '@tanstack/react-start' {
+  interface Register {
+    ssr: true
+    router: Awaited<ReturnType<typeof getRouter>>
+  }
+}

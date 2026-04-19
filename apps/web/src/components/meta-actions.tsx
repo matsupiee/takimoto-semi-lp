@@ -11,24 +11,24 @@ const actions: ActionCard[] = [
     image:
       "https://lookaside.fbsbx.com/elementpath/media/?media_id=971962444997994&version=1769429390",
     alt: "2人の友達の画像",
-    title: "安全と表現",
-    description: "人々の意見を守り、人々が安全につながってシェアできるようにします",
+    title: "政策の実現",
+    description: "",
     href: "https://transparency.meta.com/",
   },
   {
     image:
       "https://lookaside.fbsbx.com/elementpath/media/?media_id=1371608347183844&version=1769429390",
     alt: "友達グループの画像",
-    title: "データとプライバシー",
-    description: "利用者がプライバシーを管理できるようにし、個人情報を保護します",
+    title: "共同研究",
+    description: "大学の研究室や企業との共同研究を行っています",
     href: "/actions/protecting-privacy-and-security/",
   },
   {
     image:
       "https://lookaside.fbsbx.com/elementpath/media/?media_id=1123175432895087&version=1769429390",
-    alt: "VRヘッドセットを装着している男性の画像",
-    title: "責任あるイノベーション",
-    description: "プライバシーと安全を念頭に未来の創造に取り組みます",
+    alt: "",
+    title: "公開政策提言",
+    description: "定期的に公開政策提言を行なっています",
     href: "/actions/responsible-innovation/",
   },
 ];
@@ -38,11 +38,10 @@ export default function MetaActions() {
     <section className="bg-white px-6 py-16 md:px-16 md:py-24">
       <div className="mx-auto grid max-w-7xl grid-cols-1 gap-10 md:grid-cols-2">
         <div>
-          <h2 className="text-3xl font-semibold text-[#1c2b33] md:text-5xl">
-            Metaの取り組みについて最新情報を入手する
-          </h2>
+          <h2 className="text-3xl font-semibold text-[#1c2b33] md:text-5xl">活動の成果</h2>
           <p className="mt-4 text-base text-[#1c2b33]/80 md:text-lg">
-            人々が安全を確保できるよう支援しながら、ポジティブな影響を与えることに全力を尽くします。
+            瀧本ゼミ政策分析パートでは、これまで幅広い分野の問題発見・解決を行ってきました。
+            政治家や官僚に対しての提案や、大学の研究室や企業との共同研究を実施してきました。
           </p>
           <a
             href="#actions"
