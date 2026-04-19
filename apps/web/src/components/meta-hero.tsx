@@ -10,30 +10,16 @@ type Slide = {
 
 const slides: Slide[] = [
   {
-    image: "/images/research.jpg",
-    alt: "瀧本ゼミのリサーチ風景",
-    title: "瀧本ゼミは、社会課題に挑む学生の知を育てています",
+    image: "/images/presentation.png",
+    alt: "普段の活動風景",
+    title: "学生が本気で世の中を変える",
     titleColor: "#FFFFFF",
     cta: { label: "ゼミのミッション", href: "#mission" },
   },
   {
-    image: "/images/presentation.png",
-    alt: "瀧本ゼミのプレゼンテーション",
-    title: "徹底した議論とプレゼンテーションが、その知を磨きます",
-    titleColor: "#FFFFFF",
-    cta: { label: "活動内容", href: "#technologies" },
-  },
-  {
-    image: "/images/komaba-sai.jpg",
-    alt: "駒場祭での瀧本ゼミ",
-    title: "駒場祭で、1年間の研究成果を社会へ発信します",
-    titleColor: "#FFFFFF",
-    cta: { label: "イベント", href: "#ai" },
-  },
-  {
     image: "/images/gogatsu-sai.jpg",
     alt: "五月祭での瀧本ゼミ",
-    title: "五月祭を通じて、学びをより多くの人と共有しています",
+    title: "様々な政策の社会実装に真剣に取り組みます",
     titleColor: "#FFFFFF",
     cta: { label: "取り組み", href: "#actions" },
   },

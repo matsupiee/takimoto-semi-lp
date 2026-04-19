@@ -1,0 +1,20 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 680 400">
+  <rect width="100%" height="100%" fill="transparent"/>
+
+  <g transform="translate(0,50)">
+    <!-- circles -->
+    <circle cx="440" cy="90" r="100" fill="none" stroke="#18a6a6" stroke-width="5.5"/>
+    <circle cx="510" cy="160" r="125" fill="none" stroke="#2c8ec7" stroke-width="5.5"/>
+    <circle cx="365" cy="170" r="70" fill="none" stroke="#7fb7d9" stroke-width="4.5"/>
+
+    <!-- text -->
+    <text x="70" y="215" font-family="Times, 'Times New Roman', serif" font-size="150" fill="#111" letter-spacing="-3">
+      T-semi
+    </text>
+
+    <!-- subtitle -->
+    <text x="75" y="265" font-family="Times, 'Times New Roman', serif" font-size="24" fill="#555" letter-spacing="1.5">
+      Takimoto Policy Research Seminar
+    </text>
+  </g>
+</svg>
