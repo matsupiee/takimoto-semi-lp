@@ -10,13 +10,20 @@
 
 import { Route as rootRouteImport } from './routes/__root'
 import { Route as IndexRouteImport } from './routes/index'
+import { Route as NewsIndexRouteImport } from './routes/news.index'
 import { Route as InterviewsIndexRouteImport } from './routes/interviews.index'
 import { Route as AchievementsIndexRouteImport } from './routes/achievements.index'
+import { Route as NewsIdRouteImport } from './routes/news.$id'
 import { Route as InterviewsIdRouteImport } from './routes/interviews.$id'
 
 const IndexRoute = IndexRouteImport.update({
   id: '/',
   path: '/',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const NewsIndexRoute = NewsIndexRouteImport.update({
+  id: '/news/',
+  path: '/news/',
   getParentRoute: () => rootRouteImport,
 } as any)
 const InterviewsIndexRoute = InterviewsIndexRouteImport.update({
@@ -29,6 +36,11 @@ const AchievementsIndexRoute = AchievementsIndexRouteImport.update({
   path: '/achievements/',
   getParentRoute: () => rootRouteImport,
 } as any)
+const NewsIdRoute = NewsIdRouteImport.update({
+  id: '/news/$id',
+  path: '/news/$id',
+  getParentRoute: () => rootRouteImport,
+} as any)
 const InterviewsIdRoute = InterviewsIdRouteImport.update({
   id: '/interviews/$id',
   path: '/interviews/$id',
@@ -38,35 +50,62 @@ const InterviewsIdRoute = InterviewsIdRouteImport.update({
 export interface FileRoutesByFullPath {
   '/': typeof IndexRoute
   '/interviews/$id': typeof InterviewsIdRoute
+  '/news/$id': typeof NewsIdRoute
   '/achievements/': typeof AchievementsIndexRoute
   '/interviews/': typeof InterviewsIndexRoute
+  '/news/': typeof NewsIndexRoute
 }
 export interface FileRoutesByTo {
   '/': typeof IndexRoute
   '/interviews/$id': typeof InterviewsIdRoute
+  '/news/$id': typeof NewsIdRoute
   '/achievements': typeof AchievementsIndexRoute
   '/interviews': typeof InterviewsIndexRoute
+  '/news': typeof NewsIndexRoute
 }
 export interface FileRoutesById {
   __root__: typeof rootRouteImport
   '/': typeof IndexRoute
   '/interviews/$id': typeof InterviewsIdRoute
+  '/news/$id': typeof NewsIdRoute
   '/achievements/': typeof AchievementsIndexRoute
   '/interviews/': typeof InterviewsIndexRoute
+  '/news/': typeof NewsIndexRoute
 }
 export interface FileRouteTypes {
   fileRoutesByFullPath: FileRoutesByFullPath
-  fullPaths: '/' | '/interviews/$id' | '/achievements/' | '/interviews/'
+  fullPaths:
+    | '/'
+    | '/interviews/$id'
+    | '/news/$id'
+    | '/achievements/'
+    | '/interviews/'
+    | '/news/'
   fileRoutesByTo: FileRoutesByTo
-  to: '/' | '/interviews/$id' | '/achievements' | '/interviews'
-  id: '__root__' | '/' | '/interviews/$id' | '/achievements/' | '/interviews/'
+  to:
+    | '/'
+    | '/interviews/$id'
+    | '/news/$id'
+    | '/achievements'
+    | '/interviews'
+    | '/news'
+  id:
+    | '__root__'
+    | '/'
+    | '/interviews/$id'
+    | '/news/$id'
+    | '/achievements/'
+    | '/interviews/'
+    | '/news/'
   fileRoutesById: FileRoutesById
 }
 export interface RootRouteChildren {
   IndexRoute: typeof IndexRoute
   InterviewsIdRoute: typeof InterviewsIdRoute
+  NewsIdRoute: typeof NewsIdRoute
   AchievementsIndexRoute: typeof AchievementsIndexRoute
   InterviewsIndexRoute: typeof InterviewsIndexRoute
+  NewsIndexRoute: typeof NewsIndexRoute
 }
 
 declare module '@tanstack/react-router' {
@@ -76,6 +115,13 @@ declare module '@tanstack/react-router' {
       path: '/'
       fullPath: '/'
       preLoaderRoute: typeof IndexRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/news/': {
+      id: '/news/'
+      path: '/news'
+      fullPath: '/news/'
+      preLoaderRoute: typeof NewsIndexRouteImport
       parentRoute: typeof rootRouteImport
     }
     '/interviews/': {
@@ -92,6 +138,13 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof AchievementsIndexRouteImport
       parentRoute: typeof rootRouteImport
     }
+    '/news/$id': {
+      id: '/news/$id'
+      path: '/news/$id'
+      fullPath: '/news/$id'
+      preLoaderRoute: typeof NewsIdRouteImport
+      parentRoute: typeof rootRouteImport
+    }
     '/interviews/$id': {
       id: '/interviews/$id'
       path: '/interviews/$id'
@@ -105,8 +158,10 @@ declare module '@tanstack/react-router' {
 const rootRouteChildren: RootRouteChildren = {
   IndexRoute: IndexRoute,
   InterviewsIdRoute: InterviewsIdRoute,
+  NewsIdRoute: NewsIdRoute,
   AchievementsIndexRoute: AchievementsIndexRoute,
   InterviewsIndexRoute: InterviewsIndexRoute,
+  NewsIndexRoute: NewsIndexRoute,
 }
 export const routeTree = rootRouteImport
   ._addFileChildren(rootRouteChildren)

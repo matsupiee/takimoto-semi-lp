@@ -70,6 +70,56 @@ export const fetchInterview = createServerFn({ method: "GET" })
     return res;
   });
 
+export type News = {
+  id: string;
+  category: string;
+  mediaName: string;
+  mediaLogo?: InterviewImage;
+  title: string;
+  body?: string;
+  externalUrl?: string;
+  publishedAt: string;
+  updatedAt: string;
+};
+
+export type NewsCard = Omit<News, "body">;
+
+export const fetchNewsList = createServerFn({ method: "GET" })
+  .inputValidator((input: { limit?: number } | undefined) => input ?? {})
+  .handler(async ({ data }) => {
+    try {
+      const client = await getClient();
+      const res = await client.getList<News>({
+        endpoint: "news",
+        queries: {
+          limit: data.limit ?? 8,
+          orders: "-publishedAt",
+          fields: "id,category,mediaName,mediaLogo,title,externalUrl,publishedAt,updatedAt",
+        },
+      });
+      return res as ListResponse<NewsCard>;
+    } catch (error) {
+      console.error("[microCMS] fetchNewsList failed:", error);
+      return {
+        contents: [],
+        totalCount: 0,
+        offset: 0,
+        limit: data.limit ?? 8,
+      } satisfies ListResponse<NewsCard>;
+    }
+  });
+
+export const fetchNews = createServerFn({ method: "GET" })
+  .inputValidator((input: { id: string }) => input)
+  .handler(async ({ data }) => {
+    const client = await getClient();
+    const res = await client.get<News>({
+      endpoint: "news",
+      contentId: data.id,
+    });
+    return res;
+  });
+
 export const ACHIEVEMENT_CATEGORIES = ["policy", "collaboration", "proposal"] as const;
 
 export type AchievementCategory = (typeof ACHIEVEMENT_CATEGORIES)[number];

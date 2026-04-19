@@ -9,23 +9,23 @@ export default function MetaLeadership() {
           <div className="overflow-hidden rounded-3xl">
             <img
               src={LEADERSHIP_IMAGE}
-              alt="経営陣"
+              alt="メンバー"
               loading="lazy"
               className="h-full w-full object-cover"
             />
           </div>
         </div>
         <div className="order-1 md:order-2">
-          <h2 className="text-3xl font-semibold text-[#1c2b33] md:text-5xl">経営陣の紹介</h2>
+          <h2 className="text-3xl font-semibold text-[#1c2b33] md:text-5xl">メンバー紹介</h2>
           <p className="mt-6 text-base text-[#1c2b33]/80 md:text-lg">
-            Metaの経営陣は、MR(複合現実)とAIが進化する中でMetaを導き、新しい技術を通して人と人をつなげる次なる進化に向けて取り組んでいます。
+            瀧本ゼミのメンバーは、日々世の中の課題を解決するための活動に取り組んでいます。
           </p>
           <a
             href="/media-gallery/executives/"
             aria-label="クリックして経営陣について知る"
             className="mt-6 inline-flex items-center rounded-full bg-[#1c2b33] px-6 py-3 text-[15px] font-medium text-white transition hover:bg-black"
           >
-            経営陣について知る
+            メンバーについて知る
           </a>
         </div>
       </div>
