@@ -16,9 +16,7 @@ export default function MetaLeadership() {
           </div>
         </div>
         <div className="order-1 md:order-2">
-          <h2 className="text-3xl font-semibold text-[#1c2b33] md:text-5xl">
-            経営陣の紹介
-          </h2>
+          <h2 className="text-3xl font-semibold text-[#1c2b33] md:text-5xl">経営陣の紹介</h2>
           <p className="mt-6 text-base text-[#1c2b33]/80 md:text-lg">
             Metaの経営陣は、MR(複合現実)とAIが進化する中でMetaを導き、新しい技術を通して人と人をつなげる次なる進化に向けて取り組んでいます。
           </p>
