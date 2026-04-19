@@ -53,9 +53,7 @@ function InterviewListPage() {
                       {item.studentName}
                       {item.grade ? ` ・ ${item.grade}` : ""}
                     </p>
-                    <p className="text-xl font-medium leading-snug text-[#1c2b33]">
-                      {item.title}
-                    </p>
+                    <p className="text-xl font-medium leading-snug text-[#1c2b33]">{item.title}</p>
                   </div>
                 </Link>
               ))}

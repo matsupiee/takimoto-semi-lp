@@ -11,6 +11,7 @@
 import { Route as rootRouteImport } from './routes/__root'
 import { Route as IndexRouteImport } from './routes/index'
 import { Route as InterviewsIndexRouteImport } from './routes/interviews.index'
+import { Route as AchievementsIndexRouteImport } from './routes/achievements.index'
 import { Route as InterviewsIdRouteImport } from './routes/interviews.$id'
 
 const IndexRoute = IndexRouteImport.update({
@@ -23,6 +24,11 @@ const InterviewsIndexRoute = InterviewsIndexRouteImport.update({
   path: '/interviews/',
   getParentRoute: () => rootRouteImport,
 } as any)
+const AchievementsIndexRoute = AchievementsIndexRouteImport.update({
+  id: '/achievements/',
+  path: '/achievements/',
+  getParentRoute: () => rootRouteImport,
+} as any)
 const InterviewsIdRoute = InterviewsIdRouteImport.update({
   id: '/interviews/$id',
   path: '/interviews/$id',
@@ -32,30 +38,34 @@ const InterviewsIdRoute = InterviewsIdRouteImport.update({
 export interface FileRoutesByFullPath {
   '/': typeof IndexRoute
   '/interviews/$id': typeof InterviewsIdRoute
+  '/achievements/': typeof AchievementsIndexRoute
   '/interviews/': typeof InterviewsIndexRoute
 }
 export interface FileRoutesByTo {
   '/': typeof IndexRoute
   '/interviews/$id': typeof InterviewsIdRoute
+  '/achievements': typeof AchievementsIndexRoute
   '/interviews': typeof InterviewsIndexRoute
 }
 export interface FileRoutesById {
   __root__: typeof rootRouteImport
   '/': typeof IndexRoute
   '/interviews/$id': typeof InterviewsIdRoute
+  '/achievements/': typeof AchievementsIndexRoute
   '/interviews/': typeof InterviewsIndexRoute
 }
 export interface FileRouteTypes {
   fileRoutesByFullPath: FileRoutesByFullPath
-  fullPaths: '/' | '/interviews/$id' | '/interviews/'
+  fullPaths: '/' | '/interviews/$id' | '/achievements/' | '/interviews/'
   fileRoutesByTo: FileRoutesByTo
-  to: '/' | '/interviews/$id' | '/interviews'
-  id: '__root__' | '/' | '/interviews/$id' | '/interviews/'
+  to: '/' | '/interviews/$id' | '/achievements' | '/interviews'
+  id: '__root__' | '/' | '/interviews/$id' | '/achievements/' | '/interviews/'
   fileRoutesById: FileRoutesById
 }
 export interface RootRouteChildren {
   IndexRoute: typeof IndexRoute
   InterviewsIdRoute: typeof InterviewsIdRoute
+  AchievementsIndexRoute: typeof AchievementsIndexRoute
   InterviewsIndexRoute: typeof InterviewsIndexRoute
 }
 
@@ -75,6 +85,13 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof InterviewsIndexRouteImport
       parentRoute: typeof rootRouteImport
     }
+    '/achievements/': {
+      id: '/achievements/'
+      path: '/achievements'
+      fullPath: '/achievements/'
+      preLoaderRoute: typeof AchievementsIndexRouteImport
+      parentRoute: typeof rootRouteImport
+    }
     '/interviews/$id': {
       id: '/interviews/$id'
       path: '/interviews/$id'
@@ -88,8 +105,18 @@ declare module '@tanstack/react-router' {
 const rootRouteChildren: RootRouteChildren = {
   IndexRoute: IndexRoute,
   InterviewsIdRoute: InterviewsIdRoute,
+  AchievementsIndexRoute: AchievementsIndexRoute,
   InterviewsIndexRoute: InterviewsIndexRoute,
 }
 export const routeTree = rootRouteImport
   ._addFileChildren(rootRouteChildren)
   ._addFileTypes<FileRouteTypes>()
+
+import type { getRouter } from './router.tsx'
+import type { createStart } from '@tanstack/react-start'
+declare module '@tanstack/react-start' {
+  interface Register {
+    ssr: true
+    router: Awaited<ReturnType<typeof getRouter>>
+  }
+}

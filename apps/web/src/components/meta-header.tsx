@@ -1,6 +1,5 @@
 import { useState } from "react";
 
-
 const primaryNavItems = [
   { label: "AIグラス", href: "#ai-glasses" },
   { label: "Meta Quest", href: "#quest" },
@@ -33,7 +32,7 @@ export default function MetaHeader() {
             </button>
 
             <a href="/" aria-label="瀧本ゼミホーム" className="flex items-center">
-              <img alt="Meta" src={'/logo.svg'} className="h-14 w-auto" />
+              <img alt="Meta" src={"/logo.svg"} className="h-14 w-auto" />
             </a>
 
             <ul className="hidden items-center gap-8 md:flex">
