@@ -1,0 +1,3 @@
+{
+  "extends": "@takimoto-semi-lp/config/tsconfig.base.json"
+}

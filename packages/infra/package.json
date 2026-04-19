@@ -1,0 +1,19 @@
+{
+  "name": "@takimoto-semi-lp/infra",
+  "private": true,
+  "type": "module",
+  "scripts": {
+    "dev": "alchemy dev",
+    "deploy": "alchemy deploy",
+    "destroy": "alchemy destroy"
+  },
+  "dependencies": {
+    "dotenv": "catalog:",
+    "zod": "catalog:"
+  },
+  "devDependencies": {
+    "@takimoto-semi-lp/config": "workspace:*",
+    "alchemy": "catalog:",
+    "typescript": "^5"
+  }
+}

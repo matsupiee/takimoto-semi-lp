@@ -1,0 +1,24 @@
+{
+  "$schema": "https://ui.shadcn.com/schema.json",
+  "style": "base-lyra",
+  "rsc": false,
+  "tsx": true,
+  "tailwind": {
+    "config": "",
+    "css": "src/styles/globals.css",
+    "baseColor": "neutral",
+    "cssVariables": true,
+    "prefix": ""
+  },
+  "iconLibrary": "lucide",
+  "aliases": {
+    "components": "@takimoto-semi-lp/ui/components",
+    "utils": "@takimoto-semi-lp/ui/lib/utils",
+    "hooks": "@takimoto-semi-lp/ui/hooks",
+    "lib": "@takimoto-semi-lp/ui/lib",
+    "ui": "@takimoto-semi-lp/ui/components"
+  },
+  "menuColor": "default",
+  "menuAccent": "subtle",
+  "registries": {}
+}
