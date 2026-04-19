@@ -12,8 +12,7 @@ const newsItems: NewsCard[] = [
     image:
       "https://scontent-nrt6-1.xx.fbcdn.net/v/t39.8562-6/669300220_954632214209690_8985655919136326932_n.webp",
     alt: "Meta AI logo on a black background",
-    title:
-      "MSLが第1弾のLLMモデル「Muse Spark」を発表: 利用者ファーストで設計されたモデル",
+    title: "MSLが第1弾のLLMモデル「Muse Spark」を発表: 利用者ファーストで設計されたモデル",
     href: "https://about.fb.com/news/2026/04/introducing-muse-spark-meta-superintelligence-labs/",
   },
   {

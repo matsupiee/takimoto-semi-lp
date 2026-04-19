@@ -5,7 +5,9 @@
   "scripts": {
     "build": "vite build",
     "serve": "vite preview",
-    "dev:bare": "vite dev"
+    "dev:bare": "vite dev",
+    "check-types": "tsc --noEmit",
+    "test": "vitest run"
   },
   "dependencies": {
     "@tailwindcss/vite": "^4.2.2",
@@ -36,6 +38,7 @@
     "jsdom": "^29.0.2",
     "typescript": "^5",
     "vite": "^8.0.8",
+    "vitest": "^4.0.0",
     "web-vitals": "^5.2.0",
     "wrangler": "^4.77.0"
   }
