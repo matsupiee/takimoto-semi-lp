@@ -8,8 +8,8 @@ const primaryNavItems = [
 ];
 
 const endNavItems = [
-  { label: "入ゼミ希望の方はこちら", href: "#recruit" },
-  { label: "ご支援はこちら", href: "#support" },
+  { label: "新歓案内", href: "#recruit" },
+  { label: "お問い合わせ", href: "#contact" },
 ];
 
 export default function MetaHeader() {
