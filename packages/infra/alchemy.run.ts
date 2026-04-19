@@ -12,6 +12,8 @@ export const web = await TanStackStart("web", {
   bindings: {
     VITE_SERVER_URL: alchemy.env.VITE_SERVER_URL!,
     CORS_ORIGIN: alchemy.env.CORS_ORIGIN!,
+    MICROCMS_SERVICE_DOMAIN: alchemy.env.MICROCMS_SERVICE_DOMAIN!,
+    MICROCMS_API_KEY: alchemy.env.MICROCMS_API_KEY!,
   },
 });
 
