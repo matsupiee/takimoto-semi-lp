@@ -44,8 +44,7 @@ export const fetchInterviews = createServerFn({ method: "GET" })
         queries: {
           limit: data.limit ?? 6,
           orders: "-publishedAt",
-          fields:
-            "id,title,studentName,grade,thumbnail,excerpt,publishedAt,updatedAt",
+          fields: "id,title,studentName,grade,thumbnail,excerpt,publishedAt,updatedAt",
         },
       });
       return res as ListResponse<Omit<Interview, "body">>;
@@ -66,6 +65,56 @@ export const fetchInterview = createServerFn({ method: "GET" })
     const client = await getClient();
     const res = await client.get<Interview>({
       endpoint: "interviews",
+      contentId: data.id,
+    });
+    return res;
+  });
+
+export type News = {
+  id: string;
+  category: string;
+  mediaName: string;
+  mediaLogo?: InterviewImage;
+  title: string;
+  body?: string;
+  externalUrl?: string;
+  publishedAt: string;
+  updatedAt: string;
+};
+
+export type NewsCard = Omit<News, "body">;
+
+export const fetchNewsList = createServerFn({ method: "GET" })
+  .inputValidator((input: { limit?: number } | undefined) => input ?? {})
+  .handler(async ({ data }) => {
+    try {
+      const client = await getClient();
+      const res = await client.getList<News>({
+        endpoint: "news",
+        queries: {
+          limit: data.limit ?? 8,
+          orders: "-publishedAt",
+          fields: "id,category,mediaName,mediaLogo,title,externalUrl,publishedAt,updatedAt",
+        },
+      });
+      return res as ListResponse<NewsCard>;
+    } catch (error) {
+      console.error("[microCMS] fetchNewsList failed:", error);
+      return {
+        contents: [],
+        totalCount: 0,
+        offset: 0,
+        limit: data.limit ?? 8,
+      } satisfies ListResponse<NewsCard>;
+    }
+  });
+
+export const fetchNews = createServerFn({ method: "GET" })
+  .inputValidator((input: { id: string }) => input)
+  .handler(async ({ data }) => {
+    const client = await getClient();
+    const res = await client.get<News>({
+      endpoint: "news",
       contentId: data.id,
     });
     return res;

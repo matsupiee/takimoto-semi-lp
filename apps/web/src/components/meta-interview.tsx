@@ -6,12 +6,10 @@ type InterviewCard = Omit<Interview, "body">;
 
 export default function MetaInterview({ items }: { items: InterviewCard[] }) {
   return (
-    <section className="bg-white px-6 py-16 md:px-16 md:py-24">
+    <section className="bg-white px-6 py-16 md:px-16 md:py-32">
       <div className="mx-auto max-w-7xl">
         <div className="mb-12 flex flex-col items-center gap-6 text-center">
-          <h2 className="text-4xl font-semibold text-[#1c2b33] md:text-6xl">
-            ゼミ生インタビュー
-          </h2>
+          <h2 className="text-4xl font-semibold text-[#1c2b33] md:text-6xl">ゼミ生インタビュー</h2>
           <Link
             to="/interviews"
             className="inline-flex items-center rounded-full border border-[#1c2b33]/20 px-6 py-3 text-[15px] font-medium text-[#1c2b33] transition hover:bg-[#1c2b33]/5"
@@ -69,13 +67,7 @@ export default function MetaInterview({ items }: { items: InterviewCard[] }) {
 
 function Arrow() {
   return (
-    <svg
-      viewBox="0 0 38 38"
-      width="26"
-      height="26"
-      fill="none"
-      aria-hidden="true"
-    >
+    <svg viewBox="0 0 38 38" width="26" height="26" fill="none" aria-hidden="true">
       <path
         opacity="0.4"
         fillRule="evenodd"
