@@ -1,0 +1,65 @@
+{
+  "$schema": "https://json.schemastore.org/claude-code-settings.json",
+  "permissions": {
+    "allow": [
+      "Bash(bun install)",
+      "Bash(bun install --frozen-lockfile)",
+      "Bash(bun run:*)",
+      "Bash(bunx:*)",
+      "Bash(turbo:*)",
+      "Bash(gh pr view:*)",
+      "Bash(gh pr list:*)",
+      "Bash(gh pr diff:*)",
+      "Bash(gh pr checks:*)",
+      "Bash(gh pr create:*)",
+      "Bash(gh pr ready:*)",
+      "Bash(gh run list:*)",
+      "Bash(gh run view:*)",
+      "Bash(gh run watch:*)",
+      "Bash(gh api:*)",
+      "Bash(gh repo view:*)",
+      "Bash(git status)",
+      "Bash(git status:*)",
+      "Bash(git diff:*)",
+      "Bash(git log:*)",
+      "Bash(git branch:*)",
+      "Bash(git checkout:*)",
+      "Bash(git switch:*)",
+      "Bash(git add:*)",
+      "Bash(git commit:*)",
+      "Bash(git stash:*)",
+      "Bash(git fetch:*)",
+      "Bash(git pull --ff-only:*)",
+      "Bash(git rev-parse:*)",
+      "Bash(git show:*)",
+      "Bash(git remote -v)",
+      "Bash(ls:*)",
+      "Bash(pwd)"
+    ],
+    "ask": ["Bash(git push:*)", "Bash(gh pr merge:*)", "Bash(gh pr close:*)"],
+    "deny": ["Bash(git push --force:*)", "Bash(git push -f:*)", "Bash(rm -rf:*)"]
+  },
+  "hooks": {
+    "PostToolUse": [
+      {
+        "matcher": "Edit|Write|MultiEdit",
+        "hooks": [
+          {
+            "type": "command",
+            "command": "INPUT=$(cat); FILE=$(printf '%s' \"$INPUT\" | jq -r '.tool_input.file_path // empty' 2>/dev/null); if [ -z \"$FILE\" ]; then exit 0; fi; case \"$FILE\" in *.ts|*.tsx) ;; *) exit 0 ;; esac; OUT=$(bunx --bun oxlint --quiet \"$FILE\" 2>&1); STATUS=$?; if [ $STATUS -ne 0 ]; then printf 'oxlint failed on %s:\\n%s\\n' \"$FILE\" \"$OUT\" >&2; exit 2; fi; exit 0"
+          }
+        ]
+      }
+    ],
+    "Stop": [
+      {
+        "hooks": [
+          {
+            "type": "command",
+            "command": "cd \"$CLAUDE_PROJECT_DIR\" && OUT=$(bun run check-types 2>&1) && LINT=$(bunx --bun oxlint 2>&1) || { printf 'Harness sensors failed. Fix before stopping.\\n\\n--- check-types ---\\n%s\\n\\n--- oxlint ---\\n%s\\n' \"$OUT\" \"$LINT\" >&2; exit 2; }; exit 0"
+          }
+        ]
+      }
+    ]
+  }
+}

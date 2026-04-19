@@ -1,6 +1,5 @@
 import { useState } from "react";
 
-const META_LOGO = "https://static.xx.fbcdn.net/rsrc.php/y9/r/tL_v571NdZ0.svg";
 
 const primaryNavItems = [
   { label: "AIグラス", href: "#ai-glasses" },
@@ -33,17 +32,14 @@ export default function MetaHeader() {
               </svg>
             </button>
 
-            <a href="/" aria-label="Metaホーム" className="flex items-center">
-              <img alt="Meta" src={META_LOGO} className="h-5 w-auto" />
+            <a href="/" aria-label="瀧本ゼミホーム" className="flex items-center">
+              <img alt="Meta" src={'/logo.svg'} className="h-14 w-auto" />
             </a>
 
             <ul className="hidden items-center gap-8 md:flex">
               {primaryNavItems.map((item) => (
                 <li key={item.label}>
-                  <a
-                    href={item.href}
-                    className="text-[15px] text-[#1c2b33] hover:text-black"
-                  >
+                  <a href={item.href} className="text-[15px] text-[#1c2b33] hover:text-black">
                     {item.label}
                   </a>
                 </li>
@@ -55,10 +51,7 @@ export default function MetaHeader() {
             <ul className="hidden items-center gap-6 md:flex">
               {endNavItems.map((item) => (
                 <li key={item.label}>
-                  <a
-                    href={item.href}
-                    className="text-[15px] text-[#1c2b33] hover:text-black"
-                  >
+                  <a href={item.href} className="text-[15px] text-[#1c2b33] hover:text-black">
                     {item.label}
                   </a>
                 </li>
@@ -70,7 +63,13 @@ export default function MetaHeader() {
               aria-label="バッグ"
               className="flex h-10 w-10 items-center justify-center rounded-full text-[#1c2b33] hover:bg-black/5"
             >
-              <svg viewBox="0 0 24 24" fill="currentColor" width="22" height="22" aria-hidden="true">
+              <svg
+                viewBox="0 0 24 24"
+                fill="currentColor"
+                width="22"
+                height="22"
+                aria-hidden="true"
+              >
                 <path
                   fillRule="evenodd"
                   clipRule="evenodd"
@@ -84,7 +83,13 @@ export default function MetaHeader() {
               aria-label="ログイン"
               className="flex h-10 w-10 items-center justify-center rounded-full text-[#1c2b33] hover:bg-black/5"
             >
-              <svg viewBox="0 0 24 24" fill="currentColor" width="22" height="22" aria-hidden="true">
+              <svg
+                viewBox="0 0 24 24"
+                fill="currentColor"
+                width="22"
+                height="22"
+                aria-hidden="true"
+              >
                 <path
                   fillRule="evenodd"
                   clipRule="evenodd"
@@ -100,10 +105,7 @@ export default function MetaHeader() {
             <ul className="flex flex-col gap-3">
               {[...primaryNavItems, ...endNavItems].map((item) => (
                 <li key={item.label}>
-                  <a
-                    href={item.href}
-                    className="block py-2 text-[15px] text-[#1c2b33]"
-                  >
+                  <a href={item.href} className="block py-2 text-[15px] text-[#1c2b33]">
                     {item.label}
                   </a>
                 </li>

@@ -40,9 +40,6 @@ lerna-debug.log*
 # Better-T-Stack
 .alchemy
 
-# TanStack Router generated
-routeTree.gen.ts
-
 # Testing
 coverage
 .nyc_output

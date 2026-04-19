@@ -69,12 +69,8 @@ export default function MetaActions() {
                 />
               </div>
               <div className="flex flex-1 flex-col justify-center p-5 md:p-6">
-                <h3 className="text-lg font-semibold text-[#1c2b33] md:text-xl">
-                  {action.title}
-                </h3>
-                <p className="mt-1 text-sm text-[#1c2b33]/80 md:text-base">
-                  {action.description}
-                </p>
+                <h3 className="text-lg font-semibold text-[#1c2b33] md:text-xl">{action.title}</h3>
+                <p className="mt-1 text-sm text-[#1c2b33]/80 md:text-base">{action.description}</p>
               </div>
             </a>
           ))}
