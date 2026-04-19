@@ -1,0 +1,72 @@
+import { createServerFn } from "@tanstack/react-start";
+import { createClient } from "microcms-js-sdk";
+
+export type InterviewImage = {
+  url: string;
+  width: number;
+  height: number;
+};
+
+export type Interview = {
+  id: string;
+  title: string;
+  studentName: string;
+  grade?: string;
+  thumbnail: InterviewImage;
+  excerpt?: string;
+  body: string;
+  publishedAt: string;
+  updatedAt: string;
+};
+
+type ListResponse<T> = {
+  contents: T[];
+  totalCount: number;
+  offset: number;
+  limit: number;
+};
+
+async function getClient() {
+  const { env } = await import("cloudflare:workers");
+  return createClient({
+    serviceDomain: env.MICROCMS_SERVICE_DOMAIN,
+    apiKey: env.MICROCMS_API_KEY,
+  });
+}
+
+export const fetchInterviews = createServerFn({ method: "GET" })
+  .inputValidator((input: { limit?: number } | undefined) => input ?? {})
+  .handler(async ({ data }) => {
+    try {
+      const client = await getClient();
+      const res = await client.getList<Interview>({
+        endpoint: "interviews",
+        queries: {
+          limit: data.limit ?? 6,
+          orders: "-publishedAt",
+          fields:
+            "id,title,studentName,grade,thumbnail,excerpt,publishedAt,updatedAt",
+        },
+      });
+      return res as ListResponse<Omit<Interview, "body">>;
+    } catch (error) {
+      console.error("[microCMS] fetchInterviews failed:", error);
+      return {
+        contents: [],
+        totalCount: 0,
+        offset: 0,
+        limit: data.limit ?? 6,
+      } satisfies ListResponse<Omit<Interview, "body">>;
+    }
+  });
+
+export const fetchInterview = createServerFn({ method: "GET" })
+  .inputValidator((input: { id: string }) => input)
+  .handler(async ({ data }) => {
+    const client = await getClient();
+    const res = await client.get<Interview>({
+      endpoint: "interviews",
+      contentId: data.id,
+    });
+    return res;
+  });
