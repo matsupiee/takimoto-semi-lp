@@ -1,34 +1,31 @@
 import { createFileRoute } from "@tanstack/react-router";
 
+import MetaActions from "../components/meta-actions";
+import MetaFooter from "../components/meta-footer";
+import MetaHeader from "../components/meta-header";
+import MetaHero from "../components/meta-hero";
+import MetaLeadership from "../components/meta-leadership";
+import MetaNews from "../components/meta-news";
+import MetaShop from "../components/meta-shop";
+import MetaTech from "../components/meta-tech";
+
 export const Route = createFileRoute("/")({
   component: HomeComponent,
 });
 
-const TITLE_TEXT = `
- ██████╗ ███████╗████████╗████████╗███████╗██████╗
- ██╔══██╗██╔════╝╚══██╔══╝╚══██╔══╝██╔════╝██╔══██╗
- ██████╔╝█████╗     ██║      ██║   █████╗  ██████╔╝
- ██╔══██╗██╔══╝     ██║      ██║   ██╔══╝  ██╔══██╗
- ██████╔╝███████╗   ██║      ██║   ███████╗██║  ██║
- ╚═════╝ ╚══════╝   ╚═╝      ╚═╝   ╚══════╝╚═╝  ╚═╝
-
- ████████╗    ███████╗████████╗ █████╗  ██████╗██╗  ██╗
- ╚══██╔══╝    ██╔════╝╚══██╔══╝██╔══██╗██╔════╝██║ ██╔╝
-    ██║       ███████╗   ██║   ███████║██║     █████╔╝
-    ██║       ╚════██║   ██║   ██╔══██║██║     ██╔═██╗
-    ██║       ███████║   ██║   ██║  ██║╚██████╗██║  ██╗
-    ╚═╝       ╚══════╝   ╚═╝   ╚═╝  ╚═╝ ╚═════╝╚═╝  ╚═╝
- `;
-
 function HomeComponent() {
   return (
-    <div className="container mx-auto max-w-3xl px-4 py-2">
-      <pre className="overflow-x-auto font-mono text-sm">{TITLE_TEXT}</pre>
-      <div className="grid gap-6">
-        <section className="rounded-lg border p-4">
-          <h2 className="mb-2 font-medium">API Status</h2>
-        </section>
-      </div>
+    <div className="min-h-screen bg-white">
+      <MetaHeader />
+      <main>
+        <MetaHero />
+        <MetaNews />
+        <MetaShop />
+        <MetaTech />
+        <MetaActions />
+        <MetaLeadership />
+      </main>
+      <MetaFooter />
     </div>
   );
 }
