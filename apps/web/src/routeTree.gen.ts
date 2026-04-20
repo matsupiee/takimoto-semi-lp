@@ -9,6 +9,7 @@
 // Additionally, you should also exclude this file from your linter and/or formatter to prevent it from being checked or modified.
 
 import { Route as rootRouteImport } from './routes/__root'
+import { Route as MemberIndexRouteImport } from './routes/member/index'
 import { Route as ContactIndexRouteImport } from './routes/contact/index'
 import { Route as AchievementIndexRouteImport } from './routes/achievement/index'
 import { Route as homeIndexRouteImport } from './routes/(home)/index'
@@ -17,6 +18,11 @@ import { Route as AnnouncementlistIndexRouteImport } from './routes/announcement
 import { Route as InterviewdetailIdRouteImport } from './routes/interview/(detail)/$id'
 import { Route as AnnouncementdetailIdRouteImport } from './routes/announcement/(detail)/$id'
 
+const MemberIndexRoute = MemberIndexRouteImport.update({
+  id: '/member/',
+  path: '/member/',
+  getParentRoute: () => rootRouteImport,
+} as any)
 const ContactIndexRoute = ContactIndexRouteImport.update({
   id: '/contact/',
   path: '/contact/',
@@ -57,6 +63,7 @@ export interface FileRoutesByFullPath {
   '/': typeof homeIndexRoute
   '/achievement/': typeof AchievementIndexRoute
   '/contact/': typeof ContactIndexRoute
+  '/member/': typeof MemberIndexRoute
   '/announcement/$id': typeof AnnouncementdetailIdRoute
   '/interview/$id': typeof InterviewdetailIdRoute
   '/announcement/': typeof AnnouncementlistIndexRoute
@@ -66,6 +73,7 @@ export interface FileRoutesByTo {
   '/': typeof homeIndexRoute
   '/achievement': typeof AchievementIndexRoute
   '/contact': typeof ContactIndexRoute
+  '/member': typeof MemberIndexRoute
   '/announcement/$id': typeof AnnouncementdetailIdRoute
   '/interview/$id': typeof InterviewdetailIdRoute
   '/announcement': typeof AnnouncementlistIndexRoute
@@ -76,6 +84,7 @@ export interface FileRoutesById {
   '/(home)/': typeof homeIndexRoute
   '/achievement/': typeof AchievementIndexRoute
   '/contact/': typeof ContactIndexRoute
+  '/member/': typeof MemberIndexRoute
   '/announcement/(detail)/$id': typeof AnnouncementdetailIdRoute
   '/interview/(detail)/$id': typeof InterviewdetailIdRoute
   '/announcement/(list)/': typeof AnnouncementlistIndexRoute
@@ -87,6 +96,7 @@ export interface FileRouteTypes {
     | '/'
     | '/achievement/'
     | '/contact/'
+    | '/member/'
     | '/announcement/$id'
     | '/interview/$id'
     | '/announcement/'
@@ -96,6 +106,7 @@ export interface FileRouteTypes {
     | '/'
     | '/achievement'
     | '/contact'
+    | '/member'
     | '/announcement/$id'
     | '/interview/$id'
     | '/announcement'
@@ -105,6 +116,7 @@ export interface FileRouteTypes {
     | '/(home)/'
     | '/achievement/'
     | '/contact/'
+    | '/member/'
     | '/announcement/(detail)/$id'
     | '/interview/(detail)/$id'
     | '/announcement/(list)/'
@@ -115,6 +127,7 @@ export interface RootRouteChildren {
   homeIndexRoute: typeof homeIndexRoute
   AchievementIndexRoute: typeof AchievementIndexRoute
   ContactIndexRoute: typeof ContactIndexRoute
+  MemberIndexRoute: typeof MemberIndexRoute
   AnnouncementdetailIdRoute: typeof AnnouncementdetailIdRoute
   InterviewdetailIdRoute: typeof InterviewdetailIdRoute
   AnnouncementlistIndexRoute: typeof AnnouncementlistIndexRoute
@@ -123,6 +136,13 @@ export interface RootRouteChildren {
 
 declare module '@tanstack/react-router' {
   interface FileRoutesByPath {
+    '/member/': {
+      id: '/member/'
+      path: '/member'
+      fullPath: '/member/'
+      preLoaderRoute: typeof MemberIndexRouteImport
+      parentRoute: typeof rootRouteImport
+    }
     '/contact/': {
       id: '/contact/'
       path: '/contact'
@@ -179,6 +199,7 @@ const rootRouteChildren: RootRouteChildren = {
   homeIndexRoute: homeIndexRoute,
   AchievementIndexRoute: AchievementIndexRoute,
   ContactIndexRoute: ContactIndexRoute,
+  MemberIndexRoute: MemberIndexRoute,
   AnnouncementdetailIdRoute: AnnouncementdetailIdRoute,
   InterviewdetailIdRoute: InterviewdetailIdRoute,
   AnnouncementlistIndexRoute: AnnouncementlistIndexRoute,
@@ -187,12 +208,3 @@ const rootRouteChildren: RootRouteChildren = {
 export const routeTree = rootRouteImport
   ._addFileChildren(rootRouteChildren)
   ._addFileTypes<FileRouteTypes>()
-
-import type { getRouter } from './router.tsx'
-import type { createStart } from '@tanstack/react-start'
-declare module '@tanstack/react-start' {
-  interface Register {
-    ssr: true
-    router: Awaited<ReturnType<typeof getRouter>>
-  }
-}
