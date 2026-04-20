@@ -12,6 +12,7 @@ import { Route as rootRouteImport } from './routes/__root'
 import { Route as IndexRouteImport } from './routes/index'
 import { Route as NewsIndexRouteImport } from './routes/news.index'
 import { Route as InterviewsIndexRouteImport } from './routes/interviews.index'
+import { Route as AchievementsIndexRouteImport } from './routes/achievements.index'
 import { Route as NewsIdRouteImport } from './routes/news.$id'
 import { Route as InterviewsIdRouteImport } from './routes/interviews.$id'
 
@@ -30,6 +31,11 @@ const InterviewsIndexRoute = InterviewsIndexRouteImport.update({
   path: '/interviews/',
   getParentRoute: () => rootRouteImport,
 } as any)
+const AchievementsIndexRoute = AchievementsIndexRouteImport.update({
+  id: '/achievements/',
+  path: '/achievements/',
+  getParentRoute: () => rootRouteImport,
+} as any)
 const NewsIdRoute = NewsIdRouteImport.update({
   id: '/news/$id',
   path: '/news/$id',
@@ -45,6 +51,7 @@ export interface FileRoutesByFullPath {
   '/': typeof IndexRoute
   '/interviews/$id': typeof InterviewsIdRoute
   '/news/$id': typeof NewsIdRoute
+  '/achievements/': typeof AchievementsIndexRoute
   '/interviews/': typeof InterviewsIndexRoute
   '/news/': typeof NewsIndexRoute
 }
@@ -52,6 +59,7 @@ export interface FileRoutesByTo {
   '/': typeof IndexRoute
   '/interviews/$id': typeof InterviewsIdRoute
   '/news/$id': typeof NewsIdRoute
+  '/achievements': typeof AchievementsIndexRoute
   '/interviews': typeof InterviewsIndexRoute
   '/news': typeof NewsIndexRoute
 }
@@ -60,19 +68,33 @@ export interface FileRoutesById {
   '/': typeof IndexRoute
   '/interviews/$id': typeof InterviewsIdRoute
   '/news/$id': typeof NewsIdRoute
+  '/achievements/': typeof AchievementsIndexRoute
   '/interviews/': typeof InterviewsIndexRoute
   '/news/': typeof NewsIndexRoute
 }
 export interface FileRouteTypes {
   fileRoutesByFullPath: FileRoutesByFullPath
-  fullPaths: '/' | '/interviews/$id' | '/news/$id' | '/interviews/' | '/news/'
+  fullPaths:
+    | '/'
+    | '/interviews/$id'
+    | '/news/$id'
+    | '/achievements/'
+    | '/interviews/'
+    | '/news/'
   fileRoutesByTo: FileRoutesByTo
-  to: '/' | '/interviews/$id' | '/news/$id' | '/interviews' | '/news'
+  to:
+    | '/'
+    | '/interviews/$id'
+    | '/news/$id'
+    | '/achievements'
+    | '/interviews'
+    | '/news'
   id:
     | '__root__'
     | '/'
     | '/interviews/$id'
     | '/news/$id'
+    | '/achievements/'
     | '/interviews/'
     | '/news/'
   fileRoutesById: FileRoutesById
@@ -81,6 +103,7 @@ export interface RootRouteChildren {
   IndexRoute: typeof IndexRoute
   InterviewsIdRoute: typeof InterviewsIdRoute
   NewsIdRoute: typeof NewsIdRoute
+  AchievementsIndexRoute: typeof AchievementsIndexRoute
   InterviewsIndexRoute: typeof InterviewsIndexRoute
   NewsIndexRoute: typeof NewsIndexRoute
 }
@@ -108,6 +131,13 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof InterviewsIndexRouteImport
       parentRoute: typeof rootRouteImport
     }
+    '/achievements/': {
+      id: '/achievements/'
+      path: '/achievements'
+      fullPath: '/achievements/'
+      preLoaderRoute: typeof AchievementsIndexRouteImport
+      parentRoute: typeof rootRouteImport
+    }
     '/news/$id': {
       id: '/news/$id'
       path: '/news/$id'
@@ -129,6 +159,7 @@ const rootRouteChildren: RootRouteChildren = {
   IndexRoute: IndexRoute,
   InterviewsIdRoute: InterviewsIdRoute,
   NewsIdRoute: NewsIdRoute,
+  AchievementsIndexRoute: AchievementsIndexRoute,
   InterviewsIndexRoute: InterviewsIndexRoute,
   NewsIndexRoute: NewsIndexRoute,
 }

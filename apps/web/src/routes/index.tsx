@@ -1,6 +1,6 @@
 import { createFileRoute } from "@tanstack/react-router";
 
-import MetaActions from "../components/meta-actions";
+import MetaAchievements from "../components/meta-achievements";
 import MetaFooter from "../components/meta-footer";
 import MetaHeader from "../components/meta-header";
 import MetaHero from "../components/meta-hero";
@@ -32,7 +32,7 @@ function HomeComponent() {
       <main>
         <MetaHero />
         <MetaMission />
-        <MetaActions />
+        <MetaAchievements />
         <MetaLeadership />
         <MetaInterview items={interviews} />
         <MetaNews items={news} />
