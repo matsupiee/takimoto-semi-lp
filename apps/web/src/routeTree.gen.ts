@@ -9,6 +9,7 @@
 // Additionally, you should also exclude this file from your linter and/or formatter to prevent it from being checked or modified.
 
 import { Route as rootRouteImport } from './routes/__root'
+import { Route as ContactIndexRouteImport } from './routes/contact/index'
 import { Route as AchievementIndexRouteImport } from './routes/achievement/index'
 import { Route as homeIndexRouteImport } from './routes/(home)/index'
 import { Route as InterviewlistIndexRouteImport } from './routes/interview/(list)/index'
@@ -16,6 +17,11 @@ import { Route as AnnouncementlistIndexRouteImport } from './routes/announcement
 import { Route as InterviewdetailIdRouteImport } from './routes/interview/(detail)/$id'
 import { Route as AnnouncementdetailIdRouteImport } from './routes/announcement/(detail)/$id'
 
+const ContactIndexRoute = ContactIndexRouteImport.update({
+  id: '/contact/',
+  path: '/contact/',
+  getParentRoute: () => rootRouteImport,
+} as any)
 const AchievementIndexRoute = AchievementIndexRouteImport.update({
   id: '/achievement/',
   path: '/achievement/',
@@ -50,6 +56,7 @@ const AnnouncementdetailIdRoute = AnnouncementdetailIdRouteImport.update({
 export interface FileRoutesByFullPath {
   '/': typeof homeIndexRoute
   '/achievement/': typeof AchievementIndexRoute
+  '/contact/': typeof ContactIndexRoute
   '/announcement/$id': typeof AnnouncementdetailIdRoute
   '/interview/$id': typeof InterviewdetailIdRoute
   '/announcement/': typeof AnnouncementlistIndexRoute
@@ -58,6 +65,7 @@ export interface FileRoutesByFullPath {
 export interface FileRoutesByTo {
   '/': typeof homeIndexRoute
   '/achievement': typeof AchievementIndexRoute
+  '/contact': typeof ContactIndexRoute
   '/announcement/$id': typeof AnnouncementdetailIdRoute
   '/interview/$id': typeof InterviewdetailIdRoute
   '/announcement': typeof AnnouncementlistIndexRoute
@@ -67,6 +75,7 @@ export interface FileRoutesById {
   __root__: typeof rootRouteImport
   '/(home)/': typeof homeIndexRoute
   '/achievement/': typeof AchievementIndexRoute
+  '/contact/': typeof ContactIndexRoute
   '/announcement/(detail)/$id': typeof AnnouncementdetailIdRoute
   '/interview/(detail)/$id': typeof InterviewdetailIdRoute
   '/announcement/(list)/': typeof AnnouncementlistIndexRoute
@@ -77,6 +86,7 @@ export interface FileRouteTypes {
   fullPaths:
     | '/'
     | '/achievement/'
+    | '/contact/'
     | '/announcement/$id'
     | '/interview/$id'
     | '/announcement/'
@@ -85,6 +95,7 @@ export interface FileRouteTypes {
   to:
     | '/'
     | '/achievement'
+    | '/contact'
     | '/announcement/$id'
     | '/interview/$id'
     | '/announcement'
@@ -93,6 +104,7 @@ export interface FileRouteTypes {
     | '__root__'
     | '/(home)/'
     | '/achievement/'
+    | '/contact/'
     | '/announcement/(detail)/$id'
     | '/interview/(detail)/$id'
     | '/announcement/(list)/'
@@ -102,6 +114,7 @@ export interface FileRouteTypes {
 export interface RootRouteChildren {
   homeIndexRoute: typeof homeIndexRoute
   AchievementIndexRoute: typeof AchievementIndexRoute
+  ContactIndexRoute: typeof ContactIndexRoute
   AnnouncementdetailIdRoute: typeof AnnouncementdetailIdRoute
   InterviewdetailIdRoute: typeof InterviewdetailIdRoute
   AnnouncementlistIndexRoute: typeof AnnouncementlistIndexRoute
@@ -110,6 +123,13 @@ export interface RootRouteChildren {
 
 declare module '@tanstack/react-router' {
   interface FileRoutesByPath {
+    '/contact/': {
+      id: '/contact/'
+      path: '/contact'
+      fullPath: '/contact/'
+      preLoaderRoute: typeof ContactIndexRouteImport
+      parentRoute: typeof rootRouteImport
+    }
     '/achievement/': {
       id: '/achievement/'
       path: '/achievement'
@@ -158,6 +178,7 @@ declare module '@tanstack/react-router' {
 const rootRouteChildren: RootRouteChildren = {
   homeIndexRoute: homeIndexRoute,
   AchievementIndexRoute: AchievementIndexRoute,
+  ContactIndexRoute: ContactIndexRoute,
   AnnouncementdetailIdRoute: AnnouncementdetailIdRoute,
   InterviewdetailIdRoute: InterviewdetailIdRoute,
   AnnouncementlistIndexRoute: AnnouncementlistIndexRoute,
