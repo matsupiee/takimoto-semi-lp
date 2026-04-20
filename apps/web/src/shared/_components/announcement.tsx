@@ -1,6 +1,8 @@
 import { Link } from "@tanstack/react-router";
 
+import { cn } from "@takimoto-semi-lp/ui/lib/utils";
 import type { Announcement } from "@/lib/microcms/server-fn/announcement";
+import PageContainer from "@/shared/_components/layout/page-container";
 import SectionHeader from "@/shared/_components/section-header";
 
 function formatDate(iso: string) {
@@ -8,29 +10,40 @@ function formatDate(iso: string) {
   return `${d.getFullYear()}.${d.getMonth() + 1}.${d.getDate()}`;
 }
 
+export function AnnouncementList({
+  items,
+  className,
+}: {
+  items: Announcement[];
+  className?: string;
+}) {
+  if (items.length === 0) {
+    return (
+      <p className={cn("text-[#1c2b33]/70", className)}>
+        まだ記事がありません。microCMS の
+        <code className="mx-1 rounded bg-[#f2f3f5] px-1.5 py-0.5 text-sm">Announcement</code>
+        から投稿すると、ここに表示されます。
+      </p>
+    );
+  }
+
+  return (
+    <ul className={className}>
+      {items.map((item) => (
+        <li key={item.id} className="border-b border-neutral-200 last:border-b-0">
+          <AnnouncementRow item={item} />
+        </li>
+      ))}
+    </ul>
+  );
+}
+
 export default function Announcement({ items }: { items: Announcement[] }) {
   return (
-    <section id="Announcement" className="bg-white px-6 py-12 md:px-16">
-      <div className="mx-auto max-w-5xl">
-        <SectionHeader eyebrow="Announcement" title="お知らせ / プレスリリース" accent="red" />
-
-        {items.length === 0 ? (
-          <p className="mt-16 text-[#1c2b33]/70">
-            まだ記事がありません。microCMS の
-            <code className="mx-1 rounded bg-[#f2f3f5] px-1.5 py-0.5 text-sm">Announcement</code>
-            から投稿すると、ここに表示されます。
-          </p>
-        ) : (
-          <ul className="mt-12 md:mt-20">
-            {items.map((item) => (
-              <li key={item.id} className="border-b border-neutral-200 last:border-b-0">
-                <AnnouncementRow item={item} />
-              </li>
-            ))}
-          </ul>
-        )}
-      </div>
-    </section>
+    <PageContainer as="section" id="Announcement" className="bg-white py-12">
+      <SectionHeader eyebrow="Announcement" title="お知らせ / プレスリリース" accent="red" />
+      <AnnouncementList items={items} className="mt-12 md:mt-20" />
+    </PageContainer>
   );
 }
 

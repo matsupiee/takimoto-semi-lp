@@ -2,6 +2,7 @@ import { createFileRoute } from "@tanstack/react-router";
 
 import Footer from "../../shared/_components/layout/footer";
 import Header from "../../shared/_components/layout/header";
+import PageContainer from "../../shared/_components/layout/page-container";
 import SectionHeader from "../../shared/_components/section-header";
 import ContactForm from "./_components/contact-form";
 
@@ -32,49 +33,48 @@ function ContactPage() {
     <div className="min-h-screen bg-white">
       <Header />
       <main>
-        <section className="px-6 py-12 md:px-16">
-          <div className="mx-auto max-w-7xl">
-            <SectionHeader eyebrow="Contact" title="お問い合わせ" as="h1" />
-            <p className="mt-6 max-w-3xl text-base text-[#1c2b33]/80 md:text-lg">
-              瀧本ゼミ政策分析パートへのご連絡は、こちらのフォームよりお願いいたします。
-              取材依頼・共同研究のご相談・新歓に関するご質問など、お気軽にご記入ください。
-            </p>
-          </div>
-        </section>
+        <PageContainer as="section" className="py-12">
+          <SectionHeader eyebrow="Contact" title="お問い合わせ" as="h1" />
+          <p className="mt-6 max-w-3xl text-base text-[#1c2b33]/80 md:text-lg">
+            瀧本ゼミ政策分析パートへのご連絡は、こちらのフォームよりお願いいたします。
+            取材依頼・共同研究のご相談・新歓に関するご質問など、お気軽にご記入ください。
+          </p>
+        </PageContainer>
 
-        <section className="px-6 pb-16 md:px-16 md:pb-24">
-          <div className="mx-auto grid max-w-7xl grid-cols-1 gap-12 lg:grid-cols-12 lg:gap-16">
-            <div className="lg:col-span-7">
-              <ContactForm />
+        <PageContainer
+          as="section"
+          className="grid grid-cols-1 gap-12 pb-16 md:pb-24 lg:grid-cols-12 lg:gap-16"
+        >
+          <div className="lg:col-span-7">
+            <ContactForm />
+          </div>
+
+          <aside className="lg:col-span-5">
+            <div className="border-t border-black/10 pt-8 lg:border-0 lg:pt-0">
+              <h2 className="text-xl font-semibold text-[#1c2b33] md:text-2xl">
+                その他のご連絡方法
+              </h2>
+              <ul className="mt-6 flex flex-col gap-6">
+                {CONTACT_CHANNELS.map((channel) => (
+                  <li key={channel.title} className="border-b border-black/10 pb-6">
+                    <p className="text-sm font-semibold text-[#1c2b33]">{channel.title}</p>
+                    <p className="mt-2 text-sm text-[#1c2b33]/75">{channel.description}</p>
+                    {channel.isLink ? (
+                      <a
+                        href={channel.value}
+                        className="mt-3 inline-flex text-sm font-medium text-[#1877f2] hover:underline"
+                      >
+                        {channel.linkLabel}
+                      </a>
+                    ) : (
+                      <p className="mt-3 font-mono text-sm text-[#1c2b33]">{channel.value}</p>
+                    )}
+                  </li>
+                ))}
+              </ul>
             </div>
-
-            <aside className="lg:col-span-5">
-              <div className="border-t border-black/10 pt-8 lg:border-0 lg:pt-0">
-                <h2 className="text-xl font-semibold text-[#1c2b33] md:text-2xl">
-                  その他のご連絡方法
-                </h2>
-                <ul className="mt-6 flex flex-col gap-6">
-                  {CONTACT_CHANNELS.map((channel) => (
-                    <li key={channel.title} className="border-b border-black/10 pb-6">
-                      <p className="text-sm font-semibold text-[#1c2b33]">{channel.title}</p>
-                      <p className="mt-2 text-sm text-[#1c2b33]/75">{channel.description}</p>
-                      {channel.isLink ? (
-                        <a
-                          href={channel.value}
-                          className="mt-3 inline-flex text-sm font-medium text-[#1877f2] hover:underline"
-                        >
-                          {channel.linkLabel}
-                        </a>
-                      ) : (
-                        <p className="mt-3 font-mono text-sm text-[#1c2b33]">{channel.value}</p>
-                      )}
-                    </li>
-                  ))}
-                </ul>
-              </div>
-            </aside>
-          </div>
-        </section>
+          </aside>
+        </PageContainer>
       </main>
       <Footer />
     </div>
