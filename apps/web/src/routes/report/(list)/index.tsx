@@ -3,6 +3,7 @@ import { Link, createFileRoute } from "@tanstack/react-router";
 import { fetchReports } from "@/lib/microcms/server-fn/report";
 import Footer from "@/shared/_components/layout/footer";
 import Header from "@/shared/_components/layout/header";
+import PageContainer from "@/shared/_components/layout/page-container";
 import SectionHeader from "@/shared/_components/section-header";
 
 export const Route = createFileRoute("/report/(list)/")({
@@ -22,8 +23,8 @@ function ReportListPage() {
   return (
     <div className="min-h-screen bg-white">
       <Header />
-      <main className="px-6 py-12 md:px-16">
-        <div className="mx-auto max-w-7xl">
+      <main>
+        <PageContainer className="py-12">
           <SectionHeader eyebrow="Report" title="政策分析レポート" as="h1" />
           <p className="mt-6 mb-10 max-w-3xl text-base text-[#1c2b33]/80 md:text-lg">
             瀧本ゼミ政策分析パートの活動として公開してきた政策提言・分析レポートです。
@@ -72,7 +73,7 @@ function ReportListPage() {
               })}
             </div>
           )}
-        </div>
+        </PageContainer>
       </main>
       <Footer />
     </div>
