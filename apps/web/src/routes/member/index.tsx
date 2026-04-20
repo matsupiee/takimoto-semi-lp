@@ -3,6 +3,7 @@ import { createFileRoute } from "@tanstack/react-router";
 import { fetchMembers } from "@/lib/microcms/server-fn/member";
 import Footer from "@/shared/_components/layout/footer";
 import Header from "@/shared/_components/layout/header";
+import SectionHeader from "@/shared/_components/section-header";
 import MemberCard from "./_components/member-card";
 
 export const Route = createFileRoute("/member/")({
@@ -24,8 +25,8 @@ function MemberListPage() {
       <Header />
       <main className="px-6 py-16 md:px-16 md:py-24">
         <div className="mx-auto max-w-7xl">
-          <h1 className="mb-6 text-3xl font-semibold text-[#1c2b33] md:text-5xl">メンバー</h1>
-          <p className="mb-10 max-w-3xl text-base text-[#1c2b33]/80 md:text-lg">
+          <SectionHeader eyebrow="Members" title="メンバー" as="h1" />
+          <p className="mt-6 mb-10 max-w-3xl text-base text-[#1c2b33]/80 md:text-lg">
             瀧本ゼミ政策分析パートで活動しているメンバーを紹介します。
           </p>
 
