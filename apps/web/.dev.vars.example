@@ -1,3 +1,7 @@
 # ローカル開発用のシークレット。`.dev.vars` にコピーして値を埋める。
-# 本番は `bunx wrangler secret put MICROCMS_API_KEY` でアップロードする。
+# 本番は `bunx wrangler secret put <NAME>` でアップロードする。
 MICROCMS_API_KEY=
+
+# Basic 認証。両方セットされている場合のみ有効になる（未設定なら認証をスキップ）。
+BASIC_AUTH_USER=
+BASIC_AUTH_PASSWORD=
