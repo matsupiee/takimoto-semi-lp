@@ -10,11 +10,11 @@
 
 import { Route as rootRouteImport } from './routes/__root'
 import { Route as IndexRouteImport } from './routes/index'
-import { Route as NewsIndexRouteImport } from './routes/news.index'
-import { Route as InterviewsIndexRouteImport } from './routes/interviews.index'
-import { Route as AchievementsIndexRouteImport } from './routes/achievements.index'
-import { Route as NewsIdRouteImport } from './routes/news.$id'
-import { Route as InterviewsIdRouteImport } from './routes/interviews.$id'
+import { Route as NewsIndexRouteImport } from './routes/news/index'
+import { Route as InterviewsIndexRouteImport } from './routes/interviews/index'
+import { Route as AchievementsIndexRouteImport } from './routes/achievements/index'
+import { Route as NewsIdRouteImport } from './routes/news/$id'
+import { Route as InterviewsIdRouteImport } from './routes/interviews/$id'
 
 const IndexRoute = IndexRouteImport.update({
   id: '/',

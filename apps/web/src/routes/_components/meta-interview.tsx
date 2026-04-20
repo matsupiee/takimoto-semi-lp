@@ -1,6 +1,6 @@
 import { Link } from "@tanstack/react-router";
 
-import type { Interview } from "../lib/microcms";
+import type { Interview } from "../../lib/microcms";
 
 type InterviewCard = Omit<Interview, "body">;
 

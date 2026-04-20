@@ -1,14 +1,14 @@
 import { createFileRoute } from "@tanstack/react-router";
 
-import MetaAchievements from "../components/meta-achievements";
-import MetaFooter from "../components/meta-footer";
-import MetaHeader from "../components/meta-header";
-import MetaHero from "../components/meta-hero";
-import MetaInterview from "../components/meta-interview";
-import MetaLeadership from "../components/meta-leadership";
-import MetaMission from "../components/meta-mission";
-import MetaNews from "../components/meta-news";
+import MetaFooter from "../shared/_components/meta-footer";
+import MetaHeader from "../shared/_components/meta-header";
+import MetaNews from "../shared/_components/meta-news";
 import { fetchInterviews, fetchNewsList } from "../lib/microcms";
+import MetaAchievements from "./_components/meta-achievements";
+import MetaHero from "./_components/meta-hero";
+import MetaInterview from "./_components/meta-interview";
+import MetaLeadership from "./_components/meta-leadership";
+import MetaMission from "./_components/meta-mission";
 
 export const Route = createFileRoute("/")({
   component: HomeComponent,

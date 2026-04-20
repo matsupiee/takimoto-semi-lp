@@ -16,5 +16,14 @@ export default defineConfig({
   resolve: {
     tsconfigPaths: true,
   },
-  plugins: [tailwindcss(), tanstackStart(), viteReact(), ...(hasAlchemyConfig ? [alchemy()] : [])],
+  plugins: [
+    tailwindcss(),
+    tanstackStart({
+      router: {
+        routeFileIgnorePattern: "^_(components|hooks|utils)$",
+      },
+    }),
+    viteReact(),
+    ...(hasAlchemyConfig ? [alchemy()] : []),
+  ],
 });

@@ -1,6 +1,6 @@
 import { Link } from "@tanstack/react-router";
 
-import type { AchievementCategory } from "../lib/microcms";
+import type { AchievementCategory } from "../../lib/microcms";
 
 type AchievementCard = {
   image: string;

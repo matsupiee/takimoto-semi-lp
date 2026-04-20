@@ -1,6 +1,6 @@
 import { Link } from "@tanstack/react-router";
 
-import type { NewsCard } from "../lib/microcms";
+import type { NewsCard } from "../../lib/microcms";
 
 function formatDate(iso: string) {
   const d = new Date(iso);

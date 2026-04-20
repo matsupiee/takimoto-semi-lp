@@ -1,9 +1,9 @@
 import { createFileRoute } from "@tanstack/react-router";
 
-import MetaFooter from "../components/meta-footer";
-import MetaHeader from "../components/meta-header";
-import MetaNews from "../components/meta-news";
-import { fetchNewsList } from "../lib/microcms";
+import { fetchNewsList } from "../../lib/microcms";
+import MetaFooter from "../../shared/_components/meta-footer";
+import MetaHeader from "../../shared/_components/meta-header";
+import MetaNews from "../../shared/_components/meta-news";
 
 export const Route = createFileRoute("/news/")({
   component: NewsListPage,

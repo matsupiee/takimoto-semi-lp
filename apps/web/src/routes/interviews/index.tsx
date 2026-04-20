@@ -1,8 +1,8 @@
 import { Link, createFileRoute } from "@tanstack/react-router";
 
-import MetaFooter from "../components/meta-footer";
-import MetaHeader from "../components/meta-header";
-import { fetchInterviews } from "../lib/microcms";
+import { fetchInterviews } from "../../lib/microcms";
+import MetaFooter from "../../shared/_components/meta-footer";
+import MetaHeader from "../../shared/_components/meta-header";
 
 export const Route = createFileRoute("/interviews/")({
   component: InterviewListPage,
