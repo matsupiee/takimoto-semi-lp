@@ -25,7 +25,7 @@ export default function Announcement({ items }: { items: Announcement[] }) {
         ) : (
           <ul className="mt-12 md:mt-20">
             {items.map((item) => (
-              <li key={item.id} className="border-b border-[#1c2b33]/10">
+              <li key={item.id} className="border-b border-neutral-200 last:border-b-0">
                 <AnnouncementRow item={item} />
               </li>
             ))}
@@ -41,30 +41,28 @@ function AnnouncementRow({ item }: { item: Announcement }) {
   const date = formatDate(item.publishedAt ?? item.updatedAt);
 
   const content = (
-    <div className="grid grid-cols-[88px_1fr_24px] items-start gap-6 py-8 md:grid-cols-[140px_1fr_32px] md:gap-10 md:py-12">
-      <div className="flex flex-col items-center gap-3">
-        <div className="flex h-16 w-16 items-center justify-center overflow-hidden rounded-full bg-[#f2f3f5] md:h-24 md:w-24">
-          {item.mediaLogo?.url ? (
-            <img
-              src={`${item.mediaLogo.url}?fit=crop&w=200&h=200`}
-              alt={item.mediaName}
-              loading="lazy"
-              className="h-full w-full object-cover"
-            />
-          ) : (
-            <span className="text-xs text-[#1c2b33]/50">{item.mediaName}</span>
-          )}
+    <div className="py-6 md:py-8">
+      <div className="flex items-start justify-between gap-3 md:gap-4">
+        <div className="flex min-w-0 flex-wrap items-center gap-x-3 gap-y-2 md:gap-x-4">
+          <span className="inline-flex shrink-0 rounded-full bg-neutral-100 px-3 py-1 text-xs text-neutral-500 md:px-3.5 md:py-1.5 md:text-sm">
+            {date}
+          </span>
+          <span className="text-xs font-normal text-[#e60012] md:text-sm">{item.category}</span>
         </div>
-        <p className="text-xs text-[#1c2b33]/60 md:text-sm">{date}</p>
+        {isExternal ? (
+          <span className="inline-flex shrink-0 pt-0.5 text-[#e60012]" aria-hidden="true">
+            <ExternalIcon />
+          </span>
+        ) : null}
       </div>
 
-      <div className="flex flex-col gap-3 md:gap-4">
-        <p className="text-sm font-bold text-[#e60012] md:text-[15px]">{item.category}</p>
-        <p className="font-bold text-[#1c2b33] md:text-lg">{item.mediaName}</p>
-        <p className="text-base leading-relaxed text-[#1c2b33] md:text-lg">{item.title}</p>
-      </div>
+      {item.mediaName ? (
+        <p className="mt-2 text-sm text-neutral-500 md:text-[15px]">{item.mediaName}</p>
+      ) : null}
 
-      <div className="pt-1 text-[#e60012]">{isExternal ? <ExternalIcon /> : null}</div>
+      <p className="mt-3 text-left text-base font-bold leading-snug text-neutral-900 md:mt-3.5 md:text-lg">
+        {item.title}
+      </p>
     </div>
   );
 
@@ -74,7 +72,7 @@ function AnnouncementRow({ item }: { item: Announcement }) {
         href={item.externalUrl}
         target="_blank"
         rel="noopener noreferrer"
-        className="block transition hover:bg-[#1c2b33]/[0.02]"
+        className="block transition-colors hover:bg-neutral-50"
       >
         {content}
       </a>
@@ -85,7 +83,7 @@ function AnnouncementRow({ item }: { item: Announcement }) {
     <Link
       to="/announcement/$id"
       params={{ id: item.id }}
-      className="block transition hover:bg-[#1c2b33]/[0.02]"
+      className="block transition-colors hover:bg-neutral-50"
     >
       {content}
     </Link>

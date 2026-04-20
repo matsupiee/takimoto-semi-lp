@@ -1,4 +1,5 @@
 import { useState } from "react";
+import { endNavItems, primaryNavItems } from "./header";
 
 type NavItem = { label: string; href: string };
 type Section = { title: string; items: NavItem[] };
@@ -6,20 +7,11 @@ type Section = { title: string; items: NavItem[] };
 const sections: Section[] = [
   {
     title: "瀧本ゼミについて知る",
-    items: [
-      { label: "About", href: "/about/" },
-      { label: "メンバー", href: "/member/" },
-      { label: "活動の成果", href: "/achievement/" },
-      { label: "インタビュー", href: "/interview/" },
-      { label: "お知らせ/プレスリリース", href: "/announcement/" },
-    ],
+    items: primaryNavItems,
   },
   {
     title: "お問い合わせ",
-    items: [
-      { label: "入ゼミ希望の方はこちら", href: "/order/find/" },
-      { label: "お問い合わせ", href: "/contact/" },
-    ],
+    items: endNavItems,
   },
 ];
 

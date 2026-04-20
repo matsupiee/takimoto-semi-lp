@@ -4,10 +4,12 @@ import { MicroCMSImage, MicroCMSListContent } from "microcms-js-sdk";
 
 export type Announcement = MicroCMSListContent & {
   category: string;
-  mediaName: string;
-  mediaLogo?: MicroCMSImage;
   title: string;
+  thumbnail?: MicroCMSImage;
+  // 自分たちによるコンテンツの場合は、bodyに値が入る
   body?: string;
+  // 他の媒体による掲載の場合はmediaNameとexternalUrlを設定し、その媒体に遷移させられるようにする
+  mediaName?: string;
   externalUrl?: string;
 };
 
@@ -28,16 +30,15 @@ export const fetchAnnouncements = createServerFn({ method: "GET" })
     try {
       const client = await getClient();
       const res = await client.getList<Announcement>({
-        endpoint: "news",
+        endpoint: "announcements",
         queries: {
           limit: data.limit ?? 8,
           orders: "-publishedAt",
-          fields: "id,category,mediaName,mediaLogo,title,externalUrl,publishedAt,updatedAt",
         },
       });
       return res;
     } catch (error) {
-      console.error("[microCMS] fetchNewsList failed:", error);
+      console.error("[microCMS] fetchAnnouncements failed:", error);
       return {
         contents: [],
         totalCount: 0,

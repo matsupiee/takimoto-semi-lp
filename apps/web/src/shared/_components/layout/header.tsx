@@ -1,15 +1,16 @@
 import { useState } from "react";
 
-const primaryNavItems = [
-  { label: "About us", href: "#about" },
-  { label: "活動の成果", href: "#achievements" },
-  { label: "メンバー", href: "#members" },
+export const primaryNavItems = [
+  { label: "About", href: "/about" },
+  { label: "活動の成果", href: "/achievement" },
+  { label: "メンバー", href: "/member" },
   { label: "インタビュー", href: "/interview" },
+  { label: "レポート", href: "/report" },
 ];
 
-const endNavItems = [
-  { label: "新歓案内", href: "#recruit" },
-  { label: "お問い合わせ", href: "#contact" },
+export const endNavItems = [
+  { label: "新歓案内", href: "/recruit" },
+  { label: "お問い合わせ", href: "/contact" },
 ];
 
 export default function Header() {
