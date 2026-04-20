@@ -1,14 +1,14 @@
 import { createFileRoute } from "@tanstack/react-router";
 
-import MetaFooter from "../components/meta-footer";
-import MetaHeader from "../components/meta-header";
-import MetaNews from "../components/meta-news";
-import { fetchNewsList } from "../lib/microcms";
+import { fetchAnnouncements } from "@/lib/microcms/server-fn/announcement";
+import Footer from "@/shared/_components/layout/footer";
+import Header from "@/shared/_components/layout/header";
+import MetaNews from "@/shared/_components/announcement";
 
-export const Route = createFileRoute("/news/")({
+export const Route = createFileRoute("/announcement/(list)/")({
   component: NewsListPage,
   loader: async () => {
-    const list = await fetchNewsList({ data: { limit: 100 } });
+    const list = await fetchAnnouncements({ data: { limit: 100 } });
     return { news: list.contents };
   },
   head: () => ({
@@ -21,11 +21,11 @@ function NewsListPage() {
 
   return (
     <div className="min-h-screen bg-white">
-      <MetaHeader />
+      <Header />
       <main>
         <MetaNews items={news} />
       </main>
-      <MetaFooter />
+      <Footer />
     </div>
   );
 }

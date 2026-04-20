@@ -1,6 +1,6 @@
 import { Link } from "@tanstack/react-router";
 
-import type { AchievementCategory } from "../lib/microcms";
+import type { AchievementCategory } from "../../../lib/microcms/server-fn/achievement";
 
 type AchievementCard = {
   image: string;
@@ -37,7 +37,7 @@ const achievements: AchievementCard[] = [
   },
 ];
 
-export default function MetaAchievements() {
+export default function Achievements() {
   return (
     <section className="bg-white px-6 py-16 md:px-16 md:py-24">
       <div className="mx-auto grid max-w-7xl grid-cols-1 gap-10 md:grid-cols-2">
@@ -48,7 +48,7 @@ export default function MetaAchievements() {
             政治家や官僚に対しての提案や、大学の研究室や企業との共同研究を実施してきました。
           </p>
           <Link
-            to="/achievements"
+            to="/achievement"
             className="mt-6 inline-flex items-center rounded-full bg-[#1c2b33] px-6 py-3 text-[15px] font-medium text-white transition hover:bg-black"
           >
             詳しくはこちら
@@ -59,7 +59,7 @@ export default function MetaAchievements() {
           {achievements.map((item) => (
             <Link
               key={item.title}
-              to="/achievements"
+              to="/achievement"
               hash={item.category}
               className="group relative flex overflow-hidden rounded-3xl bg-[#f8f9fb] transition hover:shadow-md"
               aria-label={`${item.title}の成果を見る`}

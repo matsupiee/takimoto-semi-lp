@@ -1,7 +1,7 @@
 const LEADERSHIP_IMAGE =
   "https://scontent-nrt6-1.xx.fbcdn.net/v/t39.8562-6/475437836_1128458898496424_5128602245537733789_n.jpg";
 
-export default function MetaLeadership() {
+export default function Member() {
   return (
     <section className="bg-white px-6 py-16 md:px-16 md:py-24">
       <div className="mx-auto grid max-w-7xl grid-cols-1 items-center gap-10 md:grid-cols-2">

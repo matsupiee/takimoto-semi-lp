@@ -1,10 +1,10 @@
 import { Link, createFileRoute } from "@tanstack/react-router";
 
-import MetaFooter from "../components/meta-footer";
-import MetaHeader from "../components/meta-header";
-import { fetchInterview } from "../lib/microcms";
+import { fetchInterview } from "@/lib/microcms/server-fn/interview";
+import Footer from "@/shared/_components/layout/footer";
+import Header from "@/shared/_components/layout/header";
 
-export const Route = createFileRoute("/interviews/$id")({
+export const Route = createFileRoute("/interview/(detail)/$id")({
   component: InterviewDetailPage,
   loader: async ({ params }) => {
     const interview = await fetchInterview({ data: { id: params.id } });
@@ -17,7 +17,8 @@ export const Route = createFileRoute("/interviews/$id")({
 
 function InterviewDetailPage() {
   const { interview } = Route.useLoaderData();
-  const publishedAt = new Date(interview.publishedAt).toLocaleDateString("ja-JP", {
+  const publishedAtIso = interview.publishedAt ?? interview.updatedAt;
+  const publishedAt = new Date(publishedAtIso).toLocaleDateString("ja-JP", {
     year: "numeric",
     month: "long",
     day: "numeric",
@@ -25,11 +26,11 @@ function InterviewDetailPage() {
 
   return (
     <div className="min-h-screen bg-white">
-      <MetaHeader />
+      <Header />
       <main className="px-6 py-16 md:px-16 md:py-24">
         <article className="mx-auto max-w-3xl">
           <Link
-            to="/interviews"
+            to="/interview"
             className="mb-8 inline-flex items-center text-[15px] text-[#1c2b33]/70 hover:underline"
           >
             ← インタビュー一覧へ
@@ -60,7 +61,7 @@ function InterviewDetailPage() {
           />
         </article>
       </main>
-      <MetaFooter />
+      <Footer />
     </div>
   );
 }

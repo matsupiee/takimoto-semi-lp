@@ -1,10 +1,15 @@
 import { createFileRoute } from "@tanstack/react-router";
 
-import MetaFooter from "../components/meta-footer";
-import MetaHeader from "../components/meta-header";
-import { type Achievement, type AchievementCategory, fetchAchievements } from "../lib/microcms";
+import {
+  type Achievement,
+  type AchievementCategory,
+  fetchAchievements,
+} from "@/lib/microcms/server-fn/achievement";
+import Footer from "../../shared/_components/layout/footer";
+import Header from "../../shared/_components/layout/header";
+import AchievementCard from "./_components/achievement-card";
 
-export const Route = createFileRoute("/achievements/")({
+export const Route = createFileRoute("/achievement/")({
   component: AchievementsPage,
   loader: async () => {
     const list = await fetchAchievements({ data: { limit: 100 } });
@@ -51,7 +56,7 @@ function AchievementsPage() {
 
   return (
     <div className="min-h-screen bg-white">
-      <MetaHeader />
+      <Header />
       <main>
         <section className="px-6 pt-16 pb-8 md:px-16 md:pt-24 md:pb-12">
           <div className="mx-auto max-w-7xl">
@@ -104,49 +109,7 @@ function AchievementsPage() {
           );
         })}
       </main>
-      <MetaFooter />
+      <Footer />
     </div>
   );
-}
-
-function AchievementCard({ item }: { item: Achievement }) {
-  const dateLabel = item.achievedAt
-    ? new Date(item.achievedAt).toLocaleDateString("ja-JP", {
-        year: "numeric",
-        month: "long",
-      })
-    : null;
-
-  const content = (
-    <>
-      {item.thumbnail?.url ? (
-        <div className="aspect-[4/3] w-full overflow-hidden bg-[#1c2b33]/5">
-          <img
-            src={`${item.thumbnail.url}?fit=crop&w=800&h=600`}
-            alt={item.title}
-            loading="lazy"
-            className="h-full w-full object-cover transition duration-500 group-hover:scale-105"
-          />
-        </div>
-      ) : null}
-      <div className="flex flex-col gap-3 p-6">
-        {dateLabel ? <p className="text-sm font-medium text-[#1c2b33]/60">{dateLabel}</p> : null}
-        <p className="text-lg font-medium leading-snug text-[#1c2b33] md:text-xl">{item.title}</p>
-        {item.summary ? <p className="text-sm text-[#1c2b33]/80">{item.summary}</p> : null}
-      </div>
-    </>
-  );
-
-  const className =
-    "group flex flex-col overflow-hidden rounded-3xl bg-[#f8f9fb] transition hover:shadow-md";
-
-  if (item.externalLink) {
-    return (
-      <a href={item.externalLink} target="_blank" rel="noreferrer" className={className}>
-        {content}
-      </a>
-    );
-  }
-
-  return <article className={className}>{content}</article>;
 }

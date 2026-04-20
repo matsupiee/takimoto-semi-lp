@@ -1,17 +1,17 @@
 import { Link } from "@tanstack/react-router";
 
-import type { Interview } from "../lib/microcms";
+import type { Interview } from "../../../lib/microcms/server-fn/interview";
 
 type InterviewCard = Omit<Interview, "body">;
 
-export default function MetaInterview({ items }: { items: InterviewCard[] }) {
+export default function Interview({ items }: { items: InterviewCard[] }) {
   return (
     <section className="bg-white px-6 py-16 md:px-16 md:py-32">
       <div className="mx-auto max-w-7xl">
         <div className="mb-12 flex flex-col items-center gap-6 text-center">
           <h2 className="text-4xl font-semibold text-[#1c2b33] md:text-6xl">ゼミ生インタビュー</h2>
           <Link
-            to="/interviews"
+            to="/interview"
             className="inline-flex items-center rounded-full border border-[#1c2b33]/20 px-6 py-3 text-[15px] font-medium text-[#1c2b33] transition hover:bg-[#1c2b33]/5"
           >
             すべてのインタビューを見る
@@ -27,7 +27,7 @@ export default function MetaInterview({ items }: { items: InterviewCard[] }) {
             {items.map((item) => (
               <Link
                 key={item.id}
-                to="/interviews/$id"
+                to="/interview/$id"
                 params={{ id: item.id }}
                 className="group flex flex-col gap-5"
               >

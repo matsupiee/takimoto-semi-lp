@@ -27,7 +27,7 @@ const slides: Slide[] = [
 
 const AUTOPLAY_MS = 7000;
 
-export default function MetaHero() {
+export default function Hero() {
   const [current, setCurrent] = useState(0);
   const [playing, setPlaying] = useState(true);
   const timerRef = useRef<ReturnType<typeof setInterval> | null>(null);
