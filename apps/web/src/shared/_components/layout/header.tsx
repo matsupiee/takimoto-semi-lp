@@ -1,4 +1,12 @@
-import { useState } from "react";
+import {
+  Drawer,
+  DrawerClose,
+  DrawerContent,
+  DrawerDescription,
+  DrawerHeader,
+  DrawerTitle,
+  DrawerTrigger,
+} from "@takimoto-semi-lp/ui/components/drawer";
 
 export const primaryNavItems = [
   { label: "About", href: "/about" },
@@ -15,8 +23,6 @@ export const endNavItems = [
 ];
 
 export default function Header() {
-  const [mobileOpen, setMobileOpen] = useState(false);
-
   return (
     <nav aria-label="メイン" className="sticky top-0 z-50 bg-white">
       <div className="relative">
@@ -49,32 +55,41 @@ export default function Header() {
             </ul>
           </div>
 
-          <button
-            type="button"
-            aria-label="モバイルナビゲーションメニューを開く"
-            aria-expanded={mobileOpen}
-            onClick={() => setMobileOpen((v) => !v)}
-            className="flex h-10 w-10 items-center justify-center rounded-full text-[#1c2b33] hover:bg-black/5 md:hidden"
-          >
-            <svg viewBox="0 0 24 24" fill="currentColor" width="20" height="20">
-              <path d="M4 5a1 1 0 0 0 0 2h16a1 1 0 1 0 0-2H4zM3 12a1 1 0 0 1 1-1h16a1 1 0 1 1 0 2H4a1 1 0 0 1-1-1zM3 18a1 1 0 0 1 1-1h16a1 1 0 1 1 0 2H4a1 1 0 0 1-1-1z" />
-            </svg>
-          </button>
+          <Drawer>
+            <DrawerTrigger
+              aria-label="モバイルナビゲーションメニューを開く"
+              className="flex h-10 w-10 items-center justify-center rounded-full text-[#1c2b33] hover:bg-black/5 md:hidden"
+            >
+              <svg viewBox="0 0 24 24" fill="currentColor" width="20" height="20">
+                <path d="M4 5a1 1 0 0 0 0 2h16a1 1 0 1 0 0-2H4zM3 12a1 1 0 0 1 1-1h16a1 1 0 1 1 0 2H4a1 1 0 0 1-1-1zM3 18a1 1 0 0 1 1-1h16a1 1 0 1 1 0 2H4a1 1 0 0 1-1-1z" />
+              </svg>
+            </DrawerTrigger>
+            <DrawerContent side="right" className="md:hidden">
+              <DrawerHeader>
+                <DrawerTitle>メニュー</DrawerTitle>
+                <DrawerDescription className="sr-only">
+                  サイト内のページに移動するためのナビゲーション
+                </DrawerDescription>
+              </DrawerHeader>
+              <ul className="flex flex-col px-2 pb-4">
+                {[...primaryNavItems, ...endNavItems].map((item) => (
+                  <li key={item.label}>
+                    <DrawerClose
+                      render={
+                        <a
+                          href={item.href}
+                          className="block rounded-md px-3 py-3 text-[15px] text-[#1c2b33] hover:bg-black/5"
+                        >
+                          {item.label}
+                        </a>
+                      }
+                    />
+                  </li>
+                ))}
+              </ul>
+            </DrawerContent>
+          </Drawer>
         </div>
-
-        {mobileOpen && (
-          <div className="border-t border-black/10 bg-white px-4 py-4 md:hidden">
-            <ul className="flex flex-col gap-3">
-              {[...primaryNavItems, ...endNavItems].map((item) => (
-                <li key={item.label}>
-                  <a href={item.href} className="block py-2 text-[15px] text-[#1c2b33]">
-                    {item.label}
-                  </a>
-                </li>
-              ))}
-            </ul>
-          </div>
-        )}
 
         <div className="h-px w-full bg-black/10" />
       </div>
