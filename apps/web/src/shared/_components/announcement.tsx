@@ -1,17 +1,17 @@
 import { Link } from "@tanstack/react-router";
 
-import type { NewsCard } from "../../lib/microcms";
+import type { Announcement } from "@/lib/microcms/server-fn/announcement";
 
 function formatDate(iso: string) {
   const d = new Date(iso);
   return `${d.getFullYear()}.${d.getMonth() + 1}.${d.getDate()}`;
 }
 
-export default function MetaNews({ items }: { items: NewsCard[] }) {
+export default function Announcement({ items }: { items: Announcement[] }) {
   return (
-    <section id="news" className="bg-white px-6 py-16 md:px-16 md:py-24">
+    <section id="Announcement" className="bg-white px-6 py-16 md:px-16 md:py-24">
       <div className="mx-auto max-w-5xl">
-        <p className="text-sm font-bold tracking-wide text-[#e60012] md:text-base">News</p>
+        <p className="text-sm font-bold tracking-wide text-[#e60012] md:text-base">Announcement</p>
         <h2 className="mt-4 font-semibold leading-tight text-[#1c2b33] text-3xl md:text-5xl">
           お知らせ / プレスリリース
         </h2>
@@ -19,14 +19,14 @@ export default function MetaNews({ items }: { items: NewsCard[] }) {
         {items.length === 0 ? (
           <p className="mt-16 text-[#1c2b33]/70">
             まだ記事がありません。microCMS の
-            <code className="mx-1 rounded bg-[#f2f3f5] px-1.5 py-0.5 text-sm">news</code>
+            <code className="mx-1 rounded bg-[#f2f3f5] px-1.5 py-0.5 text-sm">Announcement</code>
             から投稿すると、ここに表示されます。
           </p>
         ) : (
           <ul className="mt-12 md:mt-20">
             {items.map((item) => (
               <li key={item.id} className="border-b border-[#1c2b33]/10">
-                <NewsRow item={item} />
+                <AnnouncementRow item={item} />
               </li>
             ))}
           </ul>
@@ -36,9 +36,9 @@ export default function MetaNews({ items }: { items: NewsCard[] }) {
   );
 }
 
-function NewsRow({ item }: { item: NewsCard }) {
+function AnnouncementRow({ item }: { item: Announcement }) {
   const isExternal = !!item.externalUrl;
-  const date = formatDate(item.publishedAt);
+  const date = formatDate(item.publishedAt ?? item.updatedAt);
 
   const content = (
     <div className="grid grid-cols-[88px_1fr_24px] items-start gap-6 py-8 md:grid-cols-[140px_1fr_32px] md:gap-10 md:py-12">
@@ -83,7 +83,7 @@ function NewsRow({ item }: { item: NewsCard }) {
 
   return (
     <Link
-      to="/news/$id"
+      to="/announcement/$id"
       params={{ id: item.id }}
       className="block transition hover:bg-[#1c2b33]/[0.02]"
     >

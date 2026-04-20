@@ -24,6 +24,14 @@ export default defineConfig({
       },
     }),
     viteReact(),
-    ...(hasAlchemyConfig ? [alchemy()] : []),
+    ...(hasAlchemyConfig
+      ? [
+          alchemy({
+            // 未指定だと空きポート探索で os.networkInterfaces() が必要になり、
+            // サンドボックス等で ERR_SYSTEM_ERROR になることがある
+            inspectorPort: false,
+          }),
+        ]
+      : []),
   ],
 });

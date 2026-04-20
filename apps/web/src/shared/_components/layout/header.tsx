@@ -4,7 +4,7 @@ const primaryNavItems = [
   { label: "About us", href: "#about" },
   { label: "活動の成果", href: "#achievements" },
   { label: "メンバー", href: "#members" },
-  { label: "インタビュー", href: "/interviews" },
+  { label: "インタビュー", href: "/interview" },
 ];
 
 const endNavItems = [
@@ -12,7 +12,7 @@ const endNavItems = [
   { label: "お問い合わせ", href: "#contact" },
 ];
 
-export default function MetaHeader() {
+export default function Header() {
   const [mobileOpen, setMobileOpen] = useState(false);
 
   return (
@@ -33,7 +33,7 @@ export default function MetaHeader() {
             </button>
 
             <a href="/" aria-label="瀧本ゼミホーム" className="flex items-center">
-              <img alt="Meta" src={"/logo.svg"} className="h-14 w-auto" />
+              <img alt="瀧本ゼミロゴ" src={"/logo.svg"} className="h-14 w-auto" />
             </a>
 
             <ul className="hidden items-center gap-8 md:flex">

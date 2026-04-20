@@ -1,4 +1,4 @@
-export default function MetaMission() {
+export default function Mission() {
   return (
     <section id="mission" className="relative bg-white px-6 py-16 md:px-16 md:py-24">
       <div className="mx-auto grid max-w-7xl grid-cols-1 gap-10 md:grid-cols-12 md:gap-0">

@@ -185,7 +185,7 @@ function FooterSection({ section }: { section: Section }) {
   );
 }
 
-export default function MetaFooter() {
+export default function Footer() {
   return (
     <footer className="border-t border-black/10 bg-white">
       <div className="mx-auto max-w-7xl px-6 py-12 md:px-16 md:py-16">

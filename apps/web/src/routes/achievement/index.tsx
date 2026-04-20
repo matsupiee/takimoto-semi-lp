@@ -1,11 +1,15 @@
 import { createFileRoute } from "@tanstack/react-router";
 
-import { type Achievement, type AchievementCategory, fetchAchievements } from "../../lib/microcms";
-import MetaFooter from "../../shared/_components/meta-footer";
-import MetaHeader from "../../shared/_components/meta-header";
+import {
+  type Achievement,
+  type AchievementCategory,
+  fetchAchievements,
+} from "@/lib/microcms/server-fn/achievement";
+import Footer from "../../shared/_components/layout/footer";
+import Header from "../../shared/_components/layout/header";
 import AchievementCard from "./_components/achievement-card";
 
-export const Route = createFileRoute("/achievements/")({
+export const Route = createFileRoute("/achievement/")({
   component: AchievementsPage,
   loader: async () => {
     const list = await fetchAchievements({ data: { limit: 100 } });
@@ -52,7 +56,7 @@ function AchievementsPage() {
 
   return (
     <div className="min-h-screen bg-white">
-      <MetaHeader />
+      <Header />
       <main>
         <section className="px-6 pt-16 pb-8 md:px-16 md:pt-24 md:pb-12">
           <div className="mx-auto max-w-7xl">
@@ -105,7 +109,7 @@ function AchievementsPage() {
           );
         })}
       </main>
-      <MetaFooter />
+      <Footer />
     </div>
   );
 }

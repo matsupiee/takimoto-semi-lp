@@ -1,4 +1,4 @@
-import type { Achievement } from "../../../lib/microcms";
+import { Achievement } from "@/lib/microcms/server-fn/achievement";
 
 export default function AchievementCard({ item }: { item: Achievement }) {
   const dateLabel = item.achievedAt

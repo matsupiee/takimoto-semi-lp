@@ -1,10 +1,10 @@
 import { Link, createFileRoute } from "@tanstack/react-router";
 
-import { fetchInterviews } from "../../lib/microcms";
-import MetaFooter from "../../shared/_components/meta-footer";
-import MetaHeader from "../../shared/_components/meta-header";
+import { fetchInterviews } from "@/lib/microcms/server-fn/interview";
+import Footer from "@/shared/_components/layout/footer";
+import Header from "@/shared/_components/layout/header";
 
-export const Route = createFileRoute("/interviews/")({
+export const Route = createFileRoute("/interview/(list)/")({
   component: InterviewListPage,
   loader: async () => {
     const list = await fetchInterviews({ data: { limit: 100 } });
@@ -20,7 +20,7 @@ function InterviewListPage() {
 
   return (
     <div className="min-h-screen bg-white">
-      <MetaHeader />
+      <Header />
       <main className="px-6 py-16 md:px-16 md:py-24">
         <div className="mx-auto max-w-7xl">
           <h1 className="mb-10 text-3xl font-semibold text-[#1c2b33] md:text-5xl">
@@ -34,7 +34,7 @@ function InterviewListPage() {
               {interviews.map((item) => (
                 <Link
                   key={item.id}
-                  to="/interviews/$id"
+                  to="/interview/$id"
                   params={{ id: item.id }}
                   className="group flex flex-col overflow-hidden rounded-3xl bg-[#f8f9fb]"
                 >
@@ -61,7 +61,7 @@ function InterviewListPage() {
           )}
         </div>
       </main>
-      <MetaFooter />
+      <Footer />
     </div>
   );
 }

@@ -1,26 +1,27 @@
 import { Link, createFileRoute, redirect } from "@tanstack/react-router";
 
-import { fetchNews } from "../../lib/microcms";
-import MetaFooter from "../../shared/_components/meta-footer";
-import MetaHeader from "../../shared/_components/meta-header";
+import { fetchAnnouncement } from "@/lib/microcms/server-fn/announcement";
+import Footer from "../../../shared/_components/layout/footer";
+import Header from "../../../shared/_components/layout/header";
 
-export const Route = createFileRoute("/news/$id")({
+export const Route = createFileRoute("/announcement/(detail)/$id")({
   component: NewsDetailPage,
   loader: async ({ params }) => {
-    const news = await fetchNews({ data: { id: params.id } });
-    if (news.externalUrl) {
-      throw redirect({ href: news.externalUrl });
+    const announcement = await fetchAnnouncement({ data: { id: params.id } });
+    if (announcement.externalUrl) {
+      throw redirect({ href: announcement.externalUrl });
     }
-    return { news };
+    return { announcement };
   },
   head: ({ loaderData }) => ({
-    meta: loaderData ? [{ title: `${loaderData.news.title} | 滝本ゼミ` }] : [],
+    meta: loaderData ? [{ title: `${loaderData.announcement.title} | 滝本ゼミ` }] : [],
   }),
 });
 
 function NewsDetailPage() {
-  const { news } = Route.useLoaderData();
-  const publishedAt = new Date(news.publishedAt).toLocaleDateString("ja-JP", {
+  const { announcement } = Route.useLoaderData();
+  const publishedAtIso = announcement.publishedAt ?? announcement.updatedAt;
+  const publishedAt = new Date(publishedAtIso).toLocaleDateString("ja-JP", {
     year: "numeric",
     month: "long",
     day: "numeric",
@@ -28,36 +29,36 @@ function NewsDetailPage() {
 
   return (
     <div className="min-h-screen bg-white">
-      <MetaHeader />
+      <Header />
       <main className="px-6 py-16 md:px-16 md:py-24">
         <article className="mx-auto max-w-3xl">
           <Link
-            to="/news"
+            to="/announcement"
             className="mb-8 inline-flex items-center text-[15px] text-[#1c2b33]/70 hover:underline"
           >
             ← お知らせ一覧へ
           </Link>
 
-          <p className="mb-3 text-sm font-bold text-[#e60012]">{news.category}</p>
+          <p className="mb-3 text-sm font-bold text-[#e60012]">{announcement.category}</p>
           <p className="mb-3 text-sm font-medium text-[#1c2b33]/70">
-            {news.mediaName}
+            {announcement.mediaName}
             {` ・ ${publishedAt}`}
           </p>
           <h1 className="mb-8 text-3xl font-semibold leading-tight text-[#1c2b33] md:text-5xl">
-            {news.title}
+            {announcement.title}
           </h1>
 
-          {news.body ? (
+          {announcement.body ? (
             <div
               className="prose prose-neutral max-w-none prose-headings:text-[#1c2b33] prose-a:text-[#1c2b33]"
-              dangerouslySetInnerHTML={{ __html: news.body }}
+              dangerouslySetInnerHTML={{ __html: announcement.body }}
             />
           ) : (
             <p className="text-[#1c2b33]/70">本文はありません。</p>
           )}
         </article>
       </main>
-      <MetaFooter />
+      <Footer />
     </div>
   );
 }
