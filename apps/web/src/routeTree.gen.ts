@@ -11,8 +11,10 @@
 import { Route as rootRouteImport } from './routes/__root'
 import { Route as AchievementIndexRouteImport } from './routes/achievement/index'
 import { Route as homeIndexRouteImport } from './routes/(home)/index'
+import { Route as ReportlistIndexRouteImport } from './routes/report/(list)/index'
 import { Route as InterviewlistIndexRouteImport } from './routes/interview/(list)/index'
 import { Route as AnnouncementlistIndexRouteImport } from './routes/announcement/(list)/index'
+import { Route as ReportdetailIdRouteImport } from './routes/report/(detail)/$id'
 import { Route as InterviewdetailIdRouteImport } from './routes/interview/(detail)/$id'
 import { Route as AnnouncementdetailIdRouteImport } from './routes/announcement/(detail)/$id'
 
@@ -26,6 +28,11 @@ const homeIndexRoute = homeIndexRouteImport.update({
   path: '/',
   getParentRoute: () => rootRouteImport,
 } as any)
+const ReportlistIndexRoute = ReportlistIndexRouteImport.update({
+  id: '/report/(list)/',
+  path: '/report/',
+  getParentRoute: () => rootRouteImport,
+} as any)
 const InterviewlistIndexRoute = InterviewlistIndexRouteImport.update({
   id: '/interview/(list)/',
   path: '/interview/',
@@ -34,6 +41,11 @@ const InterviewlistIndexRoute = InterviewlistIndexRouteImport.update({
 const AnnouncementlistIndexRoute = AnnouncementlistIndexRouteImport.update({
   id: '/announcement/(list)/',
   path: '/announcement/',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const ReportdetailIdRoute = ReportdetailIdRouteImport.update({
+  id: '/report/(detail)/$id',
+  path: '/report/$id',
   getParentRoute: () => rootRouteImport,
 } as any)
 const InterviewdetailIdRoute = InterviewdetailIdRouteImport.update({
@@ -52,16 +64,20 @@ export interface FileRoutesByFullPath {
   '/achievement/': typeof AchievementIndexRoute
   '/announcement/$id': typeof AnnouncementdetailIdRoute
   '/interview/$id': typeof InterviewdetailIdRoute
+  '/report/$id': typeof ReportdetailIdRoute
   '/announcement/': typeof AnnouncementlistIndexRoute
   '/interview/': typeof InterviewlistIndexRoute
+  '/report/': typeof ReportlistIndexRoute
 }
 export interface FileRoutesByTo {
   '/': typeof homeIndexRoute
   '/achievement': typeof AchievementIndexRoute
   '/announcement/$id': typeof AnnouncementdetailIdRoute
   '/interview/$id': typeof InterviewdetailIdRoute
+  '/report/$id': typeof ReportdetailIdRoute
   '/announcement': typeof AnnouncementlistIndexRoute
   '/interview': typeof InterviewlistIndexRoute
+  '/report': typeof ReportlistIndexRoute
 }
 export interface FileRoutesById {
   __root__: typeof rootRouteImport
@@ -69,8 +85,10 @@ export interface FileRoutesById {
   '/achievement/': typeof AchievementIndexRoute
   '/announcement/(detail)/$id': typeof AnnouncementdetailIdRoute
   '/interview/(detail)/$id': typeof InterviewdetailIdRoute
+  '/report/(detail)/$id': typeof ReportdetailIdRoute
   '/announcement/(list)/': typeof AnnouncementlistIndexRoute
   '/interview/(list)/': typeof InterviewlistIndexRoute
+  '/report/(list)/': typeof ReportlistIndexRoute
 }
 export interface FileRouteTypes {
   fileRoutesByFullPath: FileRoutesByFullPath
@@ -79,24 +97,30 @@ export interface FileRouteTypes {
     | '/achievement/'
     | '/announcement/$id'
     | '/interview/$id'
+    | '/report/$id'
     | '/announcement/'
     | '/interview/'
+    | '/report/'
   fileRoutesByTo: FileRoutesByTo
   to:
     | '/'
     | '/achievement'
     | '/announcement/$id'
     | '/interview/$id'
+    | '/report/$id'
     | '/announcement'
     | '/interview'
+    | '/report'
   id:
     | '__root__'
     | '/(home)/'
     | '/achievement/'
     | '/announcement/(detail)/$id'
     | '/interview/(detail)/$id'
+    | '/report/(detail)/$id'
     | '/announcement/(list)/'
     | '/interview/(list)/'
+    | '/report/(list)/'
   fileRoutesById: FileRoutesById
 }
 export interface RootRouteChildren {
@@ -104,8 +128,10 @@ export interface RootRouteChildren {
   AchievementIndexRoute: typeof AchievementIndexRoute
   AnnouncementdetailIdRoute: typeof AnnouncementdetailIdRoute
   InterviewdetailIdRoute: typeof InterviewdetailIdRoute
+  ReportdetailIdRoute: typeof ReportdetailIdRoute
   AnnouncementlistIndexRoute: typeof AnnouncementlistIndexRoute
   InterviewlistIndexRoute: typeof InterviewlistIndexRoute
+  ReportlistIndexRoute: typeof ReportlistIndexRoute
 }
 
 declare module '@tanstack/react-router' {
@@ -124,6 +150,13 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof homeIndexRouteImport
       parentRoute: typeof rootRouteImport
     }
+    '/report/(list)/': {
+      id: '/report/(list)/'
+      path: '/report'
+      fullPath: '/report/'
+      preLoaderRoute: typeof ReportlistIndexRouteImport
+      parentRoute: typeof rootRouteImport
+    }
     '/interview/(list)/': {
       id: '/interview/(list)/'
       path: '/interview'
@@ -136,6 +169,13 @@ declare module '@tanstack/react-router' {
       path: '/announcement'
       fullPath: '/announcement/'
       preLoaderRoute: typeof AnnouncementlistIndexRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/report/(detail)/$id': {
+      id: '/report/(detail)/$id'
+      path: '/report/$id'
+      fullPath: '/report/$id'
+      preLoaderRoute: typeof ReportdetailIdRouteImport
       parentRoute: typeof rootRouteImport
     }
     '/interview/(detail)/$id': {
@@ -160,8 +200,10 @@ const rootRouteChildren: RootRouteChildren = {
   AchievementIndexRoute: AchievementIndexRoute,
   AnnouncementdetailIdRoute: AnnouncementdetailIdRoute,
   InterviewdetailIdRoute: InterviewdetailIdRoute,
+  ReportdetailIdRoute: ReportdetailIdRoute,
   AnnouncementlistIndexRoute: AnnouncementlistIndexRoute,
   InterviewlistIndexRoute: InterviewlistIndexRoute,
+  ReportlistIndexRoute: ReportlistIndexRoute,
 }
 export const routeTree = rootRouteImport
   ._addFileChildren(rootRouteChildren)
