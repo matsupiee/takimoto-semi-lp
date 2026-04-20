@@ -1,0 +1,38 @@
+# Worktree ワークフロー
+
+## worktree 作業時は PR 作成まで自動で行う (CRITICAL)
+
+worktree で作業している場合（ブランチ名が `worktree-` で始まる、または `.claude/worktrees/` 配下にいる場合）、実装が完了したらコミット → プッシュ → PR 作成まで一連で実行する。
+
+ユーザーに「PR も作って」と都度確認する必要はない。
+
+## worktree 作業時の注意事項 (CRITICAL)
+
+### 1. cwd は常に絶対パスで管理する
+
+`cd` でサブディレクトリに移動すると以降のコマンドに影響する。Bash ツールでは **絶対パスを使う** か、コマンドごとに worktree ルートに戻ること。
+
+```bash
+# ✅ 絶対パスを使う
+bun run --cwd /path/to/worktree/apps/web test
+
+# ❌ cd したまま次のコマンドを実行しない
+cd apps/web && bun test
+# → 以降のコマンドが apps/scraper-worker 基準になってしまう
+```
+
+### 2. workspace パッケージの解決
+
+`bun install` 後、ワークスペースパッケージがルートの `node_modules/` にリンクされない場合がある。スクリプト実行時に `Cannot find module` が出たら、**該当 app のディレクトリから実行する**。
+
+```bash
+# ✅ app ディレクトリから実行
+cd /path/to/worktree/apps/web && bun run src/index.ts
+
+# ❌ ルートから実行すると workspace リンクが見つからないことがある
+cd /path/to/worktree && bun run apps/web/src/index.ts
+```
+
+### 3. .claude/ 配下のファイルも worktree で変更・コミットできる
+
+`.claude/` 配下のファイル（skills, rules 等）は git で追跡されており、worktree 内で変更すると通常通り `git status` に表示される。他のファイルと同様に worktree 内でコミット・PR 作成が可能。
