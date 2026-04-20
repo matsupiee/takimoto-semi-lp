@@ -1,0 +1,19 @@
+{
+  "$schema": "node_modules/wrangler/config-schema.json",
+  "name": "takimoto-semi-lp-web",
+  "main": "./src/server.ts",
+  "compatibility_date": "2025-04-01",
+  "compatibility_flags": ["nodejs_compat"],
+  "assets": {
+    "directory": "./dist/client",
+    "binding": "ASSETS",
+  },
+  "observability": {
+    "enabled": true,
+  },
+  "vars": {
+    "VITE_SERVER_URL": "",
+    "CORS_ORIGIN": "",
+    "MICROCMS_SERVICE_DOMAIN": "",
+  },
+}

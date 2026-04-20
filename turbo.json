@@ -22,10 +22,8 @@
       "persistent": true
     },
     "deploy": {
-      "cache": false
-    },
-    "destroy": {
-      "cache": false
+      "cache": false,
+      "dependsOn": ["^build"]
     }
   }
 }

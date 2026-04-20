@@ -1,0 +1,3 @@
+# ローカル開発用のシークレット。`.dev.vars` にコピーして値を埋める。
+# 本番は `bunx wrangler secret put MICROCMS_API_KEY` でアップロードする。
+MICROCMS_API_KEY=
