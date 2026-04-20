@@ -3,6 +3,7 @@ import { Link, createFileRoute } from "@tanstack/react-router";
 import { fetchInterviews } from "@/lib/microcms/server-fn/interview";
 import Footer from "@/shared/_components/layout/footer";
 import Header from "@/shared/_components/layout/header";
+import SectionHeader from "@/shared/_components/section-header";
 
 export const Route = createFileRoute("/interview/(list)/")({
   component: InterviewListPage,
@@ -23,9 +24,7 @@ function InterviewListPage() {
       <Header />
       <main className="px-6 py-16 md:px-16 md:py-24">
         <div className="mx-auto max-w-7xl">
-          <h1 className="mb-10 text-3xl font-semibold text-[#1c2b33] md:text-5xl">
-            ゼミ生インタビュー
-          </h1>
+          <SectionHeader eyebrow="Interview" title="ゼミ生インタビュー" as="h1" className="mb-10" />
 
           {interviews.length === 0 ? (
             <p className="text-[#1c2b33]/70">まだインタビュー記事がありません。</p>

@@ -1,6 +1,7 @@
 import { Link } from "@tanstack/react-router";
 
 import type { Announcement } from "@/lib/microcms/server-fn/announcement";
+import SectionHeader from "@/shared/_components/section-header";
 
 function formatDate(iso: string) {
   const d = new Date(iso);
@@ -11,10 +12,7 @@ export default function Announcement({ items }: { items: Announcement[] }) {
   return (
     <section id="Announcement" className="bg-white px-6 py-16 md:px-16 md:py-24">
       <div className="mx-auto max-w-5xl">
-        <p className="text-sm font-bold tracking-wide text-[#e60012] md:text-base">Announcement</p>
-        <h2 className="mt-4 font-semibold leading-tight text-[#1c2b33] text-3xl md:text-5xl">
-          お知らせ / プレスリリース
-        </h2>
+        <SectionHeader eyebrow="Announcement" title="お知らせ / プレスリリース" accent="red" />
 
         {items.length === 0 ? (
           <p className="mt-16 text-[#1c2b33]/70">

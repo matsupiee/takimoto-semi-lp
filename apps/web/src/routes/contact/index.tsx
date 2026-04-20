@@ -2,6 +2,7 @@ import { createFileRoute } from "@tanstack/react-router";
 
 import Footer from "../../shared/_components/layout/footer";
 import Header from "../../shared/_components/layout/header";
+import SectionHeader from "../../shared/_components/section-header";
 import ContactForm from "./_components/contact-form";
 
 export const Route = createFileRoute("/contact/")({
@@ -33,7 +34,7 @@ function ContactPage() {
       <main>
         <section className="px-6 pt-16 pb-8 md:px-16 md:pt-24 md:pb-12">
           <div className="mx-auto max-w-7xl">
-            <h1 className="text-3xl font-semibold text-[#1c2b33] md:text-5xl">お問い合わせ</h1>
+            <SectionHeader eyebrow="Contact" title="お問い合わせ" as="h1" />
             <p className="mt-6 max-w-3xl text-base text-[#1c2b33]/80 md:text-lg">
               瀧本ゼミ政策分析パートへのご連絡は、こちらのフォームよりお願いいたします。
               取材依頼・共同研究のご相談・新歓に関するご質問など、お気軽にご記入ください。

@@ -3,6 +3,7 @@ import { createFileRoute } from "@tanstack/react-router";
 import { type Achievement, fetchAchievements } from "@/lib/microcms/server-fn/achievement";
 import Footer from "../../shared/_components/layout/footer";
 import Header from "../../shared/_components/layout/header";
+import SectionHeader from "../../shared/_components/section-header";
 
 export const Route = createFileRoute("/achievement/")({
   component: AchievementsPage,
@@ -61,7 +62,7 @@ function AchievementsPage() {
       <main>
         <section className="px-6 pt-16 pb-8 md:px-16 md:pt-24 md:pb-12">
           <div className="mx-auto max-w-4xl">
-            <h1 className="text-3xl font-semibold text-[#1c2b33] md:text-5xl">活動の成果</h1>
+            <SectionHeader eyebrow="Achievements" title="活動の成果" as="h1" />
             <p className="mt-6 text-base text-[#1c2b33]/80 md:text-lg">
               瀧本ゼミ政策分析パートのこれまでの活動実績の一覧です。
             </p>
