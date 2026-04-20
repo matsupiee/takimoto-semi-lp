@@ -13,7 +13,7 @@ export const Route = createFileRoute("/report/(list)/")({
     return { reports: list.contents };
   },
   head: () => ({
-    meta: [{ title: "政策分析レポート | 滝本ゼミ" }],
+    meta: [{ title: "政策分析レポート | 瀧本ゼミ政策分析パート" }],
   }),
 });
 

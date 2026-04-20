@@ -11,11 +11,13 @@ export const Route = createRootRouteWithContext<RouterAppContext>()({
     meta: [
       { charSet: "utf-8" },
       { name: "viewport", content: "width=device-width, initial-scale=1" },
-      { title: "Metaについて | ソーシャルテクノロジー、VR、AR、イノベーション" },
+      {
+        title: "瀧本ゼミ政策分析パート | 社会課題に対して政策の立案から提言までを行う学生サークル",
+      },
       {
         name: "description",
         content:
-          "Metaの最新情報のほか、ソーシャルテクノロジー、バーチャルリアリティ、拡張現実、そして、人と人の新しいつながりの形においてMetaが今どんな役割を果たしているかをご紹介します。",
+          "瀧本ゼミ政策分析パートの公式サイトです。社会課題に対して政策の立案から提言までを行う学生サークルです。",
       },
     ],
     links: [{ rel: "stylesheet", href: appCss }],

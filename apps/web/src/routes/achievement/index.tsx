@@ -13,7 +13,7 @@ export const Route = createFileRoute("/achievement/")({
     return { achievements: list.contents };
   },
   head: () => ({
-    meta: [{ title: "活動の成果 | 滝本ゼミ" }],
+    meta: [{ title: "活動の成果 | 瀧本ゼミ政策分析パート" }],
   }),
 });
 

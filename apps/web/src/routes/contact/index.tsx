@@ -9,7 +9,7 @@ import ContactForm from "./_components/contact-form";
 export const Route = createFileRoute("/contact/")({
   component: ContactPage,
   head: () => ({
-    meta: [{ title: "お問い合わせ | 滝本ゼミ" }],
+    meta: [{ title: "お問い合わせ | 瀧本ゼミ政策分析パート" }],
   }),
 });
 

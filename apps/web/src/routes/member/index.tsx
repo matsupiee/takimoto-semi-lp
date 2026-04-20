@@ -14,7 +14,7 @@ export const Route = createFileRoute("/member/")({
     return { members: list.contents };
   },
   head: () => ({
-    meta: [{ title: "メンバー | 滝本ゼミ" }],
+    meta: [{ title: "メンバー | 瀧本ゼミ" }],
   }),
 });
 

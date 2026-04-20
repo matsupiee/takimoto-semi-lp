@@ -14,7 +14,9 @@ export const Route = createFileRoute("/announcement/(detail)/$id")({
     return { announcement };
   },
   head: ({ loaderData }) => ({
-    meta: loaderData ? [{ title: `${loaderData.announcement.title} | 滝本ゼミ` }] : [],
+    meta: loaderData
+      ? [{ title: `${loaderData.announcement.title} | 瀧本ゼミ政策分析パート` }]
+      : [],
   }),
 });
 

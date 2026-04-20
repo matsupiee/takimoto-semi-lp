@@ -14,7 +14,7 @@ export const Route = createFileRoute("/announcement/(list)/")({
     return { news: list.contents };
   },
   head: () => ({
-    meta: [{ title: "お知らせ / プレスリリース | 滝本ゼミ" }],
+    meta: [{ title: "お知らせ / プレスリリース | 瀧本ゼミ政策分析パート" }],
   }),
 });
 

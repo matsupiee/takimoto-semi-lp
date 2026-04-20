@@ -13,7 +13,7 @@ export const Route = createFileRoute("/interview/(list)/")({
     return { interviews: list.contents };
   },
   head: () => ({
-    meta: [{ title: "ゼミ生インタビュー | 滝本ゼミ" }],
+    meta: [{ title: "ゼミ生インタビュー | 瀧本ゼミ政策分析パート" }],
   }),
 });
 
