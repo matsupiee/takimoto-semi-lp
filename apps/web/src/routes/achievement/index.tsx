@@ -60,7 +60,7 @@ function AchievementsPage() {
     <div className="min-h-screen bg-white">
       <Header />
       <main>
-        <section className="px-6 pt-16 pb-8 md:px-16 md:pt-24 md:pb-12">
+        <section className="px-6 py-12 md:px-16">
           <div className="mx-auto max-w-4xl">
             <SectionHeader eyebrow="Achievements" title="活動の成果" as="h1" />
             <p className="mt-6 text-base text-[#1c2b33]/80 md:text-lg">

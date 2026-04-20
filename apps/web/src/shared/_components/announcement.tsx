@@ -10,7 +10,7 @@ function formatDate(iso: string) {
 
 export default function Announcement({ items }: { items: Announcement[] }) {
   return (
-    <section id="Announcement" className="bg-white px-6 py-16 md:px-16 md:py-24">
+    <section id="Announcement" className="bg-white px-6 py-12 md:px-16">
       <div className="mx-auto max-w-5xl">
         <SectionHeader eyebrow="Announcement" title="お知らせ / プレスリリース" accent="red" />
 

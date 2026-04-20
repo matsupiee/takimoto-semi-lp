@@ -22,7 +22,7 @@ function InterviewListPage() {
   return (
     <div className="min-h-screen bg-white">
       <Header />
-      <main className="px-6 py-16 md:px-16 md:py-24">
+      <main className="px-6 py-12 md:px-16">
         <div className="mx-auto max-w-7xl">
           <SectionHeader eyebrow="Interview" title="ゼミ生インタビュー" as="h1" className="mb-10" />
 

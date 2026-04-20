@@ -22,7 +22,7 @@ function ReportListPage() {
   return (
     <div className="min-h-screen bg-white">
       <Header />
-      <main className="px-6 py-16 md:px-16 md:py-24">
+      <main className="px-6 py-12 md:px-16">
         <div className="mx-auto max-w-7xl">
           <SectionHeader eyebrow="Report" title="政策分析レポート" as="h1" />
           <p className="mt-6 mb-10 max-w-3xl text-base text-[#1c2b33]/80 md:text-lg">
