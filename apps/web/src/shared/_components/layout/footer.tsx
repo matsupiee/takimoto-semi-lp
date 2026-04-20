@@ -18,7 +18,7 @@ const sections: Section[] = [
 const socialIcons = [
   {
     label: "X",
-    href: "https://twitter.com/Meta",
+    href: "https://x.com/tsemi_politics",
     icon: (
       <svg viewBox="0 0 24 24" fill="currentColor" width="20" height="20" aria-hidden="true">
         <path d="M18.3 2h3.4l-7.4 8.5L23 22h-6.8l-5.3-7-6.1 7H1.4l7.9-9L1 2h7l4.8 6.4L18.3 2zm-1.2 18h1.9L7 4h-2l12.1 16z" />
@@ -27,7 +27,7 @@ const socialIcons = [
   },
   {
     label: "Instagram",
-    href: "https://www.instagram.com/meta/",
+    href: "https://www.instagram.com/tsemiseisaku/",
     icon: (
       <svg viewBox="0 0 24 24" fill="currentColor" width="20" height="20" aria-hidden="true">
         <path d="M12 2c-2.7 0-3 0-4.1.1-1 .1-1.8.2-2.4.5-.7.2-1.3.6-1.9 1.2S2.6 5 2.4 5.5c-.3.6-.4 1.3-.5 2.4C1.8 9 1.8 9.3 1.8 12s0 3 .1 4.1c.1 1 .2 1.8.5 2.4.2.7.6 1.3 1.2 1.9.6.6 1.2.9 1.9 1.2.6.3 1.3.4 2.4.5 1 .1 1.4.1 4.1.1s3 0 4.1-.1c1-.1 1.8-.2 2.4-.5.7-.2 1.3-.6 1.9-1.2.6-.6.9-1.2 1.2-1.9.3-.6.4-1.3.5-2.4.1-1 .1-1.4.1-4.1s0-3-.1-4.1c-.1-1-.2-1.8-.5-2.4-.2-.7-.6-1.3-1.2-1.9-.6-.6-1.2-.9-1.9-1.2-.6-.3-1.3-.4-2.4-.5C15 2 14.7 2 12 2zm0 5.1c2.7 0 4.9 2.2 4.9 4.9s-2.2 4.9-4.9 4.9S7.1 14.7 7.1 12 9.3 7.1 12 7.1zm0 8.1c1.8 0 3.2-1.4 3.2-3.2s-1.4-3.2-3.2-3.2-3.2 1.4-3.2 3.2 1.4 3.2 3.2 3.2zm5.1-8.3c.6 0 1.2-.5 1.2-1.2 0-.6-.5-1.2-1.2-1.2-.6 0-1.2.5-1.2 1.2 0 .6.6 1.2 1.2 1.2z" />
