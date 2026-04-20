@@ -31,8 +31,8 @@ export default function Mission() {
         <div className="md:col-span-5">
           <div className="relative h-64 overflow-hidden rounded-2xl md:h-full md:min-h-[600px] md:rounded-none">
             <img
-              src="/images/gogatsu-sai.jpg"
-              alt="瀧本ゼミの活動風景"
+              src="/images/sample-image.jpg"
+              alt="サンプル画像"
               loading="lazy"
               className="h-full w-full object-cover"
             />

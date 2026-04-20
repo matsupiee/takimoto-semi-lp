@@ -6,6 +6,7 @@ export const primaryNavItems = [
   { label: "メンバー", href: "/member" },
   { label: "インタビュー", href: "/interview" },
   { label: "レポート", href: "/report" },
+  { label: "お知らせ", href: "/announcement" },
 ];
 
 export const endNavItems = [
@@ -51,7 +52,7 @@ export default function Header() {
           </div>
 
           <div className="flex items-center gap-4 md:gap-6">
-            <ul className="hidden items-center gap-6 md:flex">
+            <ul className="hidden items-center gap-6 lg:flex">
               {endNavItems.map((item) => (
                 <li key={item.label}>
                   <a href={item.href} className="text-[15px] text-[#1c2b33] hover:text-black">

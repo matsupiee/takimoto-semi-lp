@@ -1,13 +1,8 @@
 import { createFileRoute } from "@tanstack/react-router";
 
-import {
-  type Achievement,
-  type AchievementCategory,
-  fetchAchievements,
-} from "@/lib/microcms/server-fn/achievement";
+import { type Achievement, fetchAchievements } from "@/lib/microcms/server-fn/achievement";
 import Footer from "../../shared/_components/layout/footer";
 import Header from "../../shared/_components/layout/header";
-import AchievementCard from "./_components/achievement-card";
 
 export const Route = createFileRoute("/achievement/")({
   component: AchievementsPage,
@@ -20,35 +15,41 @@ export const Route = createFileRoute("/achievement/")({
   }),
 });
 
-type CategoryDef = {
-  id: AchievementCategory;
-  title: string;
-  description: string;
-};
+function formatDate(value?: string) {
+  if (!value) return null;
+  return new Date(value).toLocaleDateString("ja-JP", { year: "numeric", month: "long" });
+}
 
-const CATEGORIES: CategoryDef[] = [
-  {
-    id: "policy",
-    title: "政策の実現",
-    description:
-      "政治家や官僚への政策提案を通じて、社会に具体的な変化を生み出してきた取り組みです。",
-  },
-  {
-    id: "collaboration",
-    title: "共同研究",
-    description: "大学の研究室や企業との連携によって進めてきた研究プロジェクトを紹介します。",
-  },
-  {
-    id: "proposal",
-    title: "公開政策提言",
-    description: "ゼミとして定期的に公開している政策提言・レポートをまとめています。",
-  },
-];
+function AchievementItem({ item }: { item: Achievement }) {
+  const dateLabel = formatDate(item.achievedAt);
+  const title = item.externalLink ? (
+    <a
+      href={item.externalLink}
+      target="_blank"
+      rel="noreferrer"
+      className="underline-offset-4 hover:underline"
+    >
+      {item.title}
+    </a>
+  ) : (
+    item.title
+  );
 
-function categoryOf(item: Achievement): AchievementCategory | undefined {
-  const value = item.category;
-  if (Array.isArray(value)) return value[0];
-  return value;
+  return (
+    <li className="py-3">
+      <div className="flex flex-col gap-1 md:flex-row md:items-baseline md:gap-4">
+        {dateLabel ? (
+          <span className="shrink-0 text-sm text-[#1c2b33]/60 md:w-28">{dateLabel}</span>
+        ) : (
+          <span className="shrink-0 text-sm text-[#1c2b33]/60 md:w-28">—</span>
+        )}
+        <div className="flex-1">
+          <p className="text-base text-[#1c2b33] md:text-lg">{title}</p>
+          {item.summary ? <p className="mt-1 text-sm text-[#1c2b33]/70">{item.summary}</p> : null}
+        </div>
+      </div>
+    </li>
+  );
 }
 
 function AchievementsPage() {
@@ -59,55 +60,29 @@ function AchievementsPage() {
       <Header />
       <main>
         <section className="px-6 pt-16 pb-8 md:px-16 md:pt-24 md:pb-12">
-          <div className="mx-auto max-w-7xl">
+          <div className="mx-auto max-w-4xl">
             <h1 className="text-3xl font-semibold text-[#1c2b33] md:text-5xl">活動の成果</h1>
-            <p className="mt-6 max-w-3xl text-base text-[#1c2b33]/80 md:text-lg">
-              瀧本ゼミ政策分析パートでは、これまで幅広い分野の問題発見・解決を行ってきました。
-              政治家や官僚に対しての提案や、大学の研究室や企業との共同研究を通じた成果をご紹介します。
+            <p className="mt-6 text-base text-[#1c2b33]/80 md:text-lg">
+              瀧本ゼミ政策分析パートのこれまでの活動実績の一覧です。
             </p>
-            <nav className="mt-10 flex flex-wrap gap-3">
-              {CATEGORIES.map((category) => (
-                <a
-                  key={category.id}
-                  href={`#${category.id}`}
-                  className="inline-flex items-center rounded-full border border-[#1c2b33]/20 px-5 py-2 text-sm font-medium text-[#1c2b33] transition hover:bg-[#1c2b33]/5"
-                >
-                  {category.title}
-                </a>
-              ))}
-            </nav>
           </div>
         </section>
 
-        {CATEGORIES.map((category) => {
-          const items = achievements.filter((item) => categoryOf(item) === category.id);
-          return (
-            <section
-              key={category.id}
-              id={category.id}
-              className="scroll-mt-24 px-6 py-12 md:px-16 md:py-16"
-            >
-              <div className="mx-auto max-w-7xl">
-                <h2 className="text-2xl font-semibold text-[#1c2b33] md:text-4xl">
-                  {category.title}
-                </h2>
-                <p className="mt-3 max-w-2xl text-base text-[#1c2b33]/80">{category.description}</p>
-
-                {items.length === 0 ? (
-                  <p className="mt-8 text-[#1c2b33]/60">
-                    現在準備中です。microCMSに登録すると、ここに一覧が表示されます。
-                  </p>
-                ) : (
-                  <div className="mt-10 grid grid-cols-1 gap-6 md:grid-cols-2 lg:grid-cols-3">
-                    {items.map((item) => (
-                      <AchievementCard key={item.id} item={item} />
-                    ))}
-                  </div>
-                )}
-              </div>
-            </section>
-          );
-        })}
+        <section className="px-6 pb-20 md:px-16 md:pb-28">
+          <div className="mx-auto max-w-4xl">
+            {achievements.length === 0 ? (
+              <p className="text-[#1c2b33]/60">
+                現在準備中です。microCMSに登録すると、ここに一覧が表示されます。
+              </p>
+            ) : (
+              <ul className="divide-y divide-[#1c2b33]/10 border-t border-b border-[#1c2b33]/10">
+                {achievements.map((item) => (
+                  <AchievementItem key={item.id} item={item} />
+                ))}
+              </ul>
+            )}
+          </div>
+        </section>
       </main>
       <Footer />
     </div>
