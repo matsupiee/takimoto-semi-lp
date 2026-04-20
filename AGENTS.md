@@ -9,7 +9,7 @@
 - フロント: **TanStack Start** + React 19 + Tailwind v4 + shadcn/ui (`packages/ui`)
 - Lint / Format: **oxlint + oxfmt**（ESLint/Prettier は導入しない）
 - テスト: **Vitest**（`apps/web` のみ設定済み）
-- デプロイ: Cloudflare via Alchemy
+- デプロイ: Cloudflare Workers via Wrangler（`apps/web/wrangler.jsonc`）
 
 ## コマンド
 
@@ -27,7 +27,7 @@ bun run build             # 全 workspace ビルド
 
 - 共有 UI プリミティブは `packages/ui/src/components/` に。`apps/web` 固有の画面/ブロックは `apps/web/src/components/`。
 - 環境変数スキーマは `packages/env`（t3-oss/env-core）に集約。アプリから直接 `process.env` を読まない。
-- Cloudflare/Alchemy の IaC は `packages/infra/alchemy.run.ts`。
+- Cloudflare Worker の設定は `apps/web/wrangler.jsonc`。ローカルシークレットは `apps/web/.dev.vars`、本番は `bunx wrangler secret put <NAME>`。
 
 ## コード変更時の運用フロー（必須）
 

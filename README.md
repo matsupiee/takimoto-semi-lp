@@ -53,13 +53,14 @@ import { Button } from "@takimoto-semi-lp/ui/components/button";
 
 If you want to add app-specific blocks instead of shared primitives, run the shadcn CLI from `apps/web`.
 
-## Deployment (Cloudflare via Alchemy)
+## Deployment (Cloudflare Workers via Wrangler)
 
-- Dev: cd apps/web && bun run alchemy dev
-- Deploy: cd apps/web && bun run deploy
-- Destroy: cd apps/web && bun run destroy
+設定は `apps/web/wrangler.jsonc`。ローカルシークレットは `apps/web/.dev.vars`（`.dev.vars.example` をコピー）、本番シークレットは `bunx wrangler secret put <NAME>` で投入する。
 
-For more details, see the guide on [Deploying to Cloudflare with Alchemy](https://www.better-t-stack.dev/docs/guides/cloudflare-alchemy).
+- Dev: `bun run dev:web`（`@cloudflare/vite-plugin` が workerd 上で実行）
+- Deploy: `bun run deploy`（`vite build && wrangler deploy` を実行）
+
+初回のみ `bunx wrangler login` で Cloudflare アカウントにログインしておく。
 
 ## Git Hooks and Formatting
 

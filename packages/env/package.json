@@ -13,7 +13,6 @@
   },
   "devDependencies": {
     "@takimoto-semi-lp/config": "workspace:*",
-    "@takimoto-semi-lp/infra": "workspace:*",
     "typescript": "^5"
   }
 }
