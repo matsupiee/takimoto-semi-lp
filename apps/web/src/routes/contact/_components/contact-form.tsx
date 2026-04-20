@@ -21,7 +21,7 @@ const contactSchema = z.object({
     .trim()
     .min(10, "10文字以上でお問い合わせ内容をご記入ください")
     .max(2000, "2000文字以内でご記入ください"),
-  agreed: z.literal(true, { error: "プライバシーポリシーへの同意が必要です" }),
+  agreed: z.literal(true, { error: "個人情報の取扱いへの同意が必要です" }),
 });
 
 type FormValues = {
