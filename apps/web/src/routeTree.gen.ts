@@ -10,6 +10,7 @@
 
 import { Route as rootRouteImport } from './routes/__root'
 import { Route as MemberIndexRouteImport } from './routes/member/index'
+import { Route as ContactIndexRouteImport } from './routes/contact/index'
 import { Route as AchievementIndexRouteImport } from './routes/achievement/index'
 import { Route as homeIndexRouteImport } from './routes/(home)/index'
 import { Route as InterviewlistIndexRouteImport } from './routes/interview/(list)/index'
@@ -20,6 +21,11 @@ import { Route as AnnouncementdetailIdRouteImport } from './routes/announcement/
 const MemberIndexRoute = MemberIndexRouteImport.update({
   id: '/member/',
   path: '/member/',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const ContactIndexRoute = ContactIndexRouteImport.update({
+  id: '/contact/',
+  path: '/contact/',
   getParentRoute: () => rootRouteImport,
 } as any)
 const AchievementIndexRoute = AchievementIndexRouteImport.update({
@@ -56,6 +62,7 @@ const AnnouncementdetailIdRoute = AnnouncementdetailIdRouteImport.update({
 export interface FileRoutesByFullPath {
   '/': typeof homeIndexRoute
   '/achievement/': typeof AchievementIndexRoute
+  '/contact/': typeof ContactIndexRoute
   '/member/': typeof MemberIndexRoute
   '/announcement/$id': typeof AnnouncementdetailIdRoute
   '/interview/$id': typeof InterviewdetailIdRoute
@@ -65,6 +72,7 @@ export interface FileRoutesByFullPath {
 export interface FileRoutesByTo {
   '/': typeof homeIndexRoute
   '/achievement': typeof AchievementIndexRoute
+  '/contact': typeof ContactIndexRoute
   '/member': typeof MemberIndexRoute
   '/announcement/$id': typeof AnnouncementdetailIdRoute
   '/interview/$id': typeof InterviewdetailIdRoute
@@ -75,6 +83,7 @@ export interface FileRoutesById {
   __root__: typeof rootRouteImport
   '/(home)/': typeof homeIndexRoute
   '/achievement/': typeof AchievementIndexRoute
+  '/contact/': typeof ContactIndexRoute
   '/member/': typeof MemberIndexRoute
   '/announcement/(detail)/$id': typeof AnnouncementdetailIdRoute
   '/interview/(detail)/$id': typeof InterviewdetailIdRoute
@@ -86,6 +95,7 @@ export interface FileRouteTypes {
   fullPaths:
     | '/'
     | '/achievement/'
+    | '/contact/'
     | '/member/'
     | '/announcement/$id'
     | '/interview/$id'
@@ -95,6 +105,7 @@ export interface FileRouteTypes {
   to:
     | '/'
     | '/achievement'
+    | '/contact'
     | '/member'
     | '/announcement/$id'
     | '/interview/$id'
@@ -104,6 +115,7 @@ export interface FileRouteTypes {
     | '__root__'
     | '/(home)/'
     | '/achievement/'
+    | '/contact/'
     | '/member/'
     | '/announcement/(detail)/$id'
     | '/interview/(detail)/$id'
@@ -114,6 +126,7 @@ export interface FileRouteTypes {
 export interface RootRouteChildren {
   homeIndexRoute: typeof homeIndexRoute
   AchievementIndexRoute: typeof AchievementIndexRoute
+  ContactIndexRoute: typeof ContactIndexRoute
   MemberIndexRoute: typeof MemberIndexRoute
   AnnouncementdetailIdRoute: typeof AnnouncementdetailIdRoute
   InterviewdetailIdRoute: typeof InterviewdetailIdRoute
@@ -128,6 +141,13 @@ declare module '@tanstack/react-router' {
       path: '/member'
       fullPath: '/member/'
       preLoaderRoute: typeof MemberIndexRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/contact/': {
+      id: '/contact/'
+      path: '/contact'
+      fullPath: '/contact/'
+      preLoaderRoute: typeof ContactIndexRouteImport
       parentRoute: typeof rootRouteImport
     }
     '/achievement/': {
@@ -178,6 +198,7 @@ declare module '@tanstack/react-router' {
 const rootRouteChildren: RootRouteChildren = {
   homeIndexRoute: homeIndexRoute,
   AchievementIndexRoute: AchievementIndexRoute,
+  ContactIndexRoute: ContactIndexRoute,
   MemberIndexRoute: MemberIndexRoute,
   AnnouncementdetailIdRoute: AnnouncementdetailIdRoute,
   InterviewdetailIdRoute: InterviewdetailIdRoute,
@@ -187,12 +208,3 @@ const rootRouteChildren: RootRouteChildren = {
 export const routeTree = rootRouteImport
   ._addFileChildren(rootRouteChildren)
   ._addFileTypes<FileRouteTypes>()
-
-import type { getRouter } from './router.tsx'
-import type { createStart } from '@tanstack/react-start'
-declare module '@tanstack/react-start' {
-  interface Register {
-    ssr: true
-    router: Awaited<ReturnType<typeof getRouter>>
-  }
-}
