@@ -2,7 +2,7 @@ import { createFileRoute } from "@tanstack/react-router";
 
 import Footer from "../../shared/_components/layout/footer";
 import Header from "../../shared/_components/layout/header";
-import Mission from "./_components/mission";
+import AboutIntro from "./_components/about-intro";
 import Hero from "./_components/hero";
 import FeaturedBanner from "./_components/featured-banner";
 import { fetchInterviews } from "@/lib/microcms/server-fn/interview";
@@ -36,7 +36,7 @@ function HomeComponent() {
       <main>
         <Hero />
         <FeaturedBanner items={featured} />
-        <Mission />
+        <AboutIntro />
         <Announcement items={announcements} />
       </main>
       <Footer />

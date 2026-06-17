@@ -9,6 +9,7 @@
 // Additionally, you should also exclude this file from your linter and/or formatter to prevent it from being checked or modified.
 
 import { Route as rootRouteImport } from './routes/__root'
+import { Route as RecruitIndexRouteImport } from './routes/recruit/index'
 import { Route as MemberIndexRouteImport } from './routes/member/index'
 import { Route as ContactIndexRouteImport } from './routes/contact/index'
 import { Route as AchievementIndexRouteImport } from './routes/achievement/index'
@@ -21,6 +22,11 @@ import { Route as ReportdetailIdRouteImport } from './routes/report/(detail)/$id
 import { Route as InterviewdetailIdRouteImport } from './routes/interview/(detail)/$id'
 import { Route as AnnouncementdetailIdRouteImport } from './routes/announcement/(detail)/$id'
 
+const RecruitIndexRoute = RecruitIndexRouteImport.update({
+  id: '/recruit/',
+  path: '/recruit/',
+  getParentRoute: () => rootRouteImport,
+} as any)
 const MemberIndexRoute = MemberIndexRouteImport.update({
   id: '/member/',
   path: '/member/',
@@ -83,6 +89,7 @@ export interface FileRoutesByFullPath {
   '/achievement/': typeof AchievementIndexRoute
   '/contact/': typeof ContactIndexRoute
   '/member/': typeof MemberIndexRoute
+  '/recruit/': typeof RecruitIndexRoute
   '/announcement/$id': typeof AnnouncementdetailIdRoute
   '/interview/$id': typeof InterviewdetailIdRoute
   '/report/$id': typeof ReportdetailIdRoute
@@ -96,6 +103,7 @@ export interface FileRoutesByTo {
   '/achievement': typeof AchievementIndexRoute
   '/contact': typeof ContactIndexRoute
   '/member': typeof MemberIndexRoute
+  '/recruit': typeof RecruitIndexRoute
   '/announcement/$id': typeof AnnouncementdetailIdRoute
   '/interview/$id': typeof InterviewdetailIdRoute
   '/report/$id': typeof ReportdetailIdRoute
@@ -110,6 +118,7 @@ export interface FileRoutesById {
   '/achievement/': typeof AchievementIndexRoute
   '/contact/': typeof ContactIndexRoute
   '/member/': typeof MemberIndexRoute
+  '/recruit/': typeof RecruitIndexRoute
   '/announcement/(detail)/$id': typeof AnnouncementdetailIdRoute
   '/interview/(detail)/$id': typeof InterviewdetailIdRoute
   '/report/(detail)/$id': typeof ReportdetailIdRoute
@@ -125,6 +134,7 @@ export interface FileRouteTypes {
     | '/achievement/'
     | '/contact/'
     | '/member/'
+    | '/recruit/'
     | '/announcement/$id'
     | '/interview/$id'
     | '/report/$id'
@@ -138,6 +148,7 @@ export interface FileRouteTypes {
     | '/achievement'
     | '/contact'
     | '/member'
+    | '/recruit'
     | '/announcement/$id'
     | '/interview/$id'
     | '/report/$id'
@@ -151,6 +162,7 @@ export interface FileRouteTypes {
     | '/achievement/'
     | '/contact/'
     | '/member/'
+    | '/recruit/'
     | '/announcement/(detail)/$id'
     | '/interview/(detail)/$id'
     | '/report/(detail)/$id'
@@ -165,6 +177,7 @@ export interface RootRouteChildren {
   AchievementIndexRoute: typeof AchievementIndexRoute
   ContactIndexRoute: typeof ContactIndexRoute
   MemberIndexRoute: typeof MemberIndexRoute
+  RecruitIndexRoute: typeof RecruitIndexRoute
   AnnouncementdetailIdRoute: typeof AnnouncementdetailIdRoute
   InterviewdetailIdRoute: typeof InterviewdetailIdRoute
   ReportdetailIdRoute: typeof ReportdetailIdRoute
@@ -175,6 +188,13 @@ export interface RootRouteChildren {
 
 declare module '@tanstack/react-router' {
   interface FileRoutesByPath {
+    '/recruit/': {
+      id: '/recruit/'
+      path: '/recruit'
+      fullPath: '/recruit/'
+      preLoaderRoute: typeof RecruitIndexRouteImport
+      parentRoute: typeof rootRouteImport
+    }
     '/member/': {
       id: '/member/'
       path: '/member'
@@ -261,6 +281,7 @@ const rootRouteChildren: RootRouteChildren = {
   AchievementIndexRoute: AchievementIndexRoute,
   ContactIndexRoute: ContactIndexRoute,
   MemberIndexRoute: MemberIndexRoute,
+  RecruitIndexRoute: RecruitIndexRoute,
   AnnouncementdetailIdRoute: AnnouncementdetailIdRoute,
   InterviewdetailIdRoute: InterviewdetailIdRoute,
   ReportdetailIdRoute: ReportdetailIdRoute,
