@@ -5,8 +5,6 @@ import Header from "../../shared/_components/layout/header";
 import Intro from "./_components/intro";
 import NextActions from "./_components/next-actions";
 import Process from "./_components/process";
-import Stance from "./_components/stance";
-import Values from "./_components/values";
 
 export const Route = createFileRoute("/about/")({
   component: AboutPage,
@@ -28,9 +26,7 @@ function AboutPage() {
       <Header />
       <main>
         <Intro />
-        <Values />
         <Process />
-        <Stance />
         <NextActions />
       </main>
       <Footer />
