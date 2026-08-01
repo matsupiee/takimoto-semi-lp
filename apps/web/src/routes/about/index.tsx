@@ -1,14 +1,20 @@
 import { createFileRoute } from "@tanstack/react-router";
 
+import { fetchSeminarProfile } from "@/lib/microcms/server-fn/seminar-profile";
 import { pageMeta } from "@/lib/site";
 import Footer from "../../shared/_components/layout/footer";
 import Header from "../../shared/_components/layout/header";
+import ActivityOverview from "./_components/activity-overview";
 import Intro from "./_components/intro";
 import NextActions from "./_components/next-actions";
 import Process from "./_components/process";
 
 export const Route = createFileRoute("/about/")({
   component: AboutPage,
+  loader: async () => {
+    const profile = await fetchSeminarProfile();
+    return { profile };
+  },
   head: () => ({
     meta: pageMeta({
       title: "About | 瀧本ゼミ政策分析パート",
@@ -19,11 +25,14 @@ export const Route = createFileRoute("/about/")({
 });
 
 function AboutPage() {
+  const { profile } = Route.useLoaderData();
+
   return (
     <div className="min-h-screen bg-white">
       <Header />
       <main>
         <Intro />
+        <ActivityOverview profile={profile} />
         <Process />
         <NextActions />
       </main>

@@ -3,17 +3,22 @@ import { createFileRoute } from "@tanstack/react-router";
 import { pageMeta } from "@/lib/site";
 
 import { fetchMembers } from "@/lib/microcms/server-fn/member";
+import { fetchSeminarProfile } from "@/lib/microcms/server-fn/seminar-profile";
 import Footer from "@/shared/_components/layout/footer";
 import Header from "@/shared/_components/layout/header";
 import PageContainer from "@/shared/_components/layout/page-container";
 import SectionHeader from "@/shared/_components/section-header";
 import MemberCard from "./_components/member-card";
+import SeminarStats from "./_components/seminar-stats";
 
 export const Route = createFileRoute("/member/")({
   component: MemberListPage,
   loader: async () => {
-    const list = await fetchMembers({ data: { limit: 100 } });
-    return { members: list.contents };
+    const [list, profile] = await Promise.all([
+      fetchMembers({ data: { limit: 100 } }),
+      fetchSeminarProfile(),
+    ]);
+    return { members: list.contents, profile };
   },
   head: () => ({
     meta: pageMeta({
@@ -24,7 +29,7 @@ export const Route = createFileRoute("/member/")({
 });
 
 function MemberListPage() {
-  const { members } = Route.useLoaderData();
+  const { members, profile } = Route.useLoaderData();
 
   return (
     <div className="min-h-screen bg-white">
@@ -35,6 +40,8 @@ function MemberListPage() {
           <p className="mt-6 mb-10 max-w-3xl text-base text-[#1c2b33]/80 md:text-lg">
             瀧本ゼミ政策分析パートで活動しているメンバーを紹介します。
           </p>
+
+          <SeminarStats profile={profile} />
 
           {members.length === 0 ? (
             <p className="text-[#1c2b33]/70">
