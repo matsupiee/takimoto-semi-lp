@@ -1,5 +1,7 @@
 import { createFileRoute } from "@tanstack/react-router";
 
+import { pageMeta } from "@/lib/site";
+
 import { type Achievement, fetchAchievements } from "@/lib/microcms/server-fn/achievement";
 import Footer from "../../shared/_components/layout/footer";
 import Header from "../../shared/_components/layout/header";
@@ -13,7 +15,10 @@ export const Route = createFileRoute("/achievement/")({
     return { achievements: list.contents };
   },
   head: () => ({
-    meta: [{ title: "活動の成果 | 瀧本ゼミ政策分析パート" }],
+    meta: pageMeta({
+      title: "活動の成果 | 瀧本ゼミ政策分析パート",
+      description: "瀧本ゼミ政策分析パートのこれまでの活動実績の一覧です。",
+    }),
   }),
 });
 
@@ -71,7 +76,7 @@ function AchievementsPage() {
         <PageContainer as="section" className="pb-20 md:pb-28">
           {achievements.length === 0 ? (
             <p className="text-[#1c2b33]/60">
-              現在準備中です。microCMSに登録すると、ここに一覧が表示されます。
+              活動の成果は現在準備中です。公開までしばらくお待ちください。
             </p>
           ) : (
             <ul className="divide-y divide-[#1c2b33]/10 border-t border-b border-[#1c2b33]/10">

@@ -21,7 +21,7 @@ const slides: Slide[] = [
     alt: "五月祭での瀧本ゼミ",
     title: "様々な社会課題の解決に真剣に取り組んでいます",
     titleColor: "#FFFFFF",
-    cta: { label: "取り組み", href: "#actions" },
+    cta: { label: "取り組み", href: "/achievement" },
   },
 ];
 

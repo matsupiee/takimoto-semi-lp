@@ -18,13 +18,7 @@ export function AnnouncementList({
   className?: string;
 }) {
   if (items.length === 0) {
-    return (
-      <p className={cn("text-[#1c2b33]/70", className)}>
-        まだ記事がありません。microCMS の
-        <code className="mx-1 rounded bg-[#f2f3f5] px-1.5 py-0.5 text-sm">Announcement</code>
-        から投稿すると、ここに表示されます。
-      </p>
-    );
+    return <p className={cn("text-[#1c2b33]/70", className)}>現在お知らせはありません。</p>;
   }
 
   return (
@@ -39,6 +33,9 @@ export function AnnouncementList({
 }
 
 export default function Announcement({ items }: { items: Announcement[] }) {
+  // 記事が無いうちはトップに「お知らせ」枠ごと出さない
+  if (items.length === 0) return null;
+
   return (
     <PageContainer as="section" id="Announcement" className="bg-white py-12">
       <SectionHeader eyebrow="Announcement" title="お知らせ / プレスリリース" accent="red" />
