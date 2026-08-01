@@ -12,8 +12,8 @@
     "enabled": true,
   },
   "vars": {
-    "VITE_SERVER_URL": "https://takimoto-semi-lp-web.tsemiseisaku.workers.dev",
-    "CORS_ORIGIN": "https://takimoto-semi-lp-web.tsemiseisaku.workers.dev",
+    "VITE_SERVER_URL": "https://tsemiseisaku.com",
+    "CORS_ORIGIN": "https://tsemiseisaku.com",
     "MICROCMS_SERVICE_DOMAIN": "tsemi-seisaku",
   },
 }
