@@ -12,8 +12,6 @@ export type SeminarProfile = MicroCMSObjectContent & {
   femaleRatio?: number;
   // 東大生の割合（%）。他大生の割合は 100 - utokyoRatio で表示する
   utokyoRatio?: number;
-  // 「2026年4月時点」など集計時点の注記
-  statsNote?: string;
   // 活動概要
   activityDay?: string;
   activityPlace?: string;

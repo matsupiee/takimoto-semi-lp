@@ -1,4 +1,5 @@
 import { SeminarProfile } from "@/lib/microcms/server-fn/seminar-profile";
+import { gridColsForCount, gridMaxWidthForCount } from "@/shared/_utils/grid";
 
 type Stat = {
   label: string;
@@ -41,7 +42,9 @@ export default function SeminarStats({ profile }: { profile: SeminarProfile | nu
 
   return (
     <section aria-label="ゼミの構成" className="mb-12 md:mb-16">
-      <div className="grid grid-cols-1 gap-6 md:grid-cols-3">
+      <div
+        className={`grid grid-cols-1 gap-6 ${gridColsForCount(stats.length, 3)} ${gridMaxWidthForCount(stats.length, 3)}`}
+      >
         {stats.map((stat) => (
           <div key={stat.label} className="rounded-3xl bg-[#f8f9fb] p-8">
             <p className="text-sm font-bold text-[#e60012]">{stat.label}</p>
@@ -52,9 +55,6 @@ export default function SeminarStats({ profile }: { profile: SeminarProfile | nu
           </div>
         ))}
       </div>
-      {profile.statsNote ? (
-        <p className="mt-4 text-sm text-[#1c2b33]/60">{profile.statsNote}</p>
-      ) : null}
     </section>
   );
 }

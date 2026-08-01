@@ -29,6 +29,10 @@ CSV/JSON インポート機能の利用を検討すること。`achievements` �
 **オブジェクト形式**のため、リスト形式前提の移行スクリプトの対象外。新サービスでは
 管理画面から同じスキーマの API を作成し、値を手入力でコピーすること。
 
+アプリが読むフィールドは `memberCount` / `maleRatio` / `femaleRatio` / `utokyoRatio` /
+`activityDay` / `activityPlace` / `activityStyle` / `activityNote` の 8 つ。
+`statsNote`（集計時点の注記）は表示をやめたため、残っていても未使用。
+
 ---
 
 ## 手順

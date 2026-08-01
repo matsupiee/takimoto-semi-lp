@@ -28,7 +28,7 @@ export default function ActivityOverview({ profile }: { profile: SeminarProfile 
       <SectionHeader eyebrow="Activity" title="活動概要" />
 
       <div className="mt-10 rounded-3xl bg-[#f8f9fb] p-8 md:mt-14 md:p-12">
-        <dl className="grid grid-cols-1 gap-6 md:grid-cols-[8rem_1fr] md:gap-x-8 md:gap-y-6">
+        <dl className="grid grid-cols-1 gap-6 md:grid-cols-[8rem_auto] md:justify-start md:gap-x-10 md:gap-y-6">
           {rows.map((row) => (
             <div key={row.term} className="md:contents">
               <dt className="mb-2 text-sm font-bold text-[#e60012] md:mb-0 md:text-base">

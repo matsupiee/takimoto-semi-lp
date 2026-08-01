@@ -8,6 +8,7 @@ import Footer from "@/shared/_components/layout/footer";
 import Header from "@/shared/_components/layout/header";
 import PageContainer from "@/shared/_components/layout/page-container";
 import SectionHeader from "@/shared/_components/section-header";
+import { gridColsForCount } from "@/shared/_utils/grid";
 import MemberCard from "./_components/member-card";
 import SeminarStats from "./_components/seminar-stats";
 
@@ -43,17 +44,13 @@ function MemberListPage() {
 
           <SeminarStats profile={profile} />
 
-          {members.length === 0 ? (
-            <p className="text-[#1c2b33]/70">
-              メンバー紹介は現在準備中です。公開までしばらくお待ちください。
-            </p>
-          ) : (
-            <div className="grid grid-cols-1 gap-6 md:grid-cols-2 lg:grid-cols-3">
+          {members.length > 0 ? (
+            <div className={`grid grid-cols-1 gap-6 ${gridColsForCount(members.length, 3)}`}>
               {members.map((item) => (
                 <MemberCard key={item.id} item={item} />
               ))}
             </div>
-          )}
+          ) : null}
         </PageContainer>
       </main>
       <Footer />
