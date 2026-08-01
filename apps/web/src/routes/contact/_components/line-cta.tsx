@@ -24,7 +24,6 @@ export default function LineCta() {
       </div>
 
       <p className="mt-4 text-sm text-[#1c2b33]/70">
-        ボタンを押すと新しいタブでLINEの友だち追加ページが開きます。
         パソコンからご覧の場合は、表示されるQRコードをスマートフォンで読み取ってください。
       </p>
     </div>

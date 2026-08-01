@@ -119,17 +119,6 @@ function ContactPage() {
                   </li>
                 ))}
               </ul>
-
-              <div className="mt-8 rounded-2xl bg-[#f8f9fb] p-6">
-                <h3 className="text-sm font-semibold text-[#1c2b33]">個人情報の取扱いについて</h3>
-                <p className="mt-3 text-sm leading-relaxed text-[#1c2b33]/75">
-                  LINEおよびメールでいただいたお名前・連絡先・ご相談内容は、
-                  お問い合わせへの回答のためにのみ利用し、ご本人の同意なく第三者に提供することはありません。
-                </p>
-                <p className="mt-3 text-sm leading-relaxed text-[#1c2b33]/75">
-                  公式LINEのご利用にあたっては、LINEヤフー株式会社のプライバシーポリシーが適用されます。
-                </p>
-              </div>
             </div>
           </aside>
         </PageContainer>
