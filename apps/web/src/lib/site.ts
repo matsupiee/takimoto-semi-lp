@@ -1,10 +1,10 @@
 /**
  * サイト全体で使う定数。
  *
- * 独自ドメイン取得後は SITE_URL と apps/web/wrangler.jsonc の
- * VITE_SERVER_URL / CORS_ORIGIN の計3箇所を更新する。
+ * SITE_URL は OGP の絶対URL (og:url / og:image) に使われる公開URL。
+ * apps/web/wrangler.jsonc の VITE_SERVER_URL / CORS_ORIGIN と同じ値に揃えること。
  */
-export const SITE_URL = "https://takimoto-semi-lp-web.tsemiseisaku.workers.dev";
+export const SITE_URL = "https://tsemiseisaku.com";
 
 export const SITE_NAME = "瀧本ゼミ政策分析パート";
 
