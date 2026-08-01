@@ -6,6 +6,7 @@ import Footer from "@/shared/_components/layout/footer";
 import Header from "@/shared/_components/layout/header";
 import PageContainer from "@/shared/_components/layout/page-container";
 import SectionHeader from "@/shared/_components/section-header";
+import { gridColsForCount } from "@/shared/_utils/grid";
 
 export const Route = createFileRoute("/report/(list)/")({
   component: ReportListPage,
@@ -38,7 +39,7 @@ function ReportListPage() {
           {reports.length === 0 ? (
             <p className="text-[#1c2b33]/70">まだレポート記事がありません。</p>
           ) : (
-            <div className="grid grid-cols-1 gap-6 md:grid-cols-2 lg:grid-cols-3">
+            <div className={`grid grid-cols-1 gap-6 ${gridColsForCount(reports.length, 3)}`}>
               {reports.map((item) => {
                 const publishedAtIso = item.publishedAt ?? item.updatedAt;
                 const publishedAt = new Date(publishedAtIso).toLocaleDateString("ja-JP", {
