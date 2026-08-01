@@ -1,17 +1,20 @@
-import { Link, createFileRoute } from "@tanstack/react-router";
+import { Link, createFileRoute, notFound } from "@tanstack/react-router";
 
 import { fetchInterview } from "@/lib/microcms/server-fn/interview";
+import { SITE_NAME, pageMeta } from "@/lib/site";
 import Footer from "@/shared/_components/layout/footer";
 import Header from "@/shared/_components/layout/header";
 
 export const Route = createFileRoute("/interview/(detail)/$id")({
   component: InterviewDetailPage,
   loader: async ({ params }) => {
-    const interview = await fetchInterview({ data: { id: params.id } });
+    const interview = await fetchInterview({ data: { id: params.id } }).catch(() => {
+      throw notFound();
+    });
     return { interview };
   },
   head: ({ loaderData }) => ({
-    meta: loaderData ? [{ title: `${loaderData.interview.title} | 瀧本ゼミ政策分析パート` }] : [],
+    meta: loaderData ? pageMeta({ title: `${loaderData.interview.title} | ${SITE_NAME}` }) : [],
   }),
 });
 

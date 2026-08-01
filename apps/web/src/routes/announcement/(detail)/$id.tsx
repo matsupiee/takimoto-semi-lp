@@ -1,22 +1,23 @@
-import { Link, createFileRoute, redirect } from "@tanstack/react-router";
+import { Link, createFileRoute, notFound, redirect } from "@tanstack/react-router";
 
 import { fetchAnnouncement } from "@/lib/microcms/server-fn/announcement";
+import { SITE_NAME, pageMeta } from "@/lib/site";
 import Footer from "../../../shared/_components/layout/footer";
 import Header from "../../../shared/_components/layout/header";
 
 export const Route = createFileRoute("/announcement/(detail)/$id")({
   component: NewsDetailPage,
   loader: async ({ params }) => {
-    const announcement = await fetchAnnouncement({ data: { id: params.id } });
+    const announcement = await fetchAnnouncement({ data: { id: params.id } }).catch(() => {
+      throw notFound();
+    });
     if (announcement.externalUrl) {
       throw redirect({ href: announcement.externalUrl });
     }
     return { announcement };
   },
   head: ({ loaderData }) => ({
-    meta: loaderData
-      ? [{ title: `${loaderData.announcement.title} | 瀧本ゼミ政策分析パート` }]
-      : [],
+    meta: loaderData ? pageMeta({ title: `${loaderData.announcement.title} | ${SITE_NAME}` }) : [],
   }),
 });
 

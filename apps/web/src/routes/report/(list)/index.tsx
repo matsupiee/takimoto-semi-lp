@@ -1,6 +1,7 @@
 import { Link, createFileRoute } from "@tanstack/react-router";
 
 import { fetchReports } from "@/lib/microcms/server-fn/report";
+import { pageMeta } from "@/lib/site";
 import Footer from "@/shared/_components/layout/footer";
 import Header from "@/shared/_components/layout/header";
 import PageContainer from "@/shared/_components/layout/page-container";
@@ -13,7 +14,10 @@ export const Route = createFileRoute("/report/(list)/")({
     return { reports: list.contents };
   },
   head: () => ({
-    meta: [{ title: "政策分析レポート | 瀧本ゼミ政策分析パート" }],
+    meta: pageMeta({
+      title: "政策分析レポート | 瀧本ゼミ政策分析パート",
+      description: "瀧本ゼミ政策分析パートが公開してきた政策提言・分析レポートの一覧です。",
+    }),
   }),
 });
 

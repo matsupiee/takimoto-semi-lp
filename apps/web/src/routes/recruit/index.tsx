@@ -1,5 +1,7 @@
 import { createFileRoute } from "@tanstack/react-router";
 
+import { pageMeta } from "@/lib/site";
+
 import Footer from "../../shared/_components/layout/footer";
 import Header from "../../shared/_components/layout/header";
 import PageContainer from "../../shared/_components/layout/page-container";
@@ -8,14 +10,11 @@ import SectionHeader from "../../shared/_components/section-header";
 export const Route = createFileRoute("/recruit/")({
   component: RecruitPage,
   head: () => ({
-    meta: [
-      { title: "新歓案内 | 瀧本ゼミ政策分析パート" },
-      {
-        name: "description",
-        content:
-          "瀧本ゼミ政策分析パートの新歓案内ページです。次回募集に向けて、新歓情報を準備中です。",
-      },
-    ],
+    meta: pageMeta({
+      title: "新歓案内 | 瀧本ゼミ政策分析パート",
+      description:
+        "瀧本ゼミ政策分析パートの新歓案内ページです。次回募集に向けて、新歓情報を準備中です。",
+    }),
   }),
 });
 

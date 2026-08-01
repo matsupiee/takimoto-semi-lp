@@ -1,17 +1,20 @@
-import { Link, createFileRoute } from "@tanstack/react-router";
+import { Link, createFileRoute, notFound } from "@tanstack/react-router";
 
 import { fetchReport } from "@/lib/microcms/server-fn/report";
+import { SITE_NAME, pageMeta } from "@/lib/site";
 import Footer from "@/shared/_components/layout/footer";
 import Header from "@/shared/_components/layout/header";
 
 export const Route = createFileRoute("/report/(detail)/$id")({
   component: ReportDetailPage,
   loader: async ({ params }) => {
-    const report = await fetchReport({ data: { id: params.id } });
+    const report = await fetchReport({ data: { id: params.id } }).catch(() => {
+      throw notFound();
+    });
     return { report };
   },
   head: ({ loaderData }) => ({
-    meta: loaderData ? [{ title: `${loaderData.report.title} | 瀧本ゼミ政策分析パート` }] : [],
+    meta: loaderData ? pageMeta({ title: `${loaderData.report.title} | ${SITE_NAME}` }) : [],
   }),
 });
 

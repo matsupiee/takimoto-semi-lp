@@ -1,6 +1,7 @@
 import { Link, createFileRoute } from "@tanstack/react-router";
 
 import { fetchInterviews } from "@/lib/microcms/server-fn/interview";
+import { pageMeta } from "@/lib/site";
 import Footer from "@/shared/_components/layout/footer";
 import Header from "@/shared/_components/layout/header";
 import PageContainer from "@/shared/_components/layout/page-container";
@@ -13,7 +14,10 @@ export const Route = createFileRoute("/interview/(list)/")({
     return { interviews: list.contents };
   },
   head: () => ({
-    meta: [{ title: "ゼミ生インタビュー | 瀧本ゼミ政策分析パート" }],
+    meta: pageMeta({
+      title: "ゼミ生インタビュー | 瀧本ゼミ政策分析パート",
+      description: "瀧本ゼミ政策分析パートで活動するゼミ生へのインタビュー記事です。",
+    }),
   }),
 });
 

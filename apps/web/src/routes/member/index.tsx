@@ -1,5 +1,7 @@
 import { createFileRoute } from "@tanstack/react-router";
 
+import { pageMeta } from "@/lib/site";
+
 import { fetchMembers } from "@/lib/microcms/server-fn/member";
 import Footer from "@/shared/_components/layout/footer";
 import Header from "@/shared/_components/layout/header";
@@ -14,7 +16,10 @@ export const Route = createFileRoute("/member/")({
     return { members: list.contents };
   },
   head: () => ({
-    meta: [{ title: "メンバー | 瀧本ゼミ" }],
+    meta: pageMeta({
+      title: "メンバー | 瀧本ゼミ政策分析パート",
+      description: "瀧本ゼミ政策分析パートで活動しているメンバーを紹介します。",
+    }),
   }),
 });
 
@@ -33,7 +38,7 @@ function MemberListPage() {
 
           {members.length === 0 ? (
             <p className="text-[#1c2b33]/70">
-              現在準備中です。microCMSに登録すると、ここに一覧が表示されます。
+              メンバー紹介は現在準備中です。公開までしばらくお待ちください。
             </p>
           ) : (
             <div className="grid grid-cols-1 gap-6 md:grid-cols-2 lg:grid-cols-3">
