@@ -4,20 +4,48 @@ import Footer from "../../shared/_components/layout/footer";
 import Header from "../../shared/_components/layout/header";
 import PageContainer from "../../shared/_components/layout/page-container";
 import SectionHeader from "../../shared/_components/section-header";
-import ContactForm from "./_components/contact-form";
+import LineCta from "./_components/line-cta";
 
 export const Route = createFileRoute("/contact/")({
   component: ContactPage,
   head: () => ({
-    meta: [{ title: "お問い合わせ | 瀧本ゼミ政策分析パート" }],
+    meta: [
+      { title: "お問い合わせ | 瀧本ゼミ政策分析パート" },
+      {
+        name: "description",
+        content:
+          "瀧本ゼミ政策分析パートへのお問い合わせページです。取材・共同研究のご相談・新歓に関するご質問は、公式LINEまたはメールにて受け付けています。",
+      },
+    ],
   }),
 });
+
+const TOPICS = [
+  {
+    title: "取材・メディア掲載",
+    description: "活動内容の取材や記事掲載のご依頼を承ります。",
+  },
+  {
+    title: "共同研究・連携のご相談",
+    description: "自治体・企業・研究機関のみなさまとの連携についてご相談ください。",
+  },
+  {
+    title: "新歓・活動参加について",
+    description: "ゼミの活動内容や参加方法に関するご質問にお答えします。",
+  },
+  {
+    title: "その他",
+    description: "上記に当てはまらないご連絡もお気軽にお寄せください。",
+  },
+];
 
 const CONTACT_CHANNELS = [
   {
     title: "メールでのお問い合わせ",
-    description: "ご返信までに数日いただく場合がございます。お急ぎの場合はその旨ご記入ください。",
-    value: "contact@takimoto-seminar.example",
+    description:
+      "LINEをご利用でない方や、資料の送付が必要な場合はこちらへ。ご返信までに数日いただく場合がございます。お急ぎの場合はその旨ご記入ください。",
+    value: "tsemi.politics@gmail.com",
+    href: "mailto:tsemi.politics@gmail.com",
   },
   {
     title: "新歓に関するお問い合わせ",
@@ -36,8 +64,8 @@ function ContactPage() {
         <PageContainer as="section" className="py-12">
           <SectionHeader eyebrow="Contact" title="お問い合わせ" as="h1" />
           <p className="mt-6 max-w-3xl text-base text-[#1c2b33]/80 md:text-lg">
-            瀧本ゼミ政策分析パートへのご連絡は、こちらのフォームよりお願いいたします。
-            取材依頼・共同研究のご相談・新歓に関するご質問など、お気軽にご記入ください。
+            瀧本ゼミ政策分析パートへのご連絡は、公式LINEにて受け付けています。
+            取材依頼・共同研究のご相談・新歓に関するご質問など、お気軽にお送りください。
           </p>
         </PageContainer>
 
@@ -46,7 +74,21 @@ function ContactPage() {
           className="grid grid-cols-1 gap-12 pb-16 md:pb-24 lg:grid-cols-12 lg:gap-16"
         >
           <div className="lg:col-span-7">
-            <ContactForm />
+            <LineCta />
+
+            <div className="mt-12">
+              <h2 className="text-xl font-semibold text-[#1c2b33] md:text-2xl">
+                こんなご相談を承っています
+              </h2>
+              <ul className="mt-6 flex flex-col gap-5">
+                {TOPICS.map((topic) => (
+                  <li key={topic.title} className="border-b border-black/10 pb-5">
+                    <p className="text-sm font-semibold text-[#1c2b33]">{topic.title}</p>
+                    <p className="mt-2 text-sm text-[#1c2b33]/75">{topic.description}</p>
+                  </li>
+                ))}
+              </ul>
+            </div>
           </div>
 
           <aside className="lg:col-span-5">
@@ -67,7 +109,12 @@ function ContactPage() {
                         {channel.linkLabel}
                       </a>
                     ) : (
-                      <p className="mt-3 font-mono text-sm text-[#1c2b33]">{channel.value}</p>
+                      <a
+                        href={channel.href}
+                        className="mt-3 inline-flex font-mono text-sm text-[#1877f2] hover:underline"
+                      >
+                        {channel.value}
+                      </a>
                     )}
                   </li>
                 ))}
