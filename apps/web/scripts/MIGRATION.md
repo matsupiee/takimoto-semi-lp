@@ -25,6 +25,10 @@ CSV/JSON インポート機能の利用を検討すること。`achievements` �
 対象エンドポイント: `announcements`, `interviews`, `members`, `reports`, `achievements`
 （`apps/web/src/lib/microcms/server-fn/` と一致）。
 
+`seminar-profile`（ゼミ基本情報 / 在籍人数・男女比・東大生比率・活動日・活動場所など）は
+**オブジェクト形式**のため、リスト形式前提の移行スクリプトの対象外。新サービスでは
+管理画面から同じスキーマの API を作成し、値を手入力でコピーすること。
+
 ---
 
 ## 手順
