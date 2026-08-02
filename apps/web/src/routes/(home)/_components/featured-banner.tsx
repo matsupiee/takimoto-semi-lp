@@ -7,7 +7,7 @@ export default function FeaturedBanner({ items }: { items: Announcement[] }) {
   if (items.length === 0) return null;
 
   return (
-    <PageContainer as="section" id="Featured" className="bg-[#fafafa] py-10 md:py-14">
+    <PageContainer as="section" id="Featured" className="bg-[#fafafa] py-12 md:py-16">
       <ul className="grid gap-4 md:gap-6">
         {items.map((item) => (
           <li key={item.id}>

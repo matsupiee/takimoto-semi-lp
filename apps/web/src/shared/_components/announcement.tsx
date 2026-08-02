@@ -37,9 +37,14 @@ export default function Announcement({ items }: { items: Announcement[] }) {
   if (items.length === 0) return null;
 
   return (
-    <PageContainer as="section" id="Announcement" className="bg-white py-12">
+    <PageContainer
+      as="section"
+      id="Announcement"
+      width="default"
+      className="bg-white py-12 md:py-16"
+    >
       <SectionHeader eyebrow="Announcement" title="お知らせ / プレスリリース" accent="red" />
-      <AnnouncementList items={items} className="mt-12 md:mt-20" />
+      <AnnouncementList items={items} className="mt-6 md:mt-8" />
     </PageContainer>
   );
 }

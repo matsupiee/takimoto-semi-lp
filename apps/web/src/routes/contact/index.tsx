@@ -60,9 +60,9 @@ function ContactPage() {
     <div className="min-h-screen bg-white">
       <Header />
       <main>
-        <PageContainer as="section" className="py-12">
+        <PageContainer as="section" width="default" className="py-12 md:py-16">
           <SectionHeader eyebrow="Contact" title="お問い合わせ" as="h1" />
-          <p className="mt-6 max-w-3xl text-base text-[#1c2b33]/80 md:text-lg">
+          <p className="mt-6 max-w-3xl text-base md:mt-8 text-[#1c2b33]/80 md:text-lg">
             瀧本ゼミ政策分析パートへのご連絡は、公式LINEにて受け付けています。
             取材依頼・共同研究のご相談・新歓に関するご質問など、お気軽にお送りください。
           </p>
@@ -70,7 +70,8 @@ function ContactPage() {
 
         <PageContainer
           as="section"
-          className="grid grid-cols-1 gap-12 pb-16 md:pb-24 lg:grid-cols-12 lg:gap-16"
+          className="grid grid-cols-1 gap-12 pb-12 md:pb-16 lg:grid-cols-12 lg:gap-16"
+          width="default"
         >
           <div className="lg:col-span-7">
             <LineCta />

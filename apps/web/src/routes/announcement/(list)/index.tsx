@@ -30,14 +30,14 @@ function NewsListPage() {
     <div className="min-h-screen bg-white">
       <Header />
       <main>
-        <PageContainer as="section" className="py-12">
+        <PageContainer as="section" width="default" className="py-12 md:py-16">
           <SectionHeader
             eyebrow="Announcement"
             title="お知らせ / プレスリリース"
             as="h1"
             accent="red"
           />
-          <AnnouncementList items={news} className="mt-12 md:mt-20" />
+          <AnnouncementList items={news} className="mt-6 md:mt-8" />
         </PageContainer>
       </main>
       <Footer />

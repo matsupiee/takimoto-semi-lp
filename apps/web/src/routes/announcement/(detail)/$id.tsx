@@ -4,6 +4,7 @@ import { fetchAnnouncement } from "@/lib/microcms/server-fn/announcement";
 import { SITE_NAME, pageMeta } from "@/lib/site";
 import Footer from "../../../shared/_components/layout/footer";
 import Header from "../../../shared/_components/layout/header";
+import PageContainer from "@/shared/_components/layout/page-container";
 
 export const Route = createFileRoute("/announcement/(detail)/$id")({
   component: NewsDetailPage,
@@ -33,8 +34,8 @@ function NewsDetailPage() {
   return (
     <div className="min-h-screen bg-white">
       <Header />
-      <main className="px-6 py-16 md:px-16 md:py-24">
-        <article className="mx-auto max-w-3xl">
+      <main>
+        <PageContainer as="article" width="narrow" className="py-12 md:py-16">
           <Link
             to="/announcement"
             className="mb-8 inline-flex items-center text-[15px] text-[#1c2b33]/70 hover:underline"
@@ -47,7 +48,7 @@ function NewsDetailPage() {
             {announcement.mediaName}
             {` ・ ${publishedAt}`}
           </p>
-          <h1 className="mb-8 text-3xl font-semibold leading-tight text-[#1c2b33] md:text-5xl">
+          <h1 className="mb-8 text-balance text-2xl font-semibold leading-tight text-[#1c2b33] md:text-4xl">
             {announcement.title}
           </h1>
 
@@ -59,7 +60,7 @@ function NewsDetailPage() {
           ) : (
             <p className="text-[#1c2b33]/70">本文はありません。</p>
           )}
-        </article>
+        </PageContainer>
       </main>
       <Footer />
     </div>

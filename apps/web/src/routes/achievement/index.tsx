@@ -66,14 +66,14 @@ function AchievementsPage() {
     <div className="min-h-screen bg-white">
       <Header />
       <main>
-        <PageContainer as="section" className="py-12">
+        <PageContainer as="section" width="default" className="py-12 md:py-16">
           <SectionHeader eyebrow="Achievements" title="活動の成果" as="h1" />
-          <p className="mt-6 text-base text-[#1c2b33]/80 md:text-lg">
+          <p className="mt-6 text-base md:mt-8 text-[#1c2b33]/80 md:text-lg">
             瀧本ゼミ政策分析パートのこれまでの活動実績の一覧です。
           </p>
         </PageContainer>
 
-        <PageContainer as="section" className="pb-20 md:pb-28">
+        <PageContainer as="section" width="default" className="pb-12 md:pb-16">
           {achievements.length === 0 ? (
             <p className="text-[#1c2b33]/60">
               活動の成果は現在準備中です。公開までしばらくお待ちください。

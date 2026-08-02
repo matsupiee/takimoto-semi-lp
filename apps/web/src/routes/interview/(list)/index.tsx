@@ -29,7 +29,7 @@ function InterviewListPage() {
     <div className="min-h-screen bg-white">
       <Header />
       <main>
-        <PageContainer className="py-12">
+        <PageContainer width="default" className="py-12 md:py-16">
           <SectionHeader eyebrow="Interview" title="ゼミ生インタビュー" as="h1" className="mb-10" />
 
           {interviews.length === 0 ? (

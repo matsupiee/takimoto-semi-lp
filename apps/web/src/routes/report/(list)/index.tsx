@@ -29,9 +29,9 @@ function ReportListPage() {
     <div className="min-h-screen bg-white">
       <Header />
       <main>
-        <PageContainer className="py-12">
+        <PageContainer width="default" className="py-12 md:py-16">
           <SectionHeader eyebrow="Report" title="政策分析レポート" as="h1" />
-          <p className="mt-6 mb-10 max-w-3xl text-base text-[#1c2b33]/80 md:text-lg">
+          <p className="mt-6 mb-10 max-w-3xl text-base md:mt-8 text-[#1c2b33]/80 md:text-lg">
             瀧本ゼミ政策分析パートの活動として公開してきた政策提言・分析レポートです。
             エビデンスに基づいた問題発見と解決の提案を掲載しています。
           </p>

@@ -1,9 +1,11 @@
+import PageContainer from "@/shared/_components/layout/page-container";
 import SectionHeader from "@/shared/_components/section-header";
 
 export default function AboutIntro() {
   return (
-    <section id="mission" className="relative bg-white px-6 py-16 md:px-16 md:py-24">
-      <div className="mx-auto grid max-w-7xl grid-cols-1 gap-10 md:grid-cols-12 md:gap-0">
+    <section id="mission" className="relative bg-white py-12 md:py-16">
+      {/* padding と max-width の入れ子順が PageContainer と逆だと、ヘッダーと左端がズレる */}
+      <PageContainer className="grid grid-cols-1 gap-10 md:grid-cols-12 md:gap-0">
         <div className="md:col-span-7 md:pr-10">
           <SectionHeader
             eyebrow="About Us"
@@ -59,7 +61,7 @@ export default function AboutIntro() {
             />
           </div>
         </div>
-      </div>
+      </PageContainer>
     </section>
   );
 }
