@@ -38,7 +38,7 @@ export default function Header() {
             <ul className="hidden items-center gap-8 md:flex">
               {primaryNavItems.map((item) => (
                 <li key={item.label}>
-                  <a href={item.href} className="text-[15px] text-[#1c2b33] hover:text-black">
+                  <a href={item.href} className="text-[15px] text-ink hover:text-black">
                     {item.label}
                   </a>
                 </li>
@@ -50,7 +50,7 @@ export default function Header() {
             <ul className="hidden items-center gap-6 lg:flex">
               {endNavItems.map((item) => (
                 <li key={item.label}>
-                  <a href={item.href} className="text-[15px] text-[#1c2b33] hover:text-black">
+                  <a href={item.href} className="text-[15px] text-ink hover:text-black">
                     {item.label}
                   </a>
                 </li>
@@ -61,7 +61,7 @@ export default function Header() {
           <Drawer>
             <DrawerTrigger
               aria-label="モバイルナビゲーションメニューを開く"
-              className="flex h-10 w-10 items-center justify-center rounded-full text-[#1c2b33] hover:bg-black/5 md:hidden"
+              className="flex h-10 w-10 items-center justify-center rounded-full text-ink hover:bg-black/5 md:hidden"
             >
               <svg viewBox="0 0 24 24" fill="currentColor" width="20" height="20">
                 <path d="M4 5a1 1 0 0 0 0 2h16a1 1 0 1 0 0-2H4zM3 12a1 1 0 0 1 1-1h16a1 1 0 1 1 0 2H4a1 1 0 0 1-1-1zM3 18a1 1 0 0 1 1-1h16a1 1 0 1 1 0 2H4a1 1 0 0 1-1-1z" />
@@ -81,7 +81,7 @@ export default function Header() {
                       render={
                         <a
                           href={item.href}
-                          className="block rounded-md px-3 py-3 text-[15px] text-[#1c2b33] hover:bg-black/5"
+                          className="block rounded-md px-3 py-3 text-[15px] text-ink hover:bg-black/5"
                         >
                           {item.label}
                         </a>

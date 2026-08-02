@@ -7,7 +7,7 @@ export default function FeaturedBanner({ items }: { items: Announcement[] }) {
   if (items.length === 0) return null;
 
   return (
-    <PageContainer as="section" id="Featured" className="bg-[#fafafa] py-12 md:py-16">
+    <PageContainer as="section" id="Featured" className="bg-surface py-12 md:py-16">
       <ul className="grid gap-4 md:gap-6">
         {items.map((item) => (
           <li key={item.id}>
@@ -23,7 +23,7 @@ function FeaturedBannerCard({ item }: { item: Announcement }) {
   const isExternal = !!item.externalUrl;
 
   const content = (
-    <article className="group relative grid grid-cols-1 overflow-hidden rounded-2xl border border-neutral-200 bg-white shadow-sm transition hover:-translate-y-0.5 hover:shadow-md md:grid-cols-[minmax(0,2fr)_minmax(0,3fr)]">
+    <article className="group relative grid grid-cols-1 overflow-hidden rounded-3xl border border-neutral-200 bg-white shadow-sm transition hover:-translate-y-0.5 hover:shadow-md md:grid-cols-[minmax(0,2fr)_minmax(0,3fr)]">
       <div className="relative aspect-[16/9] w-full overflow-hidden bg-neutral-100 md:aspect-auto md:h-full">
         {item.thumbnail ? (
           <img
@@ -33,9 +33,9 @@ function FeaturedBannerCard({ item }: { item: Announcement }) {
             className="h-full w-full object-cover transition duration-500 group-hover:scale-[1.02]"
           />
         ) : (
-          <div className="h-full w-full bg-gradient-to-br from-[#e60012]/10 to-[#e60012]/30" />
+          <div className="h-full w-full bg-gradient-to-br from-brand/10 to-brand/30" />
         )}
-        <span className="absolute left-4 top-4 inline-flex items-center gap-1.5 rounded-full bg-[#e60012] px-3 py-1 text-xs font-semibold text-white md:text-sm">
+        <span className="absolute left-4 top-4 inline-flex items-center gap-1.5 rounded-full bg-brand px-3 py-1 text-xs font-semibold text-white md:text-sm">
           <span className="inline-block h-1.5 w-1.5 rounded-full bg-white" aria-hidden="true" />
           Featured
         </span>
@@ -43,7 +43,7 @@ function FeaturedBannerCard({ item }: { item: Announcement }) {
 
       <div className="flex flex-col justify-between gap-6 p-6 md:p-8 lg:p-10">
         <div>
-          <p className="text-xs font-semibold tracking-wider text-[#e60012] md:text-sm">
+          <p className="text-xs font-semibold tracking-wider text-brand md:text-sm">
             {item.category}
           </p>
           <h3 className="mt-3 text-xl font-bold leading-snug text-neutral-900 md:text-2xl lg:text-3xl">
@@ -54,7 +54,7 @@ function FeaturedBannerCard({ item }: { item: Announcement }) {
           ) : null}
         </div>
 
-        <span className="inline-flex items-center gap-2 self-start text-sm font-semibold text-[#e60012] md:text-base">
+        <span className="inline-flex items-center gap-2 self-start text-sm font-semibold text-brand md:text-base">
           詳しく見る
           <ArrowIcon external={isExternal} />
         </span>

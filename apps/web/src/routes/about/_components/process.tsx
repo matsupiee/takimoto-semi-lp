@@ -39,15 +39,15 @@ export default function Process() {
       title="活動の流れ"
       lede="ひとつの政策提言は、課題設定から社会実装に向けた取り組みまで、段階を踏みながら形になっていきます。"
     >
-      <ol className="divide-y divide-[#1c2b33]/10 border-y border-[#1c2b33]/10">
+      <ol className="divide-y divide-ink/10 border-y border-ink/10">
         {steps.map((step, index) => (
           <li key={step.title} className="flex gap-5 py-5">
-            <span className="flex h-8 w-8 shrink-0 items-center justify-center rounded-full bg-[#1c2b33] text-xs font-semibold text-white">
+            <span className="flex h-8 w-8 shrink-0 items-center justify-center rounded-full bg-ink text-xs font-semibold text-white">
               {index + 1}
             </span>
             <div>
-              <h3 className="text-base font-semibold text-[#1c2b33] md:text-lg">{step.title}</h3>
-              <p className="mt-1 text-sm leading-relaxed text-[#1c2b33]/70">{step.body}</p>
+              <h3 className="text-base font-semibold text-ink md:text-lg">{step.title}</h3>
+              <p className="mt-1 text-sm leading-relaxed text-ink/70">{step.body}</p>
             </div>
           </li>
         ))}

@@ -54,7 +54,8 @@ function RootDocument() {
       <head>
         <HeadContent />
       </head>
-      <body className="bg-white text-[#1c2b33] antialiased">
+      {/* 配色は globals.css の bg-background / text-foreground が効く */}
+      <body className="antialiased">
         <Outlet />
         <Toaster richColors />
         <TanStackRouterDevtools position="bottom-left" />
@@ -71,11 +72,11 @@ function MessagePage({ eyebrow, title, body }: { eyebrow: string; title: string;
       <main>
         <PageContainer as="section" width="narrow" className="py-12 md:py-16">
           <SectionHeader eyebrow={eyebrow} title={title} as="h1" />
-          <p className="mt-6 text-base md:mt-8 text-[#1c2b33]/80 md:text-lg">{body}</p>
+          <p className="mt-6 text-base md:mt-8 text-ink/80 md:text-lg">{body}</p>
           <div className="mt-10">
             <a
               href="/"
-              className="inline-flex items-center rounded-full bg-[#1c2b33] px-8 py-3 text-[15px] font-medium text-white shadow-sm transition hover:bg-[#1c2b33]/90"
+              className="inline-flex items-center rounded-full bg-ink px-8 py-3 text-[15px] font-medium text-white shadow-sm transition hover:bg-ink/90"
             >
               トップページへ戻る
             </a>

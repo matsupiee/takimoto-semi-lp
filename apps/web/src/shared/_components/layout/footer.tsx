@@ -48,7 +48,7 @@ function FooterSection({ section }: { section: Section }) {
         aria-expanded={open}
         onClick={() => setOpen((v) => !v)}
       >
-        <span className="text-sm font-semibold text-[#1c2b33]">{section.title}</span>
+        <span className="text-sm font-semibold text-ink">{section.title}</span>
         <svg
           viewBox="0 0 24 24"
           width="20"
@@ -61,16 +61,11 @@ function FooterSection({ section }: { section: Section }) {
         </svg>
       </button>
       <div className={`${open ? "block" : "hidden"} pb-4 md:block md:pb-0`}>
-        <h3 className="hidden text-sm font-semibold text-[#1c2b33] md:mb-4 md:block">
-          {section.title}
-        </h3>
+        <h3 className="hidden text-sm font-semibold text-ink md:mb-4 md:block">{section.title}</h3>
         <ul className="flex flex-col gap-2 md:gap-3">
           {section.items.map((item) => (
             <li key={item.label}>
-              <a
-                href={item.href}
-                className="text-sm text-[#1c2b33]/80 hover:text-[#1c2b33] hover:underline"
-              >
+              <a href={item.href} className="text-sm text-ink/80 hover:text-ink hover:underline">
                 {item.label}
               </a>
             </li>
@@ -91,7 +86,7 @@ export default function Footer() {
               <a
                 href={s.href}
                 aria-label={s.label}
-                className="flex h-10 w-10 items-center justify-center rounded-full text-[#1c2b33] hover:bg-black/5"
+                className="flex h-10 w-10 items-center justify-center rounded-full text-ink hover:bg-black/5"
                 target="_blank"
                 rel="noreferrer noopener"
               >
@@ -107,7 +102,7 @@ export default function Footer() {
           ))}
         </div>
 
-        <div className="mt-10 flex flex-col gap-4 pt-8 text-xs text-[#1c2b33]/70 md:flex-row md:items-center md:justify-between">
+        <div className="mt-10 flex flex-col gap-4 pt-8 text-xs text-ink/70 md:flex-row md:items-center md:justify-between">
           <p>© {new Date().getFullYear()} 瀧本ゼミ政策分析パート</p>
         </div>
       </PageContainer>

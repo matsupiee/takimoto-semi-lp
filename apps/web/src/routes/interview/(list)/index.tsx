@@ -33,7 +33,7 @@ function InterviewListPage() {
           <SectionHeader eyebrow="Interview" title="ゼミ生インタビュー" as="h1" className="mb-10" />
 
           {interviews.length === 0 ? (
-            <p className="text-[#1c2b33]/70">まだインタビュー記事がありません。</p>
+            <p className="text-ink/70">まだインタビュー記事がありません。</p>
           ) : (
             <div
               className={`grid grid-cols-1 gap-6 ${gridColsForCount(interviews.length, 3)} ${gridMaxWidthForCount(interviews.length, 3)}`}
@@ -43,9 +43,9 @@ function InterviewListPage() {
                   key={item.id}
                   to="/interview/$id"
                   params={{ id: item.id }}
-                  className="group flex flex-col overflow-hidden rounded-3xl bg-[#f8f9fb]"
+                  className="group flex flex-col overflow-hidden rounded-3xl bg-surface"
                 >
-                  <div className="aspect-[4/3] w-full overflow-hidden bg-[#1c2b33]/5">
+                  <div className="aspect-[4/3] w-full overflow-hidden bg-ink/5">
                     {item.thumbnail?.url ? (
                       <img
                         src={`${item.thumbnail.url}?fit=crop&w=800&h=600`}
@@ -56,11 +56,11 @@ function InterviewListPage() {
                     ) : null}
                   </div>
                   <div className="flex flex-col gap-3 p-6 md:p-8">
-                    <p className="text-sm font-medium text-[#1c2b33]/70">
+                    <p className="text-sm font-medium text-ink/70">
                       {item.studentName}
                       {item.grade ? ` ・ ${item.grade}` : ""}
                     </p>
-                    <p className="text-xl font-medium leading-snug text-[#1c2b33]">{item.title}</p>
+                    <p className="text-xl font-medium leading-snug text-ink">{item.title}</p>
                   </div>
                 </Link>
               ))}

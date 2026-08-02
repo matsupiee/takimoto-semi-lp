@@ -2,11 +2,9 @@ export const LINE_URL = "https://lin.ee/YvOxgn3";
 
 export default function LineCta() {
   return (
-    <div className="rounded-3xl bg-[#f8f9fb] p-8 md:p-12">
-      <h2 className="text-xl font-semibold text-[#1c2b33] md:text-2xl">
-        公式LINEで受け付けています
-      </h2>
-      <p className="mt-4 text-base leading-relaxed text-[#1c2b33]/80">
+    <div className="rounded-3xl bg-surface p-8 md:p-12">
+      <h2 className="text-xl font-semibold text-ink md:text-2xl">公式LINEで受け付けています</h2>
+      <p className="mt-4 text-base leading-relaxed text-ink/80">
         下のボタンから友だち追加のうえ、トークにてご用件をお送りください。
         いただいたメッセージは担当者が確認し、順次ご返信いたします。
       </p>
@@ -16,14 +14,14 @@ export default function LineCta() {
           href={LINE_URL}
           target="_blank"
           rel="noreferrer noopener"
-          className="inline-flex items-center gap-2 rounded-full bg-[#06c755] px-8 py-3 text-[15px] font-medium text-white shadow-sm transition hover:bg-[#06c755]/90"
+          className="inline-flex items-center gap-2 rounded-full bg-line-green px-8 py-3 text-[15px] font-medium text-white shadow-sm transition hover:bg-line-green/90"
         >
           <LineIcon />
           LINEで友だち追加
         </a>
       </div>
 
-      <p className="mt-4 text-sm text-[#1c2b33]/70">
+      <p className="mt-4 text-sm text-ink/70">
         パソコンからご覧の場合は、表示されるQRコードをスマートフォンで読み取ってください。
       </p>
     </div>

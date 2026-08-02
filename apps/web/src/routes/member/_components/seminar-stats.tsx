@@ -46,12 +46,12 @@ export default function SeminarStats({ profile }: { profile: SeminarProfile | nu
         className={`grid grid-cols-1 gap-6 ${gridColsForCount(stats.length, 3)} ${gridMaxWidthForCount(stats.length, 3)}`}
       >
         {stats.map((stat) => (
-          <div key={stat.label} className="rounded-3xl bg-[#f8f9fb] p-8">
-            <p className="text-sm font-bold text-[#e60012]">{stat.label}</p>
-            <p className="mt-3 text-4xl font-semibold leading-none text-[#1c2b33] md:text-5xl">
+          <div key={stat.label} className="rounded-3xl bg-surface p-8">
+            <p className="text-sm font-bold text-brand">{stat.label}</p>
+            <p className="mt-3 text-4xl font-semibold leading-none text-ink md:text-5xl">
               {stat.value}
             </p>
-            {stat.caption ? <p className="mt-3 text-sm text-[#1c2b33]/70">{stat.caption}</p> : null}
+            {stat.caption ? <p className="mt-3 text-sm text-ink/70">{stat.caption}</p> : null}
           </div>
         ))}
       </div>

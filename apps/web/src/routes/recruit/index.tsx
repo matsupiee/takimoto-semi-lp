@@ -28,8 +28,8 @@ function RecruitPage() {
         </PageContainer>
 
         <PageContainer as="section" width="default" className="pb-12 md:pb-16">
-          <div className="rounded-3xl bg-[#f8f9fb] p-8 md:p-12">
-            <div className="space-y-6 text-base leading-relaxed text-[#1c2b33]/85 md:text-lg">
+          <div className="rounded-3xl bg-surface p-8 md:p-12">
+            <div className="space-y-6 text-base leading-relaxed text-ink/85 md:text-lg">
               <p>現在、次回募集に向けて新歓情報を準備中です。</p>
               <p>
                 募集時期、説明会日程、応募方法などの詳細は、決まり次第こちらのページでお知らせします。
@@ -38,7 +38,7 @@ function RecruitPage() {
             <div className="mt-10">
               <a
                 href="/contact"
-                className="inline-flex items-center gap-2 rounded-full border border-[#1c2b33]/20 px-6 py-3 text-[15px] font-medium text-[#1c2b33] transition hover:bg-[#1c2b33]/5"
+                className="inline-flex items-center gap-2 rounded-full border border-ink/20 px-6 py-3 text-[15px] font-medium text-ink transition hover:bg-ink/5"
               >
                 お問い合わせはこちら
               </a>

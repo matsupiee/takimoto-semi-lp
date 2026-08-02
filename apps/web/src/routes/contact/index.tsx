@@ -62,7 +62,7 @@ function ContactPage() {
       <main>
         <PageContainer as="section" width="default" className="py-12 md:py-16">
           <SectionHeader eyebrow="Contact" title="お問い合わせ" as="h1" />
-          <p className="mt-6 max-w-3xl text-base md:mt-8 text-[#1c2b33]/80 md:text-lg">
+          <p className="mt-6 max-w-3xl text-base md:mt-8 text-ink/80 md:text-lg">
             瀧本ゼミ政策分析パートへのご連絡は、公式LINEにて受け付けています。
             取材依頼・共同研究のご相談・新歓に関するご質問など、お気軽にお送りください。
           </p>
@@ -77,14 +77,14 @@ function ContactPage() {
             <LineCta />
 
             <div className="mt-12">
-              <h2 className="text-xl font-semibold text-[#1c2b33] md:text-2xl">
+              <h2 className="text-xl font-semibold text-ink md:text-2xl">
                 こんなご相談を承っています
               </h2>
               <ul className="mt-6 flex flex-col gap-5">
                 {TOPICS.map((topic) => (
                   <li key={topic.title} className="border-b border-black/10 pb-5">
-                    <p className="text-sm font-semibold text-[#1c2b33]">{topic.title}</p>
-                    <p className="mt-2 text-sm text-[#1c2b33]/75">{topic.description}</p>
+                    <p className="text-sm font-semibold text-ink">{topic.title}</p>
+                    <p className="mt-2 text-sm text-ink/75">{topic.description}</p>
                   </li>
                 ))}
               </ul>
@@ -93,25 +93,23 @@ function ContactPage() {
 
           <aside className="lg:col-span-5">
             <div className="border-t border-black/10 pt-8 lg:border-0 lg:pt-0">
-              <h2 className="text-xl font-semibold text-[#1c2b33] md:text-2xl">
-                その他のご連絡方法
-              </h2>
+              <h2 className="text-xl font-semibold text-ink md:text-2xl">その他のご連絡方法</h2>
               <ul className="mt-6 flex flex-col gap-6">
                 {CONTACT_CHANNELS.map((channel) => (
                   <li key={channel.title} className="border-b border-black/10 pb-6">
-                    <p className="text-sm font-semibold text-[#1c2b33]">{channel.title}</p>
-                    <p className="mt-2 text-sm text-[#1c2b33]/75">{channel.description}</p>
+                    <p className="text-sm font-semibold text-ink">{channel.title}</p>
+                    <p className="mt-2 text-sm text-ink/75">{channel.description}</p>
                     {channel.isLink ? (
                       <a
                         href={channel.value}
-                        className="mt-3 inline-flex text-sm font-medium text-[#1877f2] hover:underline"
+                        className="mt-3 inline-flex text-sm font-medium text-brand-blue hover:underline"
                       >
                         {channel.linkLabel}
                       </a>
                     ) : (
                       <a
                         href={channel.href}
-                        className="mt-3 inline-flex font-mono text-sm text-[#1877f2] hover:underline"
+                        className="mt-3 inline-flex font-mono text-sm text-brand-blue hover:underline"
                       >
                         {channel.value}
                       </a>
