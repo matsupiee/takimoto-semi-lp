@@ -1,5 +1,4 @@
-import PageContainer from "@/shared/_components/layout/page-container";
-import SectionHeader from "@/shared/_components/section-header";
+import SplitSection from "./split-section";
 
 type LinkCard = {
   label: string;
@@ -31,40 +30,40 @@ const cards: LinkCard[] = [
 
 export default function NextActions() {
   return (
-    <PageContainer as="section" width="default" className="py-12 md:py-16">
-      <SectionHeader eyebrow="Learn More" title="もっと知る" />
-
-      <div className="mt-6 grid grid-cols-1 gap-6 md:mt-8 md:grid-cols-3">
+    <SplitSection eyebrow="Learn More" title="もっと知る">
+      <ul className="divide-y divide-[#1c2b33]/10 border-y border-[#1c2b33]/10">
         {cards.map((card) => (
-          <a
-            key={card.href}
-            href={card.href}
-            className="group flex flex-col gap-3 rounded-3xl border border-neutral-200 bg-white p-8 shadow-sm transition hover:-translate-y-0.5 hover:shadow-md"
-          >
-            <span className="text-sm font-bold text-[#e60012]">{card.label}</span>
-            <h3 className="text-xl font-semibold text-[#1c2b33] md:text-2xl">{card.title}</h3>
-            <p className="text-sm leading-relaxed text-[#1c2b33]/80">{card.body}</p>
-            <span className="mt-2 inline-flex items-center gap-2 text-sm font-semibold text-[#1c2b33]">
-              詳しく見る
+          <li key={card.href}>
+            <a
+              href={card.href}
+              className="group flex items-center justify-between gap-6 py-5 transition hover:bg-[#1c2b33]/[0.03]"
+            >
+              <div>
+                <span className="text-xs font-bold text-[#e60012]">{card.label}</span>
+                <h3 className="mt-1 text-lg font-semibold text-[#1c2b33] md:text-xl">
+                  {card.title}
+                </h3>
+                <p className="mt-1 text-sm leading-relaxed text-[#1c2b33]/70">{card.body}</p>
+              </div>
               <svg
                 viewBox="0 0 24 24"
-                width="16"
-                height="16"
+                width="20"
+                height="20"
                 fill="none"
                 stroke="currentColor"
                 strokeWidth="2"
                 strokeLinecap="round"
                 strokeLinejoin="round"
-                className="transition group-hover:translate-x-0.5"
+                className="shrink-0 text-[#1c2b33] transition group-hover:translate-x-1"
                 aria-hidden="true"
               >
                 <path d="M5 12h14" />
                 <path d="m12 5 7 7-7 7" />
               </svg>
-            </span>
-          </a>
+            </a>
+          </li>
         ))}
-      </div>
-    </PageContainer>
+      </ul>
+    </SplitSection>
   );
 }

@@ -1,6 +1,5 @@
 import { SeminarProfile } from "@/lib/microcms/server-fn/seminar-profile";
-import PageContainer from "@/shared/_components/layout/page-container";
-import SectionHeader from "@/shared/_components/section-header";
+import SplitSection from "./split-section";
 
 type Row = {
   term: string;
@@ -24,28 +23,28 @@ export default function ActivityOverview({ profile }: { profile: SeminarProfile 
   if (rows.length === 0) return null;
 
   return (
-    <PageContainer as="section" width="default" className="py-12 md:py-16">
-      <SectionHeader eyebrow="Activity" title="活動概要" />
+    <SplitSection eyebrow="Activity" title="活動概要">
+      <dl className="divide-y divide-[#1c2b33]/10 border-y border-[#1c2b33]/10">
+        {rows.map((row) => (
+          <div
+            key={row.term}
+            className="grid grid-cols-1 gap-1 py-5 md:grid-cols-[8rem_1fr] md:items-baseline md:gap-6"
+          >
+            <dt className="text-sm font-bold text-[#e60012]">{row.term}</dt>
+            <dd className="text-xl font-semibold text-[#1c2b33] md:text-2xl">{row.description}</dd>
+          </div>
+        ))}
+      </dl>
 
-      <div className="mt-6 rounded-3xl bg-[#f8f9fb] p-8 md:mt-8 md:p-10">
-        <dl className="grid grid-cols-1 gap-6 md:grid-cols-[8rem_auto] md:justify-start md:gap-x-10 md:gap-y-6">
-          {rows.map((row) => (
-            <div key={row.term} className="md:contents">
-              <dt className="mb-2 text-sm font-bold text-[#e60012] md:mb-0 md:text-base">
-                {row.term}
-              </dt>
-              <dd className="text-base leading-relaxed text-[#1c2b33]/85 md:text-lg">
-                {row.description}
-              </dd>
-            </div>
-          ))}
-        </dl>
-        {profile.activityNote ? (
-          <p className="mt-8 text-sm leading-relaxed text-[#1c2b33]/70 md:text-base">
-            {profile.activityNote}
-          </p>
-        ) : null}
-      </div>
-    </PageContainer>
+      {profile.activityNote ? (
+        <p className="mt-6 flex items-start gap-2.5 text-sm leading-relaxed text-[#1c2b33]/70">
+          <span
+            className="mt-1.5 h-1.5 w-1.5 shrink-0 rounded-full bg-[#e60012]"
+            aria-hidden="true"
+          />
+          {profile.activityNote}
+        </p>
+      ) : null}
+    </SplitSection>
   );
 }
