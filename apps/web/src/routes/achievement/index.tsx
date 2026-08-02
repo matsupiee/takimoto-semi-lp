@@ -46,13 +46,13 @@ function AchievementItem({ item }: { item: Achievement }) {
     <li className="py-3">
       <div className="flex flex-col gap-1 md:flex-row md:items-baseline md:gap-4">
         {dateLabel ? (
-          <span className="shrink-0 text-sm text-[#1c2b33]/60 md:w-28">{dateLabel}</span>
+          <span className="shrink-0 text-sm text-ink/60 md:w-28">{dateLabel}</span>
         ) : (
-          <span className="shrink-0 text-sm text-[#1c2b33]/60 md:w-28">—</span>
+          <span className="shrink-0 text-sm text-ink/60 md:w-28">—</span>
         )}
         <div className="flex-1">
-          <p className="text-base text-[#1c2b33] md:text-lg">{title}</p>
-          {item.summary ? <p className="mt-1 text-sm text-[#1c2b33]/70">{item.summary}</p> : null}
+          <p className="text-base text-ink md:text-lg">{title}</p>
+          {item.summary ? <p className="mt-1 text-sm text-ink/70">{item.summary}</p> : null}
         </div>
       </div>
     </li>
@@ -68,18 +68,18 @@ function AchievementsPage() {
       <main>
         <PageContainer as="section" width="default" className="py-12 md:py-16">
           <SectionHeader eyebrow="Achievements" title="活動の成果" as="h1" />
-          <p className="mt-6 text-base md:mt-8 text-[#1c2b33]/80 md:text-lg">
+          <p className="mt-6 text-base md:mt-8 text-ink/80 md:text-lg">
             瀧本ゼミ政策分析パートのこれまでの活動実績の一覧です。
           </p>
         </PageContainer>
 
         <PageContainer as="section" width="default" className="pb-12 md:pb-16">
           {achievements.length === 0 ? (
-            <p className="text-[#1c2b33]/60">
+            <p className="text-ink/60">
               活動の成果は現在準備中です。公開までしばらくお待ちください。
             </p>
           ) : (
-            <ul className="divide-y divide-[#1c2b33]/10 border-t border-b border-[#1c2b33]/10">
+            <ul className="divide-y divide-ink/10 border-t border-b border-ink/10">
               {achievements.map((item) => (
                 <AchievementItem key={item.id} item={item} />
               ))}

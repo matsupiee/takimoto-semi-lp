@@ -35,13 +35,13 @@ function ReportDetailPage() {
         <PageContainer as="article" width="narrow" className="py-12 md:py-16">
           <Link
             to="/report"
-            className="mb-8 inline-flex items-center text-[15px] text-[#1c2b33]/70 hover:underline"
+            className="mb-8 inline-flex items-center text-[15px] text-ink/70 hover:underline"
           >
             ← レポート一覧へ
           </Link>
 
-          <p className="mb-3 text-sm font-medium text-[#1c2b33]/70">{publishedAt}</p>
-          <h1 className="mb-8 text-balance text-2xl font-semibold leading-tight text-[#1c2b33] md:text-4xl">
+          <p className="mb-3 text-sm font-medium text-ink/70">{publishedAt}</p>
+          <h1 className="mb-8 text-balance text-2xl font-semibold leading-tight text-ink md:text-4xl">
             {report.title}
           </h1>
 
@@ -56,7 +56,7 @@ function ReportDetailPage() {
           ) : null}
 
           <div
-            className="prose prose-neutral max-w-none prose-headings:text-[#1c2b33] prose-a:text-[#1c2b33]"
+            className="prose prose-neutral max-w-none prose-headings:text-ink prose-a:text-ink"
             dangerouslySetInnerHTML={{ __html: report.body }}
           />
         </PageContainer>

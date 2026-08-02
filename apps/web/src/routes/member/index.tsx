@@ -38,7 +38,7 @@ function MemberListPage() {
       <main>
         <PageContainer width="default" className="py-12 md:py-16">
           <SectionHeader eyebrow="Members" title="メンバー" as="h1" />
-          <p className="mt-6 mb-10 max-w-3xl text-base md:mt-8 text-[#1c2b33]/80 md:text-lg">
+          <p className="mt-6 mb-10 max-w-3xl text-base md:mt-8 text-ink/80 md:text-lg">
             瀧本ゼミ政策分析パートで活動しているメンバーを紹介します。
           </p>
 

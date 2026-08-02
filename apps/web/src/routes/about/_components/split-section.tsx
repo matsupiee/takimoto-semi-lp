@@ -25,7 +25,7 @@ export default function SplitSection({ eyebrow, title, as, lede, id, children }:
         <div className="md:col-span-4">
           <SectionHeader eyebrow={eyebrow} title={title} as={as} />
           {lede ? (
-            <p className="mt-4 text-sm leading-relaxed text-[#1c2b33]/70 md:text-base">{lede}</p>
+            <p className="mt-4 text-sm leading-relaxed text-ink/70 md:text-base">{lede}</p>
           ) : null}
         </div>
         <div className="md:col-span-8">{children}</div>

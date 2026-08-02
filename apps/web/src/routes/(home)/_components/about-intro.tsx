@@ -18,7 +18,7 @@ export default function AboutIntro() {
             }
           />
 
-          <div className="mt-10 space-y-6 text-base leading-relaxed text-[#1c2b33]/85 md:mt-14 md:text-lg">
+          <div className="mt-10 space-y-6 text-base leading-relaxed text-ink/85 md:mt-14 md:text-lg">
             <p>
               瀧本ゼミ政策分析パートは、「世の中でまだ十分に知られていないが、実は重要である問題」に向き合う、インカレの自主ゼミ・学生シンクタンクです。
             </p>
@@ -30,7 +30,7 @@ export default function AboutIntro() {
           <div className="mt-10">
             <a
               href="/about"
-              className="inline-flex items-center gap-2 rounded-full bg-[#1c2b33] px-6 py-3 text-[15px] font-medium text-white shadow-md transition hover:bg-[#1c2b33]/90"
+              className="inline-flex items-center gap-2 rounded-full bg-ink px-6 py-3 text-[15px] font-medium text-white shadow-md transition hover:bg-ink/90"
             >
               瀧本ゼミについて知る
               <svg
@@ -52,7 +52,7 @@ export default function AboutIntro() {
         </div>
 
         <div className="md:col-span-5">
-          <div className="relative h-64 overflow-hidden rounded-2xl md:h-full md:min-h-[600px] md:rounded-none">
+          <div className="relative h-64 overflow-hidden rounded-3xl md:h-full md:min-h-[600px] md:rounded-none">
             <img
               src="/images/sample-image.jpg"
               alt="瀧本ゼミ政策分析パートの活動風景"

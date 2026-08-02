@@ -74,7 +74,7 @@ export default function Hero() {
                 <a
                   href={slide.cta.href}
                   aria-label={slide.cta.label}
-                  className="inline-flex items-center rounded-full bg-white px-6 py-3 text-[15px] font-medium text-[#1c2b33] shadow-md transition hover:bg-white/90"
+                  className="inline-flex items-center rounded-full bg-white px-6 py-3 text-[15px] font-medium text-ink shadow-md transition hover:bg-white/90"
                 >
                   {slide.cta.label}
                 </a>

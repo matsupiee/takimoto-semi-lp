@@ -18,7 +18,7 @@ export function AnnouncementList({
   className?: string;
 }) {
   if (items.length === 0) {
-    return <p className={cn("text-[#1c2b33]/70", className)}>現在お知らせはありません。</p>;
+    return <p className={cn("text-ink/70", className)}>現在お知らせはありません。</p>;
   }
 
   return (
@@ -60,10 +60,10 @@ function AnnouncementRow({ item }: { item: Announcement }) {
           <span className="inline-flex shrink-0 rounded-full bg-neutral-100 px-3 py-1 text-xs text-neutral-500 md:px-3.5 md:py-1.5 md:text-sm">
             {date}
           </span>
-          <span className="text-xs font-normal text-[#e60012] md:text-sm">{item.category}</span>
+          <span className="text-xs font-normal text-brand md:text-sm">{item.category}</span>
         </div>
         {isExternal ? (
-          <span className="inline-flex shrink-0 pt-0.5 text-[#e60012]" aria-hidden="true">
+          <span className="inline-flex shrink-0 pt-0.5 text-brand" aria-hidden="true">
             <ExternalIcon />
           </span>
         ) : null}

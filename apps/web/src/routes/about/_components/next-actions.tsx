@@ -31,19 +31,17 @@ const cards: LinkCard[] = [
 export default function NextActions() {
   return (
     <SplitSection eyebrow="Learn More" title="もっと知る">
-      <ul className="divide-y divide-[#1c2b33]/10 border-y border-[#1c2b33]/10">
+      <ul className="divide-y divide-ink/10 border-y border-ink/10">
         {cards.map((card) => (
           <li key={card.href}>
             <a
               href={card.href}
-              className="group flex items-center justify-between gap-6 py-5 transition hover:bg-[#1c2b33]/[0.03]"
+              className="group flex items-center justify-between gap-6 py-5 transition hover:bg-ink/[0.03]"
             >
               <div>
-                <span className="text-xs font-bold text-[#e60012]">{card.label}</span>
-                <h3 className="mt-1 text-lg font-semibold text-[#1c2b33] md:text-xl">
-                  {card.title}
-                </h3>
-                <p className="mt-1 text-sm leading-relaxed text-[#1c2b33]/70">{card.body}</p>
+                <span className="text-xs font-bold text-brand">{card.label}</span>
+                <h3 className="mt-1 text-lg font-semibold text-ink md:text-xl">{card.title}</h3>
+                <p className="mt-1 text-sm leading-relaxed text-ink/70">{card.body}</p>
               </div>
               <svg
                 viewBox="0 0 24 24"
@@ -54,7 +52,7 @@ export default function NextActions() {
                 strokeWidth="2"
                 strokeLinecap="round"
                 strokeLinejoin="round"
-                className="shrink-0 text-[#1c2b33] transition group-hover:translate-x-1"
+                className="shrink-0 text-ink transition group-hover:translate-x-1"
                 aria-hidden="true"
               >
                 <path d="M5 12h14" />

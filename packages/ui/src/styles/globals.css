@@ -7,9 +7,28 @@
 
 @custom-variant dark (&:is(.dark *));
 
+/*
+ * ブランドカラー。従来は各コンポーネントに 16 進で直書きされていた
+ * （#1c2b33 だけで 90 箇所以上）ため、配色を変えるたびに全箇所を触る
+ * 必要があった。ここを唯一の定義元にする。
+ */
+@theme {
+  /* 本文・見出しの濃紺 */
+  --color-ink: #1c2b33;
+  /* アクセントの赤（eyebrow、ラベル） */
+  --color-brand: #e60012;
+  /* リンクなどに使う青 */
+  --color-brand-blue: #1877f2;
+  /* パネル・カードの薄グレー背景 */
+  --color-surface: #f8f9fb;
+  /* LINE のブランドカラー */
+  --color-line-green: #06c755;
+}
+
 :root {
   --background: oklch(1 0 0);
-  --foreground: oklch(0.145 0 0);
+  /* body の文字色。__root.tsx で直書きせず、この変数を効かせる */
+  --foreground: var(--color-ink);
   --card: oklch(1 0 0);
   --card-foreground: oklch(0.145 0 0);
   --popover: oklch(1 0 0);

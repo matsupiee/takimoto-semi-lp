@@ -38,27 +38,27 @@ function NewsDetailPage() {
         <PageContainer as="article" width="narrow" className="py-12 md:py-16">
           <Link
             to="/announcement"
-            className="mb-8 inline-flex items-center text-[15px] text-[#1c2b33]/70 hover:underline"
+            className="mb-8 inline-flex items-center text-[15px] text-ink/70 hover:underline"
           >
             ← お知らせ一覧へ
           </Link>
 
-          <p className="mb-3 text-sm font-bold text-[#e60012]">{announcement.category}</p>
-          <p className="mb-3 text-sm font-medium text-[#1c2b33]/70">
+          <p className="mb-3 text-sm font-bold text-brand">{announcement.category}</p>
+          <p className="mb-3 text-sm font-medium text-ink/70">
             {announcement.mediaName}
             {` ・ ${publishedAt}`}
           </p>
-          <h1 className="mb-8 text-balance text-2xl font-semibold leading-tight text-[#1c2b33] md:text-4xl">
+          <h1 className="mb-8 text-balance text-2xl font-semibold leading-tight text-ink md:text-4xl">
             {announcement.title}
           </h1>
 
           {announcement.body ? (
             <div
-              className="prose prose-neutral max-w-none prose-headings:text-[#1c2b33] prose-a:text-[#1c2b33]"
+              className="prose prose-neutral max-w-none prose-headings:text-ink prose-a:text-ink"
               dangerouslySetInnerHTML={{ __html: announcement.body }}
             />
           ) : (
-            <p className="text-[#1c2b33]/70">本文はありません。</p>
+            <p className="text-ink/70">本文はありません。</p>
           )}
         </PageContainer>
       </main>

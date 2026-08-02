@@ -4,8 +4,8 @@ type Accent = "red" | "blue";
 type HeadingLevel = "h1" | "h2";
 
 const ACCENT_CLASS: Record<Accent, string> = {
-  red: "text-[#e60012]",
-  blue: "text-[#1877f2]",
+  red: "text-brand",
+  blue: "text-brand-blue",
 };
 
 type Props = {
@@ -28,7 +28,7 @@ export default function SectionHeader({
       <p className={`text-sm font-bold tracking-wide md:text-base ${ACCENT_CLASS[accent]}`}>
         {eyebrow}
       </p>
-      <Heading className="mt-3 text-balance font-semibold leading-tight text-[#1c2b33] text-2xl md:text-4xl">
+      <Heading className="mt-3 text-balance font-semibold leading-tight text-ink text-2xl md:text-4xl">
         {title}
       </Heading>
     </div>

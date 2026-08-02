@@ -31,13 +31,13 @@ function ReportListPage() {
       <main>
         <PageContainer width="default" className="py-12 md:py-16">
           <SectionHeader eyebrow="Report" title="政策分析レポート" as="h1" />
-          <p className="mt-6 mb-10 max-w-3xl text-base md:mt-8 text-[#1c2b33]/80 md:text-lg">
+          <p className="mt-6 mb-10 max-w-3xl text-base md:mt-8 text-ink/80 md:text-lg">
             瀧本ゼミ政策分析パートの活動として公開してきた政策提言・分析レポートです。
             エビデンスに基づいた問題発見と解決の提案を掲載しています。
           </p>
 
           {reports.length === 0 ? (
-            <p className="text-[#1c2b33]/70">まだレポート記事がありません。</p>
+            <p className="text-ink/70">まだレポート記事がありません。</p>
           ) : (
             <div
               className={`grid grid-cols-1 gap-6 ${gridColsForCount(reports.length, 3)} ${gridMaxWidthForCount(reports.length, 3)}`}
@@ -54,9 +54,9 @@ function ReportListPage() {
                     key={item.id}
                     to="/report/$id"
                     params={{ id: item.id }}
-                    className="group flex flex-col overflow-hidden rounded-3xl bg-[#f8f9fb]"
+                    className="group flex flex-col overflow-hidden rounded-3xl bg-surface"
                   >
-                    <div className="aspect-[4/3] w-full overflow-hidden bg-[#1c2b33]/5">
+                    <div className="aspect-[4/3] w-full overflow-hidden bg-ink/5">
                       {item.thumbnail?.url ? (
                         <img
                           src={`${item.thumbnail.url}?fit=crop&w=800&h=600`}
@@ -67,12 +67,10 @@ function ReportListPage() {
                       ) : null}
                     </div>
                     <div className="flex flex-col gap-3 p-6 md:p-8">
-                      <p className="text-sm font-medium text-[#1c2b33]/70">{publishedAt}</p>
-                      <p className="text-xl font-medium leading-snug text-[#1c2b33]">
-                        {item.title}
-                      </p>
+                      <p className="text-sm font-medium text-ink/70">{publishedAt}</p>
+                      <p className="text-xl font-medium leading-snug text-ink">{item.title}</p>
                       {item.summary ? (
-                        <p className="line-clamp-3 text-sm text-[#1c2b33]/70">{item.summary}</p>
+                        <p className="line-clamp-3 text-sm text-ink/70">{item.summary}</p>
                       ) : null}
                     </div>
                   </Link>
