@@ -31,10 +31,10 @@ const cards: LinkCard[] = [
 
 export default function NextActions() {
   return (
-    <PageContainer as="section" className="py-16 md:py-24">
+    <PageContainer as="section" width="default" className="py-12 md:py-16">
       <SectionHeader eyebrow="Learn More" title="もっと知る" />
 
-      <div className="mt-10 grid grid-cols-1 gap-6 md:mt-14 md:grid-cols-3">
+      <div className="mt-6 grid grid-cols-1 gap-6 md:mt-8 md:grid-cols-3">
         {cards.map((card) => (
           <a
             key={card.href}

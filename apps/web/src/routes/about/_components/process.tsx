@@ -35,13 +35,13 @@ const steps: Step[] = [
 
 export default function Process() {
   return (
-    <PageContainer as="section" className="py-16 md:py-24">
+    <PageContainer as="section" width="default" className="py-12 md:py-16">
       <SectionHeader eyebrow="Process" title="活動の流れ" />
-      <p className="mt-6 max-w-2xl text-base leading-relaxed text-[#1c2b33]/80 md:text-lg">
+      <p className="mt-6 text-base leading-relaxed text-[#1c2b33]/80 md:mt-8 md:text-lg">
         ひとつの政策提言は、課題設定から社会実装に向けた取り組みまで、段階を踏みながら形になっていきます。
       </p>
 
-      <ol className="mt-10 grid grid-cols-1 gap-px overflow-hidden rounded-3xl border border-[#1c2b33]/10 bg-[#1c2b33]/10 md:mt-14 md:grid-cols-2">
+      <ol className="mt-8 grid grid-cols-1 gap-px overflow-hidden rounded-3xl border border-[#1c2b33]/10 bg-[#1c2b33]/10 md:grid-cols-2">
         {steps.map((step, index) => (
           <li key={step.title} className="flex gap-5 bg-white p-6 md:p-8">
             <span className="flex h-10 w-10 shrink-0 items-center justify-center rounded-full bg-[#1c2b33] text-sm font-semibold text-white">

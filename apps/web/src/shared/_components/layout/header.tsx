@@ -8,6 +8,8 @@ import {
   DrawerTrigger,
 } from "@takimoto-semi-lp/ui/components/drawer";
 
+import PageContainer from "./page-container";
+
 export const primaryNavItems = [
   { label: "About", href: "/about" },
   { label: "活動の成果", href: "/achievement" },
@@ -26,7 +28,8 @@ export default function Header() {
   return (
     <nav aria-label="メイン" className="sticky top-0 z-50 bg-white">
       <div className="relative">
-        <div className="flex h-16 items-center justify-between px-4 md:px-10">
+        {/* ヘッダー/フッターは wide、本文セクションは default。ナビは default だと収まらない */}
+        <PageContainer className="flex h-16 items-center justify-between">
           <div className="flex items-center gap-10">
             <a href="/" aria-label="瀧本ゼミホーム" className="flex items-center">
               <img alt="瀧本ゼミロゴ" src={"/logo.svg"} className="h-14 w-auto" />
@@ -89,7 +92,7 @@ export default function Header() {
               </ul>
             </DrawerContent>
           </Drawer>
-        </div>
+        </PageContainer>
 
         <div className="h-px w-full bg-black/10" />
       </div>

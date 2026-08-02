@@ -1,5 +1,6 @@
 import { useState } from "react";
 import { endNavItems, primaryNavItems } from "./header";
+import PageContainer from "./page-container";
 
 type NavItem = { label: string; href: string };
 type Section = { title: string; items: NavItem[] };
@@ -83,7 +84,7 @@ function FooterSection({ section }: { section: Section }) {
 export default function Footer() {
   return (
     <footer className="border-t border-black/10 bg-white">
-      <div className="mx-auto max-w-7xl px-6 py-12 md:px-16 md:py-16">
+      <PageContainer className="py-12 md:py-16">
         <ul className="flex items-center gap-5">
           {socialIcons.map((s) => (
             <li key={s.label}>
@@ -109,7 +110,7 @@ export default function Footer() {
         <div className="mt-10 flex flex-col gap-4 pt-8 text-xs text-[#1c2b33]/70 md:flex-row md:items-center md:justify-between">
           <p>© {new Date().getFullYear()} 瀧本ゼミ政策分析パート</p>
         </div>
-      </div>
+      </PageContainer>
     </footer>
   );
 }

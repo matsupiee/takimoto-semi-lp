@@ -3,7 +3,7 @@ import SectionHeader from "@/shared/_components/section-header";
 
 export default function Intro() {
   return (
-    <PageContainer as="section" className="py-16 md:py-24">
+    <PageContainer as="section" width="default" className="py-12 md:py-16">
       <SectionHeader
         eyebrow="About Us"
         as="h1"
@@ -16,8 +16,9 @@ export default function Intro() {
         }
       />
 
-      <div className="mt-10 grid grid-cols-1 gap-8 md:mt-14 md:grid-cols-12">
-        <div className="space-y-6 text-base leading-relaxed text-[#1c2b33]/85 md:col-span-8 md:text-lg">
+      {/* 12カラムを宣言して8カラムしか使わないと、残り4カラムがただの余白になる */}
+      <div className="mt-6 md:mt-8">
+        <div className="space-y-6 text-base leading-relaxed text-[#1c2b33]/85 md:text-lg">
           <p>
             瀧本ゼミ政策分析パートは、「世の中でまだ十分に知られていないが、実は重要である問題」に向き合う、インカレの自主ゼミ・学生シンクタンクです。
             徹底的なリサーチと専門家・現場へのヒアリングを通じて課題の構造を捉え、「その課題は本当に解くべきか」「どう介入すれば解決に近づくか」を一つひとつ検証しながら、政策として形にしていきます。

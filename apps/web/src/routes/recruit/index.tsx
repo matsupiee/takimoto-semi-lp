@@ -23,11 +23,11 @@ function RecruitPage() {
     <div className="min-h-screen bg-white">
       <Header />
       <main>
-        <PageContainer as="section" className="py-12">
+        <PageContainer as="section" width="default" className="py-12 md:py-16">
           <SectionHeader eyebrow="Recruit" title="新歓案内" as="h1" />
         </PageContainer>
 
-        <PageContainer as="section" className="pb-20 md:pb-28">
+        <PageContainer as="section" width="default" className="pb-12 md:pb-16">
           <div className="rounded-3xl bg-[#f8f9fb] p-8 md:p-12">
             <div className="space-y-6 text-base leading-relaxed text-[#1c2b33]/85 md:text-lg">
               <p>現在、次回募集に向けて新歓情報を準備中です。</p>

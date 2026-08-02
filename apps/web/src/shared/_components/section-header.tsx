@@ -28,7 +28,7 @@ export default function SectionHeader({
       <p className={`text-sm font-bold tracking-wide md:text-base ${ACCENT_CLASS[accent]}`}>
         {eyebrow}
       </p>
-      <Heading className="mt-4 font-semibold leading-tight text-[#1c2b33] text-3xl md:text-5xl">
+      <Heading className="mt-3 text-balance font-semibold leading-tight text-[#1c2b33] text-2xl md:text-4xl">
         {title}
       </Heading>
     </div>

@@ -4,6 +4,7 @@ import { fetchInterview } from "@/lib/microcms/server-fn/interview";
 import { SITE_NAME, pageMeta } from "@/lib/site";
 import Footer from "@/shared/_components/layout/footer";
 import Header from "@/shared/_components/layout/header";
+import PageContainer from "@/shared/_components/layout/page-container";
 
 export const Route = createFileRoute("/interview/(detail)/$id")({
   component: InterviewDetailPage,
@@ -30,8 +31,8 @@ function InterviewDetailPage() {
   return (
     <div className="min-h-screen bg-white">
       <Header />
-      <main className="px-6 py-16 md:px-16 md:py-24">
-        <article className="mx-auto max-w-3xl">
+      <main>
+        <PageContainer as="article" width="narrow" className="py-12 md:py-16">
           <Link
             to="/interview"
             className="mb-8 inline-flex items-center text-[15px] text-[#1c2b33]/70 hover:underline"
@@ -44,7 +45,7 @@ function InterviewDetailPage() {
             {interview.grade ? ` ・ ${interview.grade}` : ""}
             {` ・ ${publishedAt}`}
           </p>
-          <h1 className="mb-8 text-3xl font-semibold leading-tight text-[#1c2b33] md:text-5xl">
+          <h1 className="mb-8 text-balance text-2xl font-semibold leading-tight text-[#1c2b33] md:text-4xl">
             {interview.title}
           </h1>
 
@@ -62,7 +63,7 @@ function InterviewDetailPage() {
             className="prose prose-neutral max-w-none prose-headings:text-[#1c2b33] prose-a:text-[#1c2b33]"
             dangerouslySetInnerHTML={{ __html: interview.body }}
           />
-        </article>
+        </PageContainer>
       </main>
       <Footer />
     </div>

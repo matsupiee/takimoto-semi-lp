@@ -24,10 +24,10 @@ export default function ActivityOverview({ profile }: { profile: SeminarProfile 
   if (rows.length === 0) return null;
 
   return (
-    <PageContainer as="section" className="py-16 md:py-24">
+    <PageContainer as="section" width="default" className="py-12 md:py-16">
       <SectionHeader eyebrow="Activity" title="活動概要" />
 
-      <div className="mt-10 rounded-3xl bg-[#f8f9fb] p-8 md:mt-14 md:p-12">
+      <div className="mt-6 rounded-3xl bg-[#f8f9fb] p-8 md:mt-8 md:p-10">
         <dl className="grid grid-cols-1 gap-6 md:grid-cols-[8rem_auto] md:justify-start md:gap-x-10 md:gap-y-6">
           {rows.map((row) => (
             <div key={row.term} className="md:contents">
