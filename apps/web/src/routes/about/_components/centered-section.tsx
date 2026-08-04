@@ -10,8 +10,6 @@ type Props = {
   lede?: ReactNode;
   /** 見出し下の短い赤罫。ページ先頭の見出しにだけ付ける */
   rule?: boolean;
-  /** muted は薄グレーの帯。白と交互に並べてページの区切りを作る */
-  tone?: "default" | "muted";
   id?: string;
   children: ReactNode;
 };
@@ -19,33 +17,23 @@ type Props = {
 /**
  * 見出しを中央に置く about ページ共通のセクション枠。
  *
- * 背景色を全幅に敷くため、PageContainer 自体を section にせず外側で包む。
+ * 背景色は敷かない。区切りは余白と eyebrow で足りており、背景の塗り分けは
+ * サイトの他のページに無い仕掛けなので持ち込まない。
  */
-export default function CenteredSection({
-  eyebrow,
-  title,
-  as,
-  lede,
-  rule,
-  tone = "default",
-  id,
-  children,
-}: Props) {
+export default function CenteredSection({ eyebrow, title, as, lede, rule, id, children }: Props) {
   return (
-    <section id={id} className={tone === "muted" ? "bg-surface" : "bg-white"}>
-      <PageContainer className="py-12 md:py-16">
-        <div className="text-center">
-          <SectionHeader eyebrow={eyebrow} title={title} as={as} className="text-center" />
-          {rule ? <div className="mx-auto mt-5 h-0.5 w-10 bg-brand" /> : null}
-          {lede ? (
-            <p className="mx-auto mt-6 max-w-2xl text-base leading-relaxed text-ink/70 md:text-lg">
-              {lede}
-            </p>
-          ) : null}
-        </div>
+    <PageContainer as="section" id={id} className="py-12 md:py-16">
+      <div>
+        <SectionHeader eyebrow={eyebrow} title={title} as={as} align="center" />
+        {rule ? <div className="mx-auto mt-5 h-0.5 w-10 bg-brand" /> : null}
+        {lede ? (
+          <p className="mx-auto mt-6 max-w-2xl text-center text-base leading-relaxed text-ink/70 md:text-lg">
+            {lede}
+          </p>
+        ) : null}
+      </div>
 
-        <div className="mt-8 md:mt-10">{children}</div>
-      </PageContainer>
-    </section>
+      <div className="mt-8 md:mt-10">{children}</div>
+    </PageContainer>
   );
 }

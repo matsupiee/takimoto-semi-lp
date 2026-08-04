@@ -67,8 +67,8 @@ function AchievementsPage() {
       <Header />
       <main>
         <PageContainer as="section" width="default" className="py-12 md:py-16">
-          <SectionHeader eyebrow="Achievements" title="活動の成果" as="h1" />
-          <p className="mt-6 text-base md:mt-8 text-ink/80 md:text-lg">
+          <SectionHeader eyebrow="Achievements" title="活動の成果" as="h1" align="center" />
+          <p className="mx-auto mt-6 max-w-2xl text-center text-base md:mt-8 text-ink/80 md:text-lg">
             瀧本ゼミ政策分析パートのこれまでの活動実績の一覧です。
           </p>
         </PageContainer>

@@ -71,9 +71,11 @@ function MessagePage({ eyebrow, title, body }: { eyebrow: string; title: string;
       <Header />
       <main>
         <PageContainer as="section" width="narrow" className="py-12 md:py-16">
-          <SectionHeader eyebrow={eyebrow} title={title} as="h1" />
-          <p className="mt-6 text-base md:mt-8 text-ink/80 md:text-lg">{body}</p>
-          <div className="mt-10">
+          <SectionHeader eyebrow={eyebrow} title={title} as="h1" align="center" />
+          <p className="mx-auto mt-6 max-w-2xl text-center text-base md:mt-8 text-ink/80 md:text-lg">
+            {body}
+          </p>
+          <div className="mt-10 text-center">
             <a
               href="/"
               className="inline-flex items-center rounded-full bg-ink px-8 py-3 text-[15px] font-medium text-white shadow-sm transition hover:bg-ink/90"

@@ -43,7 +43,12 @@ export default function Announcement({ items }: { items: Announcement[] }) {
       width="default"
       className="bg-white py-12 md:py-16"
     >
-      <SectionHeader eyebrow="Announcement" title="お知らせ / プレスリリース" accent="red" />
+      <SectionHeader
+        eyebrow="Announcement"
+        title="お知らせ / プレスリリース"
+        accent="red"
+        align="center"
+      />
       <AnnouncementList items={items} className="mt-6 md:mt-8" />
     </PageContainer>
   );

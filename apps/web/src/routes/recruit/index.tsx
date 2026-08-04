@@ -24,7 +24,7 @@ function RecruitPage() {
       <Header />
       <main>
         <PageContainer as="section" width="default" className="py-12 md:py-16">
-          <SectionHeader eyebrow="Recruit" title="新歓案内" as="h1" />
+          <SectionHeader eyebrow="Recruit" title="新歓案内" as="h1" align="center" />
         </PageContainer>
 
         <PageContainer as="section" width="default" className="pb-12 md:pb-16">

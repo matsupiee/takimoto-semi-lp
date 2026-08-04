@@ -30,7 +30,13 @@ function InterviewListPage() {
       <Header />
       <main>
         <PageContainer width="default" className="py-12 md:py-16">
-          <SectionHeader eyebrow="Interview" title="ゼミ生インタビュー" as="h1" className="mb-10" />
+          <SectionHeader
+            eyebrow="Interview"
+            title="ゼミ生インタビュー"
+            as="h1"
+            align="center"
+            className="mb-10"
+          />
 
           {interviews.length === 0 ? (
             <p className="text-ink/70">まだインタビュー記事がありません。</p>

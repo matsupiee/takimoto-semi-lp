@@ -23,7 +23,7 @@ export default function ActivityOverview({ profile }: { profile: SeminarProfile 
   if (rows.length === 0) return null;
 
   return (
-    <CenteredSection eyebrow="Activity" title="活動概要" tone="muted">
+    <CenteredSection eyebrow="Activity" title="活動概要">
       {/*
         件数は CMS の入力状況で 1〜3 に変わる。grid + 固定カラムだと 1 件のとき
         帯の中で 1/3 幅に縮んで残りが空くため、flex-1 で等分させる。

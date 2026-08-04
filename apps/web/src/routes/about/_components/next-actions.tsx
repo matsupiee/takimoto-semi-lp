@@ -30,7 +30,7 @@ const cards: LinkCard[] = [
 
 export default function NextActions() {
   return (
-    <CenteredSection eyebrow="Learn More" title="もっと知る" tone="muted">
+    <CenteredSection eyebrow="Learn More" title="もっと知る">
       <ul className="divide-y divide-ink/10 border border-ink/10 bg-white">
         {cards.map((card) => (
           <li key={card.href}>
