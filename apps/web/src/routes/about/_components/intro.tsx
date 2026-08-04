@@ -1,10 +1,11 @@
-import SplitSection from "./split-section";
+import CenteredSection from "./centered-section";
 
 export default function Intro() {
   return (
-    <SplitSection
+    <CenteredSection
       eyebrow="About Us"
       as="h1"
+      rule
       title={
         <>
           社会課題を、
@@ -13,7 +14,7 @@ export default function Intro() {
         </>
       }
     >
-      <div className="space-y-6 text-base leading-relaxed text-ink/85 md:text-lg">
+      <div className="mx-auto max-w-3xl space-y-6 text-base leading-relaxed text-ink/85 md:text-lg">
         <p>
           瀧本ゼミ政策分析パートは、「世の中でまだ十分に知られていないが、実は重要である問題」に向き合う、インカレの自主ゼミ・学生シンクタンクです。
           徹底的なリサーチと専門家・現場へのヒアリングを通じて課題の構造を捉え、「その課題は本当に解くべきか」「どう介入すれば解決に近づくか」を一つひとつ検証しながら、政策として形にしていきます。
@@ -23,6 +24,6 @@ export default function Intro() {
           そうして磨いた政策提言を、専門家へのヒアリングや発表を重ねながら、社会実装に向けて届けていきます。
         </p>
       </div>
-    </SplitSection>
+    </CenteredSection>
   );
 }

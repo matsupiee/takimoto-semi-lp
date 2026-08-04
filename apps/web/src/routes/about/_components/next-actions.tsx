@@ -1,4 +1,4 @@
-import SplitSection from "./split-section";
+import CenteredSection from "./centered-section";
 
 type LinkCard = {
   label: string;
@@ -30,19 +30,21 @@ const cards: LinkCard[] = [
 
 export default function NextActions() {
   return (
-    <SplitSection eyebrow="Learn More" title="もっと知る">
-      <ul className="divide-y divide-ink/10 border-y border-ink/10">
+    <CenteredSection eyebrow="Learn More" title="もっと知る" tone="muted">
+      <ul className="divide-y divide-ink/10 border border-ink/10 bg-white">
         {cards.map((card) => (
           <li key={card.href}>
             <a
               href={card.href}
-              className="group flex items-center justify-between gap-6 py-5 transition hover:bg-ink/[0.03]"
+              className="group flex flex-col gap-1 px-6 py-5 transition hover:bg-ink/[0.03] sm:flex-row sm:items-center sm:gap-6 sm:px-8"
             >
-              <div>
-                <span className="text-xs font-bold text-brand">{card.label}</span>
-                <h3 className="mt-1 text-lg font-semibold text-ink md:text-xl">{card.title}</h3>
-                <p className="mt-1 text-sm leading-relaxed text-ink/70">{card.body}</p>
-              </div>
+              <span className="w-32 shrink-0 text-xs font-bold tracking-wide text-brand">
+                {card.label}
+              </span>
+              <h3 className="shrink-0 text-base font-semibold text-ink sm:w-32 md:text-lg">
+                {card.title}
+              </h3>
+              <p className="flex-1 text-sm leading-relaxed text-ink/70">{card.body}</p>
               <svg
                 viewBox="0 0 24 24"
                 width="20"
@@ -52,7 +54,7 @@ export default function NextActions() {
                 strokeWidth="2"
                 strokeLinecap="round"
                 strokeLinejoin="round"
-                className="shrink-0 text-ink transition group-hover:translate-x-1"
+                className="hidden shrink-0 text-ink transition group-hover:translate-x-1 sm:block"
                 aria-hidden="true"
               >
                 <path d="M5 12h14" />
@@ -62,6 +64,6 @@ export default function NextActions() {
           </li>
         ))}
       </ul>
-    </SplitSection>
+    </CenteredSection>
   );
 }
