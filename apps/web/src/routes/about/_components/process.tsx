@@ -1,4 +1,4 @@
-import SplitSection from "./split-section";
+import CenteredSection from "./centered-section";
 
 type Step = {
   title: string;
@@ -34,24 +34,24 @@ const steps: Step[] = [
 
 export default function Process() {
   return (
-    <SplitSection
+    <CenteredSection
       eyebrow="Process"
       title="活動の流れ"
       lede="ひとつの政策提言は、課題設定から社会実装に向けた取り組みまで、段階を踏みながら形になっていきます。"
     >
-      <ol className="divide-y divide-ink/10 border-y border-ink/10">
+      <ol className="grid grid-cols-1 gap-x-8 gap-y-8 sm:grid-cols-2 lg:grid-cols-3">
         {steps.map((step, index) => (
-          <li key={step.title} className="flex gap-5 py-5">
-            <span className="flex h-8 w-8 shrink-0 items-center justify-center rounded-full bg-ink text-xs font-semibold text-white">
-              {index + 1}
-            </span>
-            <div>
+          <li key={step.title} className="border-t-2 border-ink pt-4">
+            <div className="flex items-baseline gap-3">
+              <span className="text-sm font-bold text-brand">
+                {String(index + 1).padStart(2, "0")}
+              </span>
               <h3 className="text-base font-semibold text-ink md:text-lg">{step.title}</h3>
-              <p className="mt-1 text-sm leading-relaxed text-ink/70">{step.body}</p>
             </div>
+            <p className="mt-2 text-sm leading-relaxed text-ink/70">{step.body}</p>
           </li>
         ))}
       </ol>
-    </SplitSection>
+    </CenteredSection>
   );
 }

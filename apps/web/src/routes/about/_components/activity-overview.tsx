@@ -1,5 +1,5 @@
 import { SeminarProfile } from "@/lib/microcms/server-fn/seminar-profile";
-import SplitSection from "./split-section";
+import CenteredSection from "./centered-section";
 
 type Row = {
   term: string;
@@ -23,25 +23,26 @@ export default function ActivityOverview({ profile }: { profile: SeminarProfile 
   if (rows.length === 0) return null;
 
   return (
-    <SplitSection eyebrow="Activity" title="活動概要">
-      <dl className="divide-y divide-ink/10 border-y border-ink/10">
+    <CenteredSection eyebrow="Activity" title="活動概要">
+      {/*
+        件数は CMS の入力状況で 1〜3 に変わる。grid + 固定カラムだと 1 件のとき
+        帯の中で 1/3 幅に縮んで残りが空くため、flex-1 で等分させる。
+      */}
+      <dl className="mx-auto flex max-w-3xl flex-col divide-y divide-ink/10 border border-ink/10 bg-white sm:flex-row sm:divide-x sm:divide-y-0">
         {rows.map((row) => (
-          <div
-            key={row.term}
-            className="grid grid-cols-1 gap-1 py-5 md:grid-cols-[8rem_1fr] md:items-baseline md:gap-6"
-          >
-            <dt className="text-sm font-bold text-brand">{row.term}</dt>
-            <dd className="text-xl font-semibold text-ink md:text-2xl">{row.description}</dd>
+          <div key={row.term} className="flex flex-1 items-baseline justify-center gap-3 px-4 py-5">
+            <dt className="shrink-0 text-xs font-bold text-brand">{row.term}</dt>
+            <dd className="text-lg font-semibold text-ink md:text-xl">{row.description}</dd>
           </div>
         ))}
       </dl>
 
       {profile.activityNote ? (
-        <p className="mt-6 flex items-start gap-2.5 text-sm leading-relaxed text-ink/70">
-          <span className="mt-1.5 h-1.5 w-1.5 shrink-0 rounded-full bg-brand" aria-hidden="true" />
+        <p className="mt-5 flex items-center justify-center gap-2 text-sm leading-relaxed text-ink/70">
+          <span className="h-1.5 w-1.5 shrink-0 rounded-full bg-brand" aria-hidden="true" />
           {profile.activityNote}
         </p>
       ) : null}
-    </SplitSection>
+    </CenteredSection>
   );
 }
