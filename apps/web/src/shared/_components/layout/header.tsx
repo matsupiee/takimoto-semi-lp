@@ -11,7 +11,8 @@ import {
 import PageContainer from "./page-container";
 
 export const primaryNavItems = [
-  { label: "About", href: "/about" },
+  // "About" だけ英語で、他が日本語という混在になっていた。ここを揃える
+  { label: "ゼミについて", href: "/about" },
   { label: "活動の成果", href: "/achievement" },
   { label: "インタビュー", href: "/interview" },
   { label: "レポート", href: "/report" },
@@ -60,13 +61,13 @@ export default function Header() {
           <Drawer>
             <DrawerTrigger
               aria-label="モバイルナビゲーションメニューを開く"
-              className="flex h-10 w-10 items-center justify-center rounded-full text-ink hover:bg-black/5 md:hidden"
+              className="flex h-10 w-10 items-center justify-center rounded-full text-ink hover:bg-black/5 lg:hidden"
             >
               <svg viewBox="0 0 24 24" fill="currentColor" width="20" height="20">
                 <path d="M4 5a1 1 0 0 0 0 2h16a1 1 0 1 0 0-2H4zM3 12a1 1 0 0 1 1-1h16a1 1 0 1 1 0 2H4a1 1 0 0 1-1-1zM3 18a1 1 0 0 1 1-1h16a1 1 0 1 1 0 2H4a1 1 0 0 1-1-1z" />
               </svg>
             </DrawerTrigger>
-            <DrawerContent side="right" className="md:hidden">
+            <DrawerContent side="right" className="lg:hidden">
               <DrawerHeader>
                 <DrawerTitle>メニュー</DrawerTitle>
                 <DrawerDescription className="sr-only">
