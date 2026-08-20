@@ -1,25 +1,27 @@
-import { createFileRoute } from "@tanstack/react-router";
+import { createFileRoute, redirect } from "@tanstack/react-router";
 
 import { pageMeta } from "@/lib/site";
 
 import { fetchMembers } from "@/lib/microcms/server-fn/member";
-import { fetchSeminarProfile } from "@/lib/microcms/server-fn/seminar-profile";
 import Footer from "@/shared/_components/layout/footer";
 import Header from "@/shared/_components/layout/header";
 import PageContainer from "@/shared/_components/layout/page-container";
 import SectionHeader from "@/shared/_components/section-header";
 import { gridColsForCount, gridMaxWidthForCount } from "@/shared/_utils/grid";
 import MemberCard from "./_components/member-card";
-import SeminarStats from "./_components/seminar-stats";
 
 export const Route = createFileRoute("/member/")({
   component: MemberListPage,
   loader: async () => {
-    const [list, profile] = await Promise.all([
-      fetchMembers({ data: { limit: 100 } }),
-      fetchSeminarProfile(),
-    ]);
-    return { members: list.contents, profile };
+    const list = await fetchMembers({ data: { limit: 100 } });
+
+    // 個人紹介が未公開のうちは見出しだけの空ページになるため、about へ逃がす。
+    // ゼミの人数・男女比などの統計は about の「メンバー構成」に移した。
+    if (list.contents.length === 0) {
+      throw redirect({ to: "/about" });
+    }
+
+    return { members: list.contents };
   },
   head: () => ({
     meta: pageMeta({
@@ -30,7 +32,7 @@ export const Route = createFileRoute("/member/")({
 });
 
 function MemberListPage() {
-  const { members, profile } = Route.useLoaderData();
+  const { members } = Route.useLoaderData();
 
   return (
     <div className="min-h-screen bg-white">
@@ -42,17 +44,13 @@ function MemberListPage() {
             瀧本ゼミ政策分析パートで活動しているメンバーを紹介します。
           </p>
 
-          <SeminarStats profile={profile} />
-
-          {members.length > 0 ? (
-            <div
-              className={`grid grid-cols-1 gap-6 ${gridColsForCount(members.length, 3)} ${gridMaxWidthForCount(members.length, 3)}`}
-            >
-              {members.map((item) => (
-                <MemberCard key={item.id} item={item} />
-              ))}
-            </div>
-          ) : null}
+          <div
+            className={`mx-auto grid grid-cols-1 gap-6 ${gridColsForCount(members.length, 3)} ${gridMaxWidthForCount(members.length, 3)}`}
+          >
+            {members.map((item) => (
+              <MemberCard key={item.id} item={item} />
+            ))}
+          </div>
         </PageContainer>
       </main>
       <Footer />

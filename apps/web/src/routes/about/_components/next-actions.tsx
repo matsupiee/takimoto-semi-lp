@@ -15,10 +15,10 @@ const cards: LinkCard[] = [
     href: "/achievement",
   },
   {
-    label: "Members",
-    title: "メンバー",
-    body: "多様なバックグラウンドを持つメンバーが、社会課題に向き合っています。",
-    href: "/member",
+    label: "Interview",
+    title: "ゼミ生インタビュー",
+    body: "実際に活動しているゼミ生に、日々の取り組みと学びを聞きました。",
+    href: "/interview",
   },
   {
     label: "Recruit",
@@ -41,7 +41,7 @@ export default function NextActions() {
               <span className="w-32 shrink-0 text-xs font-bold tracking-wide text-brand">
                 {card.label}
               </span>
-              <h3 className="shrink-0 text-base font-semibold text-ink sm:w-32 md:text-lg">
+              <h3 className="shrink-0 text-base font-semibold text-ink sm:w-44 md:text-lg">
                 {card.title}
               </h3>
               <p className="flex-1 text-sm leading-relaxed text-ink/70">{card.body}</p>

@@ -2,7 +2,7 @@ import { render, screen } from "@testing-library/react";
 import { describe, expect, it } from "vitest";
 
 import { SeminarProfile } from "@/lib/microcms/server-fn/seminar-profile";
-import SeminarStats from "@/routes/member/_components/seminar-stats";
+import SeminarStats from "@/routes/about/_components/seminar-stats";
 
 const base: SeminarProfile = {
   createdAt: "2026-04-01T00:00:00.000Z",
