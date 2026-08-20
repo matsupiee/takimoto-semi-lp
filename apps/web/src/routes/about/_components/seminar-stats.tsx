@@ -49,7 +49,11 @@ export default function SeminarStats({ profile }: { profile: SeminarProfile | nu
         {stats.map((stat) => (
           <div key={stat.label} className="border-t border-ink/15 pt-5">
             <p className="text-sm font-bold text-brand">{stat.label}</p>
-            <p className="mt-3 text-4xl font-semibold leading-none text-ink md:text-5xl">
+            {/*
+              セクション見出しは 36px。数値をそれより大きくすると「メンバー構成の
+              中に 26名がある」という関係が読めなくなるので、見出しより下に置く。
+            */}
+            <p className="mt-3 text-2xl font-semibold leading-none text-ink md:text-3xl">
               {stat.value}
             </p>
             {stat.caption ? <p className="mt-3 text-sm text-ink/70">{stat.caption}</p> : null}
