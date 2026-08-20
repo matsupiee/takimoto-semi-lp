@@ -1,6 +1,6 @@
 import { SeminarProfile } from "@/lib/microcms/server-fn/seminar-profile";
 import { gridColsForCount, gridMaxWidthForCount } from "@/shared/_utils/grid";
-import CenteredSection from "./centered-section";
+import Section from "./section";
 
 type Stat = {
   label: string;
@@ -42,12 +42,12 @@ export default function SeminarStats({ profile }: { profile: SeminarProfile | nu
   if (stats.length === 0) return null;
 
   return (
-    <CenteredSection eyebrow="Members" title="メンバー構成">
+    <Section align="center" eyebrow="Members" title="メンバー構成">
       <div
         className={`mx-auto grid grid-cols-1 gap-6 ${gridColsForCount(stats.length, 3)} ${gridMaxWidthForCount(stats.length, 3)}`}
       >
         {stats.map((stat) => (
-          <div key={stat.label} className="rounded-3xl bg-surface p-8">
+          <div key={stat.label} className="border-t border-ink/15 pt-5">
             <p className="text-sm font-bold text-brand">{stat.label}</p>
             <p className="mt-3 text-4xl font-semibold leading-none text-ink md:text-5xl">
               {stat.value}
@@ -56,6 +56,6 @@ export default function SeminarStats({ profile }: { profile: SeminarProfile | nu
           </div>
         ))}
       </div>
-    </CenteredSection>
+    </Section>
   );
 }

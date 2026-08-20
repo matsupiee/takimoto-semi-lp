@@ -1,4 +1,4 @@
-import CenteredSection from "./centered-section";
+import Section from "./section";
 
 type LinkCard = {
   label: string;
@@ -30,13 +30,13 @@ const cards: LinkCard[] = [
 
 export default function NextActions() {
   return (
-    <CenteredSection eyebrow="Learn More" title="もっと知る">
-      <ul className="divide-y divide-ink/10 border border-ink/10 bg-white">
+    <Section eyebrow="Learn More" title="もっと知る">
+      <ul className="divide-y divide-ink/10 border-t border-b border-ink/10">
         {cards.map((card) => (
           <li key={card.href}>
             <a
               href={card.href}
-              className="group flex flex-col gap-1 px-6 py-5 transition hover:bg-ink/[0.03] sm:flex-row sm:items-center sm:gap-6 sm:px-8"
+              className="group flex flex-col gap-1 py-5 transition hover:bg-ink/[0.03] sm:flex-row sm:items-center sm:gap-6"
             >
               <span className="w-32 shrink-0 text-xs font-bold tracking-wide text-brand">
                 {card.label}
@@ -44,7 +44,7 @@ export default function NextActions() {
               <h3 className="shrink-0 text-base font-semibold text-ink sm:w-44 md:text-lg">
                 {card.title}
               </h3>
-              <p className="flex-1 text-sm leading-relaxed text-ink/70">{card.body}</p>
+              <p className="flex-1 text-sm leading-jp-body text-ink/70">{card.body}</p>
               <svg
                 viewBox="0 0 24 24"
                 width="20"
@@ -64,6 +64,6 @@ export default function NextActions() {
           </li>
         ))}
       </ul>
-    </CenteredSection>
+    </Section>
   );
 }

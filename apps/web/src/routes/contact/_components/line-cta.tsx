@@ -2,9 +2,9 @@ export const LINE_URL = "https://lin.ee/YvOxgn3";
 
 export default function LineCta() {
   return (
-    <div className="rounded-3xl bg-surface p-8 md:p-12">
+    <div className="border-t border-ink/15 pt-8">
       <h2 className="text-xl font-semibold text-ink md:text-2xl">公式LINEで受け付けています</h2>
-      <p className="mt-4 text-base leading-relaxed text-ink/80">
+      <p className="mt-4 text-base leading-jp-body text-ink/80">
         下のボタンから友だち追加のうえ、トークにてご用件をお送りください。
         いただいたメッセージは担当者が確認し、順次ご返信いたします。
       </p>
@@ -14,7 +14,7 @@ export default function LineCta() {
           href={LINE_URL}
           target="_blank"
           rel="noreferrer noopener"
-          className="inline-flex items-center gap-2 rounded-full bg-line-green px-8 py-3 text-[15px] font-medium text-white shadow-sm transition hover:bg-line-green/90"
+          className="inline-flex items-center gap-2 rounded-full bg-line-green px-8 py-3 text-[15px] font-medium text-white transition hover:bg-line-green/90"
         >
           <LineIcon />
           LINEで友だち追加

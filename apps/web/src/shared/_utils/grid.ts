@@ -29,7 +29,18 @@ const MAX_WIDTH_3: Record<number, string> = {
  */
 export function gridColsForCount(count: number, max: 2 | 3): string {
   const table = max === 2 ? COLS_2 : COLS_3;
-  return table[clamp(count, max)] ?? table[max];
+  return table[columnsFor(count, max)] ?? table[max];
+}
+
+/**
+ * 上限ちょうど+1件のときは、最終行に1枚だけ残って右に大きな穴が空く
+ * （3カラムに4件 = 3 + 1）。この件数のときだけカラムを1つ減らして
+ * 2 + 2 に割り、行を埋める。件数が増えれば穴は相対的に目立たなくなるため
+ * 上限まで使う。
+ */
+function columnsFor(count: number, max: number): number {
+  if (count === max + 1) return max - 1;
+  return clamp(count, max);
 }
 
 /**

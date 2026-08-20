@@ -2,7 +2,7 @@ import { Member } from "@/lib/microcms/server-fn/member";
 
 export default function MemberCard({ item }: { item: Member }) {
   return (
-    <article className="flex flex-col overflow-hidden rounded-3xl bg-surface">
+    <article className="flex flex-col">
       <div className="aspect-square w-full overflow-hidden bg-ink/5">
         {item.profileImage?.url ? (
           <img
@@ -29,7 +29,7 @@ export default function MemberCard({ item }: { item: Member }) {
           </dl>
         ) : null}
         {item.message ? (
-          <p className="text-sm leading-relaxed text-ink/80">{item.message}</p>
+          <p className="text-sm leading-jp-body text-ink/80">{item.message}</p>
         ) : null}
       </div>
     </article>

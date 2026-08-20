@@ -14,6 +14,17 @@ describe("gridColsForCount", () => {
     expect(gridColsForCount(12, 2)).toBe("md:grid-cols-2");
   });
 
+  it("上限+1件のときは孤児が出ないようカラムを1つ減らす", () => {
+    // 3カラムに4件だと 3 + 1 で最終行に1枚だけ残る。2カラムなら 2 + 2 で埋まる
+    expect(gridColsForCount(4, 3)).toBe("md:grid-cols-2");
+    expect(gridColsForCount(3, 2)).toBe("md:grid-cols-1");
+  });
+
+  it("件数が増えたら孤児より情報量を優先して上限まで使う", () => {
+    expect(gridColsForCount(5, 3)).toBe("md:grid-cols-2 lg:grid-cols-3");
+    expect(gridColsForCount(7, 3)).toBe("md:grid-cols-2 lg:grid-cols-3");
+  });
+
   it("0件や負数でも壊れず1カラムを返す", () => {
     expect(gridColsForCount(0, 3)).toBe("md:grid-cols-1");
     expect(gridColsForCount(-1, 3)).toBe("md:grid-cols-1");

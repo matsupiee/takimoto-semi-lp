@@ -43,12 +43,7 @@ export default function Announcement({ items }: { items: Announcement[] }) {
       width="default"
       className="bg-white py-12 md:py-16"
     >
-      <SectionHeader
-        eyebrow="Announcement"
-        title="お知らせ / プレスリリース"
-        accent="red"
-        align="center"
-      />
+      <SectionHeader eyebrow="Announcement" title="お知らせ / プレスリリース" accent="red" />
       <AnnouncementList items={items} className="mt-6 md:mt-8" />
     </PageContainer>
   );
@@ -78,7 +73,7 @@ function AnnouncementRow({ item }: { item: Announcement }) {
         <p className="mt-2 text-sm text-neutral-500 md:text-[15px]">{item.mediaName}</p>
       ) : null}
 
-      <p className="mt-3 text-left text-base font-bold leading-snug text-neutral-900 md:mt-3.5 md:text-lg">
+      <p className="mt-3 text-left text-base font-bold leading-jp-heading text-ink md:mt-3.5 md:text-lg">
         {item.title}
       </p>
     </div>

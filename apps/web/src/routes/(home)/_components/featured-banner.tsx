@@ -7,7 +7,7 @@ export default function FeaturedBanner({ items }: { items: Announcement[] }) {
   if (items.length === 0) return null;
 
   return (
-    <PageContainer as="section" id="Featured" className="bg-surface py-12 md:py-16">
+    <PageContainer as="section" id="Featured" className="py-12 md:py-16">
       <ul className="grid gap-4 md:gap-6">
         {items.map((item) => (
           <li key={item.id}>
@@ -23,17 +23,17 @@ function FeaturedBannerCard({ item }: { item: Announcement }) {
   const isExternal = !!item.externalUrl;
 
   const content = (
-    <article className="group relative grid grid-cols-1 overflow-hidden rounded-3xl border border-neutral-200 bg-white shadow-sm transition hover:-translate-y-0.5 hover:shadow-md md:grid-cols-[minmax(0,2fr)_minmax(0,3fr)]">
-      <div className="relative aspect-[16/9] w-full overflow-hidden bg-neutral-100 md:aspect-auto md:h-full">
+    <article className="group relative grid grid-cols-1 gap-6 border-t border-ink/15 pt-6 transition md:grid-cols-[minmax(0,2fr)_minmax(0,3fr)] md:gap-10">
+      <div className="relative aspect-[16/9] w-full overflow-hidden rounded-2xl bg-ink/5">
         {item.thumbnail ? (
           <img
             src={item.thumbnail.url}
             alt=""
             loading="lazy"
-            className="h-full w-full object-cover transition duration-500 group-hover:scale-[1.02]"
+            className="h-full w-full object-cover"
           />
         ) : (
-          <div className="h-full w-full bg-gradient-to-br from-brand/10 to-brand/30" />
+          <div className="h-full w-full bg-surface" />
         )}
         <span className="absolute left-4 top-4 inline-flex items-center gap-1.5 rounded-full bg-brand px-3 py-1 text-xs font-semibold text-white md:text-sm">
           <span className="inline-block h-1.5 w-1.5 rounded-full bg-white" aria-hidden="true" />
@@ -41,22 +41,22 @@ function FeaturedBannerCard({ item }: { item: Announcement }) {
         </span>
       </div>
 
-      <div className="flex flex-col justify-between gap-6 p-6 md:p-8 lg:p-10">
+      <div className="flex flex-col items-start gap-5">
         <div>
           <p className="text-xs font-semibold tracking-wider text-brand md:text-sm">
             {item.category}
           </p>
-          <h3 className="mt-3 text-xl font-bold leading-snug text-neutral-900 md:text-2xl lg:text-3xl">
+          <h3 className="mt-3 text-xl font-bold leading-jp-heading text-ink md:text-2xl lg:text-3xl">
             {item.title}
           </h3>
-          {item.mediaName ? (
-            <p className="mt-2 text-sm text-neutral-500">{item.mediaName}</p>
-          ) : null}
+          {item.mediaName ? <p className="mt-2 text-sm text-ink/60">{item.mediaName}</p> : null}
         </div>
 
-        <span className="inline-flex items-center gap-2 self-start text-sm font-semibold text-brand md:text-base">
+        <span className="inline-flex items-center gap-3 text-sm font-semibold text-ink md:text-[15px]">
+          <span className="flex h-8 w-8 shrink-0 items-center justify-center rounded-full border border-ink/30 transition group-hover:border-ink group-hover:bg-ink group-hover:text-white">
+            <ArrowIcon external={isExternal} />
+          </span>
           詳しく見る
-          <ArrowIcon external={isExternal} />
         </span>
       </div>
     </article>

@@ -23,6 +23,16 @@
   --color-surface: #f8f9fb;
   /* LINE のブランドカラー */
   --color-line-green: #06c755;
+
+  /*
+   * 和文の行間。全角の字面が詰まるため、欧文前提の leading では窮屈になる。
+   * 同水準のサイトの実測値:
+   *   about.mercari.com (和文) 見出し 30/46px = 1.53 / 本文 18/34px = 1.89
+   *   meta.com/about    (欧文) 見出し 48/57.6px = 1.20 / 本文 18/27px = 1.50
+   * 差は一貫して 0.3〜0.4 あり、書記系の違いによるもの。和文側に合わせる。
+   */
+  --leading-jp-heading: 1.5;
+  --leading-jp-body: 1.9;
 }
 
 :root {

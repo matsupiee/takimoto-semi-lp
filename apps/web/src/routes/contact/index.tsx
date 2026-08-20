@@ -61,8 +61,8 @@ function ContactPage() {
       <Header />
       <main>
         <PageContainer as="section" width="default" className="py-12 md:py-16">
-          <SectionHeader eyebrow="Contact" title="お問い合わせ" as="h1" align="center" />
-          <p className="mx-auto mt-6 max-w-2xl text-center text-base md:mt-8 text-ink/80 md:text-lg">
+          <SectionHeader eyebrow="Contact" title="お問い合わせ" as="h1" />
+          <p className="mt-6 max-w-2xl text-pretty text-base leading-jp-body md:mt-8 text-ink/80 md:text-lg">
             瀧本ゼミ政策分析パートへのご連絡は、公式LINEにて受け付けています。
             取材依頼・共同研究のご相談・新歓に関するご質問など、お気軽にお送りください。
           </p>
