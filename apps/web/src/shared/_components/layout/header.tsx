@@ -13,7 +13,6 @@ import PageContainer from "./page-container";
 export const primaryNavItems = [
   { label: "About", href: "/about" },
   { label: "活動の成果", href: "/achievement" },
-  { label: "メンバー", href: "/member" },
   { label: "インタビュー", href: "/interview" },
   { label: "レポート", href: "/report" },
   { label: "お知らせ", href: "/announcement" },

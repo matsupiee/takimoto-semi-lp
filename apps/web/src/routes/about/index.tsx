@@ -8,6 +8,7 @@ import ActivityOverview from "./_components/activity-overview";
 import Intro from "./_components/intro";
 import NextActions from "./_components/next-actions";
 import Process from "./_components/process";
+import SeminarStats from "./_components/seminar-stats";
 
 export const Route = createFileRoute("/about/")({
   component: AboutPage,
@@ -33,6 +34,7 @@ function AboutPage() {
       <main>
         <Intro />
         <ActivityOverview profile={profile} />
+        <SeminarStats profile={profile} />
         <Process />
         <NextActions />
       </main>
