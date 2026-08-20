@@ -36,7 +36,6 @@ function NewsListPage() {
             title="お知らせ / プレスリリース"
             as="h1"
             accent="red"
-            align="center"
           />
           <AnnouncementList items={news} className="mt-6 md:mt-8" />
         </PageContainer>

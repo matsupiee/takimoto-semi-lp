@@ -78,7 +78,7 @@ function MessagePage({ eyebrow, title, body }: { eyebrow: string; title: string;
           <div className="mt-10 text-center">
             <a
               href="/"
-              className="inline-flex items-center rounded-full bg-ink px-8 py-3 text-[15px] font-medium text-white shadow-sm transition hover:bg-ink/90"
+              className="inline-flex items-center rounded-full bg-ink px-8 py-3 text-[15px] font-medium text-white transition hover:bg-ink/90"
             >
               トップページへ戻る
             </a>

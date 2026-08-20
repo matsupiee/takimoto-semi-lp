@@ -65,7 +65,7 @@ export default function Hero() {
           <div className="absolute inset-x-0 bottom-0 px-6 pb-20 md:px-16 md:pb-28">
             <div className="mx-auto max-w-7xl">
               <h2
-                className="max-w-3xl font-semibold leading-tight text-3xl md:text-5xl lg:text-6xl"
+                className="max-w-3xl text-balance font-semibold leading-jp-heading tracking-[0.012em] text-3xl md:text-5xl lg:text-6xl"
                 style={{ color: slide.titleColor }}
               >
                 {slide.title}
@@ -74,7 +74,7 @@ export default function Hero() {
                 <a
                   href={slide.cta.href}
                   aria-label={slide.cta.label}
-                  className="inline-flex items-center rounded-full bg-white px-6 py-3 text-[15px] font-medium text-ink shadow-md transition hover:bg-white/90"
+                  className="inline-flex items-center rounded-full bg-white px-6 py-3 text-[15px] font-medium text-ink transition hover:bg-white/90"
                 >
                   {slide.cta.label}
                 </a>

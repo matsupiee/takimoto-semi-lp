@@ -7,6 +7,7 @@ import Footer from "../../shared/_components/layout/footer";
 import Header from "../../shared/_components/layout/header";
 import PageContainer from "../../shared/_components/layout/page-container";
 import SectionHeader from "../../shared/_components/section-header";
+import ItemRow, { ItemRowList } from "../../shared/_components/item-row";
 
 export const Route = createFileRoute("/achievement/")({
   component: AchievementsPage,
@@ -28,33 +29,29 @@ function formatDate(value?: string) {
 }
 
 function AchievementItem({ item }: { item: Achievement }) {
-  const dateLabel = formatDate(item.achievedAt);
-  const title = item.externalLink ? (
-    <a
-      href={item.externalLink}
-      target="_blank"
-      rel="noreferrer"
-      className="underline-offset-4 hover:underline"
-    >
-      {item.title}
-    </a>
-  ) : (
-    item.title
+  const row = (
+    <ItemRow
+      date={formatDate(item.achievedAt) ?? undefined}
+      title={item.title}
+      summary={item.summary}
+      external={!!item.externalLink}
+    />
   );
 
   return (
-    <li className="py-3">
-      <div className="flex flex-col gap-1 md:flex-row md:items-baseline md:gap-4">
-        {dateLabel ? (
-          <span className="shrink-0 text-sm text-ink/60 md:w-28">{dateLabel}</span>
-        ) : (
-          <span className="shrink-0 text-sm text-ink/60 md:w-28">—</span>
-        )}
-        <div className="flex-1">
-          <p className="text-base text-ink md:text-lg">{title}</p>
-          {item.summary ? <p className="mt-1 text-sm text-ink/70">{item.summary}</p> : null}
-        </div>
-      </div>
+    <li>
+      {item.externalLink ? (
+        <a
+          href={item.externalLink}
+          target="_blank"
+          rel="noreferrer"
+          className="block transition-colors hover:bg-ink/[0.03]"
+        >
+          {row}
+        </a>
+      ) : (
+        row
+      )}
     </li>
   );
 }
@@ -67,8 +64,8 @@ function AchievementsPage() {
       <Header />
       <main>
         <PageContainer as="section" width="default" className="py-12 md:py-16">
-          <SectionHeader eyebrow="Achievements" title="活動の成果" as="h1" align="center" />
-          <p className="mx-auto mt-6 max-w-2xl text-center text-base md:mt-8 text-ink/80 md:text-lg">
+          <SectionHeader eyebrow="Achievements" title="活動の成果" as="h1" />
+          <p className="mt-6 max-w-2xl text-pretty text-base leading-jp-body md:mt-8 text-ink/80 md:text-lg">
             瀧本ゼミ政策分析パートのこれまでの活動実績の一覧です。
           </p>
         </PageContainer>
@@ -79,11 +76,11 @@ function AchievementsPage() {
               活動の成果は現在準備中です。公開までしばらくお待ちください。
             </p>
           ) : (
-            <ul className="divide-y divide-ink/10 border-t border-b border-ink/10">
+            <ItemRowList>
               {achievements.map((item) => (
                 <AchievementItem key={item.id} item={item} />
               ))}
-            </ul>
+            </ItemRowList>
           )}
         </PageContainer>
       </main>

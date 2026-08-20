@@ -45,7 +45,7 @@ function InterviewDetailPage() {
             {interview.grade ? ` ・ ${interview.grade}` : ""}
             {` ・ ${publishedAt}`}
           </p>
-          <h1 className="mb-8 text-balance text-2xl font-semibold leading-tight text-ink md:text-4xl">
+          <h1 className="mb-8 text-balance text-2xl font-semibold leading-jp-heading text-ink md:text-4xl">
             {interview.title}
           </h1>
 

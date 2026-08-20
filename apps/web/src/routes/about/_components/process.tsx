@@ -1,4 +1,4 @@
-import CenteredSection from "./centered-section";
+import Section from "./section";
 
 type Step = {
   title: string;
@@ -34,7 +34,8 @@ const steps: Step[] = [
 
 export default function Process() {
   return (
-    <CenteredSection
+    <Section
+      align="center"
       eyebrow="Process"
       title="活動の流れ"
       lede="ひとつの政策提言は、課題設定から社会実装に向けた取り組みまで、段階を踏みながら形になっていきます。"
@@ -48,10 +49,10 @@ export default function Process() {
               </span>
               <h3 className="text-base font-semibold text-ink md:text-lg">{step.title}</h3>
             </div>
-            <p className="mt-2 text-sm leading-relaxed text-ink/70">{step.body}</p>
+            <p className="mt-2 text-sm leading-jp-body text-ink/70">{step.body}</p>
           </li>
         ))}
       </ol>
-    </CenteredSection>
+    </Section>
   );
 }
