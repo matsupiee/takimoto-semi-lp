@@ -35,7 +35,6 @@ const steps: Step[] = [
 export default function Process() {
   return (
     <Section
-      align="center"
       eyebrow="Process"
       title="活動の流れ"
       lede="ひとつの政策提言は、課題設定から社会実装に向けた取り組みまで、段階を踏みながら形になっていきます。"
