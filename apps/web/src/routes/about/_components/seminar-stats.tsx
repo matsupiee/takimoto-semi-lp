@@ -42,9 +42,9 @@ export default function SeminarStats({ profile }: { profile: SeminarProfile | nu
   if (stats.length === 0) return null;
 
   return (
-    <Section align="center" eyebrow="Members" title="メンバー構成">
+    <Section eyebrow="Members" title="メンバー構成">
       <div
-        className={`mx-auto grid grid-cols-1 gap-6 ${gridColsForCount(stats.length, 3)} ${gridMaxWidthForCount(stats.length, 3)}`}
+        className={`grid grid-cols-1 gap-6 ${gridColsForCount(stats.length, 3)} ${gridMaxWidthForCount(stats.length, 3)}`}
       >
         {stats.map((stat) => (
           <div key={stat.label} className="border-t border-ink/15 pt-5">
