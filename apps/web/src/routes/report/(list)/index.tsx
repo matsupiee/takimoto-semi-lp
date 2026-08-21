@@ -5,9 +5,8 @@ import { pageMeta } from "@/lib/site";
 import Footer from "@/shared/_components/layout/footer";
 import Header from "@/shared/_components/layout/header";
 import PageContainer from "@/shared/_components/layout/page-container";
-import ArrowLink from "@/shared/_components/arrow-link";
+import ItemRow, { ItemRowList } from "@/shared/_components/item-row";
 import SectionHeader from "@/shared/_components/section-header";
-import { gridColsForCount, gridMaxWidthForCount } from "@/shared/_utils/grid";
 
 export const Route = createFileRoute("/report/(list)/")({
   component: ReportListPage,
@@ -22,6 +21,14 @@ export const Route = createFileRoute("/report/(list)/")({
     }),
   }),
 });
+
+function formatDate(iso: string) {
+  return new Date(iso).toLocaleDateString("ja-JP", {
+    year: "numeric",
+    month: "long",
+    day: "numeric",
+  });
+}
 
 function ReportListPage() {
   const { reports } = Route.useLoaderData();
@@ -40,49 +47,26 @@ function ReportListPage() {
           {reports.length === 0 ? (
             <p className="text-ink/70">まだレポート記事がありません。</p>
           ) : (
-            <div
-              className={`grid grid-cols-1 gap-6 ${gridColsForCount(reports.length, 3)} ${gridMaxWidthForCount(reports.length, 3)}`}
-            >
-              {reports.map((item) => {
-                const publishedAtIso = item.publishedAt ?? item.updatedAt;
-                const publishedAt = new Date(publishedAtIso).toLocaleDateString("ja-JP", {
-                  year: "numeric",
-                  month: "long",
-                  day: "numeric",
-                });
-                return (
+            // レポートは本文主体でサムネイルを持たないため、カードではなく
+            // お知らせ・活動の成果と同じ罫線リストで並べる。件数に左右されず、
+            // 長いタイトルを横幅いっぱいに使える。
+            <ItemRowList>
+              {reports.map((item) => (
+                <li key={item.id}>
                   <Link
-                    key={item.id}
                     to="/report/$id"
                     params={{ id: item.id }}
-                    className="group flex h-full flex-col"
+                    className="block transition-colors hover:bg-ink/[0.03]"
                   >
-                    {item.thumbnail?.url ? (
-                      <div className="mb-5 aspect-[4/3] w-full overflow-hidden rounded-2xl bg-ink/5">
-                        <img
-                          src={`${item.thumbnail.url}?fit=crop&w=800&h=600`}
-                          alt={item.title}
-                          loading="lazy"
-                          className="h-full w-full object-cover"
-                        />
-                      </div>
-                    ) : null}
-                    <p className="text-sm font-medium text-ink/60">{publishedAt}</p>
-                    <p className="mt-2 text-lg font-semibold leading-jp-heading text-ink md:text-xl">
-                      {item.title}
-                    </p>
-                    {item.summary ? (
-                      <p className="mt-2 line-clamp-3 text-sm leading-jp-body text-ink/70">
-                        {item.summary}
-                      </p>
-                    ) : null}
-                    <span className="mt-auto pt-4">
-                      <ArrowLink label="詳しく見る" />
-                    </span>
+                    <ItemRow
+                      date={formatDate(item.publishedAt ?? item.updatedAt)}
+                      title={item.title}
+                      summary={item.summary}
+                    />
                   </Link>
-                );
-              })}
-            </div>
+                </li>
+              ))}
+            </ItemRowList>
           )}
         </PageContainer>
       </main>
