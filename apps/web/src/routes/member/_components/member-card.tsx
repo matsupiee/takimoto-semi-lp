@@ -3,16 +3,16 @@ import { Member } from "@/lib/microcms/server-fn/member";
 export default function MemberCard({ item }: { item: Member }) {
   return (
     <article className="flex flex-col">
-      <div className="aspect-square w-full overflow-hidden bg-ink/5">
-        {item.profileImage?.url ? (
+      {item.profileImage?.url ? (
+        <div className="aspect-square w-full overflow-hidden bg-ink/5">
           <img
             src={`${item.profileImage.url}?fit=crop&w=600&h=600`}
             alt={item.name}
             loading="lazy"
             className="h-full w-full object-cover"
           />
-        ) : null}
-      </div>
+        </div>
+      ) : null}
       <div className="flex flex-col gap-3 p-6 md:p-8">
         <div className="flex flex-col gap-1">
           <p className="text-xl font-medium text-ink">{item.name}</p>

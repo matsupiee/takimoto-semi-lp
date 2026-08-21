@@ -19,30 +19,50 @@ export default function FeaturedBanner({ items }: { items: Announcement[] }) {
   );
 }
 
+/** 赤い「Featured」ピル。サムネイルの有無で置き場所が変わるので部品にしている */
+function FeaturedBadge({ className }: { className?: string }) {
+  return (
+    <span
+      className={[
+        "inline-flex items-center gap-1.5 rounded-full bg-brand px-3 py-1 text-xs font-semibold text-white md:text-sm",
+        className,
+      ]
+        .filter(Boolean)
+        .join(" ")}
+    >
+      <span className="inline-block h-1.5 w-1.5 rounded-full bg-white" aria-hidden="true" />
+      Featured
+    </span>
+  );
+}
+
 function FeaturedBannerCard({ item }: { item: Announcement }) {
   const isExternal = !!item.externalUrl;
+  // サムネイルが無いときに画像枠だけを描くと、空の灰色の面が残る。
+  // 枠ごと出さず、1カラムに切り替えて Featured バッジを本文側へ移す。
+  const hasThumbnail = !!item.thumbnail?.url;
 
   const content = (
-    <article className="group relative grid grid-cols-1 gap-6 border-t border-ink/15 pt-6 transition md:grid-cols-[minmax(0,2fr)_minmax(0,3fr)] md:gap-10">
-      <div className="relative aspect-[16/9] w-full overflow-hidden rounded-2xl bg-ink/5">
-        {item.thumbnail ? (
+    <article
+      className={`group relative grid grid-cols-1 gap-6 border-t border-ink/15 pt-6 transition md:gap-10 ${
+        hasThumbnail ? "md:grid-cols-[minmax(0,2fr)_minmax(0,3fr)]" : ""
+      }`}
+    >
+      {hasThumbnail ? (
+        <div className="relative aspect-[16/9] w-full overflow-hidden rounded-2xl bg-ink/5">
           <img
-            src={item.thumbnail.url}
+            src={item.thumbnail?.url}
             alt=""
             loading="lazy"
             className="h-full w-full object-cover"
           />
-        ) : (
-          <div className="h-full w-full bg-surface" />
-        )}
-        <span className="absolute left-4 top-4 inline-flex items-center gap-1.5 rounded-full bg-brand px-3 py-1 text-xs font-semibold text-white md:text-sm">
-          <span className="inline-block h-1.5 w-1.5 rounded-full bg-white" aria-hidden="true" />
-          Featured
-        </span>
-      </div>
+          <FeaturedBadge className="absolute left-4 top-4" />
+        </div>
+      ) : null}
 
       <div className="flex flex-col items-start gap-5">
         <div>
+          {hasThumbnail ? null : <FeaturedBadge className="mb-3" />}
           <p className="text-xs font-semibold tracking-wider text-brand md:text-sm">
             {item.category}
           </p>
