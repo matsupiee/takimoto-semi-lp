@@ -1,6 +1,6 @@
 import { createFileRoute } from "@tanstack/react-router";
 
-import { pageMeta } from "@/lib/site";
+import { pageHead } from "@/lib/site";
 
 import Footer from "../../shared/_components/layout/footer";
 import Header from "../../shared/_components/layout/header";
@@ -10,13 +10,13 @@ import LineCta from "./_components/line-cta";
 
 export const Route = createFileRoute("/contact/")({
   component: ContactPage,
-  head: () => ({
-    meta: pageMeta({
+  head: () =>
+    pageHead({
       title: "お問い合わせ | 瀧本ゼミ政策分析パート",
       description:
         "瀧本ゼミ政策分析パートへのお問い合わせページです。取材・共同研究のご相談・新歓に関するご質問は、公式LINEまたはメールにて受け付けています。",
+      path: "/contact",
     }),
-  }),
 });
 
 const TOPICS = [

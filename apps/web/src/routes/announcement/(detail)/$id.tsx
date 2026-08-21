@@ -1,7 +1,7 @@
 import { Link, createFileRoute, notFound, redirect } from "@tanstack/react-router";
 
 import { fetchAnnouncement } from "@/lib/microcms/server-fn/announcement";
-import { SITE_NAME, pageMeta } from "@/lib/site";
+import { SITE_NAME, pageHead } from "@/lib/site";
 import Footer from "../../../shared/_components/layout/footer";
 import Header from "../../../shared/_components/layout/header";
 import PageContainer from "@/shared/_components/layout/page-container";
@@ -17,9 +17,13 @@ export const Route = createFileRoute("/announcement/(detail)/$id")({
     }
     return { announcement };
   },
-  head: ({ loaderData }) => ({
-    meta: loaderData ? pageMeta({ title: `${loaderData.announcement.title} | ${SITE_NAME}` }) : [],
-  }),
+  head: ({ loaderData, params }) =>
+    loaderData
+      ? pageHead({
+          title: `${loaderData.announcement.title} | ${SITE_NAME}`,
+          path: `/announcement/${params.id}`,
+        })
+      : { meta: [], links: [] },
 });
 
 function NewsDetailPage() {

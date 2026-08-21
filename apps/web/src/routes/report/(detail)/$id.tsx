@@ -1,7 +1,7 @@
 import { Link, createFileRoute, notFound } from "@tanstack/react-router";
 
 import { fetchReport } from "@/lib/microcms/server-fn/report";
-import { SITE_NAME, pageMeta } from "@/lib/site";
+import { SITE_NAME, pageHead } from "@/lib/site";
 import Footer from "@/shared/_components/layout/footer";
 import Header from "@/shared/_components/layout/header";
 import PageContainer from "@/shared/_components/layout/page-container";
@@ -14,9 +14,13 @@ export const Route = createFileRoute("/report/(detail)/$id")({
     });
     return { report };
   },
-  head: ({ loaderData }) => ({
-    meta: loaderData ? pageMeta({ title: `${loaderData.report.title} | ${SITE_NAME}` }) : [],
-  }),
+  head: ({ loaderData, params }) =>
+    loaderData
+      ? pageHead({
+          title: `${loaderData.report.title} | ${SITE_NAME}`,
+          path: `/report/${params.id}`,
+        })
+      : { meta: [], links: [] },
 });
 
 function ReportDetailPage() {

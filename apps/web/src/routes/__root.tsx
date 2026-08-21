@@ -2,7 +2,7 @@ import { Toaster } from "@takimoto-semi-lp/ui/components/sonner";
 import { HeadContent, Outlet, Scripts, createRootRouteWithContext } from "@tanstack/react-router";
 import { TanStackRouterDevtools } from "@tanstack/react-router-devtools";
 
-import { OG_IMAGE_URL, SITE_DESCRIPTION, SITE_NAME, SITE_URL } from "@/lib/site";
+import { OG_IMAGE_URL, SITE_DESCRIPTION, SITE_NAME, SITE_TITLE, SITE_URL } from "@/lib/site";
 import Footer from "@/shared/_components/layout/footer";
 import Header from "@/shared/_components/layout/header";
 import PageContainer from "@/shared/_components/layout/page-container";
@@ -10,8 +10,6 @@ import SectionHeader from "@/shared/_components/section-header";
 import appCss from "../index.css?url";
 
 export interface RouterAppContext {}
-
-const SITE_TITLE = `${SITE_NAME} | 社会課題を政策として考える学生主体の公共政策コミュニティ`;
 
 export const Route = createRootRouteWithContext<RouterAppContext>()({
   head: () => ({

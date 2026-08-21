@@ -1,7 +1,7 @@
 import { Link, createFileRoute, notFound } from "@tanstack/react-router";
 
 import { fetchInterview } from "@/lib/microcms/server-fn/interview";
-import { SITE_NAME, pageMeta } from "@/lib/site";
+import { SITE_NAME, pageHead } from "@/lib/site";
 import Footer from "@/shared/_components/layout/footer";
 import Header from "@/shared/_components/layout/header";
 import PageContainer from "@/shared/_components/layout/page-container";
@@ -14,9 +14,13 @@ export const Route = createFileRoute("/interview/(detail)/$id")({
     });
     return { interview };
   },
-  head: ({ loaderData }) => ({
-    meta: loaderData ? pageMeta({ title: `${loaderData.interview.title} | ${SITE_NAME}` }) : [],
-  }),
+  head: ({ loaderData, params }) =>
+    loaderData
+      ? pageHead({
+          title: `${loaderData.interview.title} | ${SITE_NAME}`,
+          path: `/interview/${params.id}`,
+        })
+      : { meta: [], links: [] },
 });
 
 function InterviewDetailPage() {

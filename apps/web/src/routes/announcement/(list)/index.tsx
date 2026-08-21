@@ -1,6 +1,6 @@
 import { createFileRoute } from "@tanstack/react-router";
 
-import { pageMeta } from "@/lib/site";
+import { pageHead } from "@/lib/site";
 
 import { fetchAnnouncements } from "@/lib/microcms/server-fn/announcement";
 import { AnnouncementList } from "@/shared/_components/announcement";
@@ -15,12 +15,12 @@ export const Route = createFileRoute("/announcement/(list)/")({
     const list = await fetchAnnouncements({ data: { limit: 100 } });
     return { news: list.contents };
   },
-  head: () => ({
-    meta: pageMeta({
+  head: () =>
+    pageHead({
       title: "お知らせ / プレスリリース | 瀧本ゼミ政策分析パート",
       description: "瀧本ゼミ政策分析パートからのお知らせ・プレスリリースの一覧です。",
+      path: "/announcement",
     }),
-  }),
 });
 
 function NewsListPage() {
