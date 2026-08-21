@@ -57,17 +57,17 @@ function ReportListPage() {
                     params={{ id: item.id }}
                     className="group flex h-full flex-col"
                   >
-                    <div className="aspect-[4/3] w-full overflow-hidden rounded-2xl bg-ink/5">
-                      {item.thumbnail?.url ? (
+                    {item.thumbnail?.url ? (
+                      <div className="mb-5 aspect-[4/3] w-full overflow-hidden rounded-2xl bg-ink/5">
                         <img
                           src={`${item.thumbnail.url}?fit=crop&w=800&h=600`}
                           alt={item.title}
                           loading="lazy"
                           className="h-full w-full object-cover"
                         />
-                      ) : null}
-                    </div>
-                    <p className="mt-5 text-sm font-medium text-ink/60">{publishedAt}</p>
+                      </div>
+                    ) : null}
+                    <p className="text-sm font-medium text-ink/60">{publishedAt}</p>
                     <p className="mt-2 text-lg font-semibold leading-jp-heading text-ink md:text-xl">
                       {item.title}
                     </p>
