@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+  静的ページの一覧。ページを追加・削除したらここも更新すること。
+
+  記事ページ（/report/:id, /interview/:id, /announcement/:id）は microCMS 由来で
+  URL が動的に増えるため、ここには含めていない。各一覧ページがこの sitemap に
+  入っており、そこから全記事にリンクが張られているのでクロールは到達する。
+  記事数が増えて初回インデックスを急ぎたくなったら、microCMS から一覧を引いて
+  /sitemap.xml をサーバールートで生成する形に置き換える。
+
+  /member は載せていない。メンバーが0件のあいだ /about へリダイレクトする実装
+  なので、sitemap に入れると Search Console でリダイレクト扱いの警告になる。
+  メンバー紹介を公開したらここに追加する。
+
+  lastmod は意図的に省略している。手動更新のファイルで実態とずれた日付を出すと、
+  無いより悪い。
+-->
+<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
+  <url><loc>https://tsemiseisaku.com/</loc></url>
+  <url><loc>https://tsemiseisaku.com/about</loc></url>
+  <url><loc>https://tsemiseisaku.com/achievement</loc></url>
+  <url><loc>https://tsemiseisaku.com/report</loc></url>
+  <url><loc>https://tsemiseisaku.com/interview</loc></url>
+  <url><loc>https://tsemiseisaku.com/announcement</loc></url>
+  <url><loc>https://tsemiseisaku.com/recruit</loc></url>
+  <url><loc>https://tsemiseisaku.com/contact</loc></url>
+</urlset>
