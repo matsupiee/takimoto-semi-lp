@@ -1,7 +1,7 @@
 import { createFileRoute } from "@tanstack/react-router";
 
 import { fetchSeminarProfile } from "@/lib/microcms/server-fn/seminar-profile";
-import { pageMeta } from "@/lib/site";
+import { pageHead } from "@/lib/site";
 import Footer from "../../shared/_components/layout/footer";
 import Header from "../../shared/_components/layout/header";
 import ActivityOverview from "./_components/activity-overview";
@@ -16,13 +16,13 @@ export const Route = createFileRoute("/about/")({
     const profile = await fetchSeminarProfile();
     return { profile };
   },
-  head: () => ({
-    meta: pageMeta({
+  head: () =>
+    pageHead({
       title: "About | 瀧本ゼミ政策分析パート",
       description:
         "瀧本ゼミ政策分析パートは、社会課題をリサーチし、実装可能な政策提言へと落とし込む学生主体の公共政策コミュニティです。私たちの考え方と活動の流れを紹介します。",
+      path: "/about",
     }),
-  }),
 });
 
 function AboutPage() {

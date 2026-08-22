@@ -1,6 +1,6 @@
 import { createFileRoute } from "@tanstack/react-router";
 
-import { pageMeta } from "@/lib/site";
+import { pageHead } from "@/lib/site";
 
 import { type Achievement, fetchAchievements } from "@/lib/microcms/server-fn/achievement";
 import Footer from "../../shared/_components/layout/footer";
@@ -15,12 +15,12 @@ export const Route = createFileRoute("/achievement/")({
     const list = await fetchAchievements({ data: { limit: 100 } });
     return { achievements: list.contents };
   },
-  head: () => ({
-    meta: pageMeta({
+  head: () =>
+    pageHead({
       title: "活動の成果 | 瀧本ゼミ政策分析パート",
       description: "瀧本ゼミ政策分析パートのこれまでの活動実績の一覧です。",
+      path: "/achievement",
     }),
-  }),
 });
 
 function formatDate(value?: string) {

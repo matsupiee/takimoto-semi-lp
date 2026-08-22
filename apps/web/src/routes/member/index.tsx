@@ -1,6 +1,6 @@
 import { createFileRoute, redirect } from "@tanstack/react-router";
 
-import { pageMeta } from "@/lib/site";
+import { pageHead } from "@/lib/site";
 
 import { fetchMembers } from "@/lib/microcms/server-fn/member";
 import Footer from "@/shared/_components/layout/footer";
@@ -23,12 +23,12 @@ export const Route = createFileRoute("/member/")({
 
     return { members: list.contents };
   },
-  head: () => ({
-    meta: pageMeta({
+  head: () =>
+    pageHead({
       title: "メンバー | 瀧本ゼミ政策分析パート",
       description: "瀧本ゼミ政策分析パートで活動しているメンバーを紹介します。",
+      path: "/member",
     }),
-  }),
 });
 
 function MemberListPage() {

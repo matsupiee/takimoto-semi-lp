@@ -11,6 +11,7 @@ import {
   fetchFeaturedAnnouncements,
 } from "@/lib/microcms/server-fn/announcement";
 import Announcement from "../../shared/_components/announcement";
+import { SITE_DESCRIPTION, SITE_TITLE, pageHead } from "@/lib/site";
 
 export const Route = createFileRoute("/(home)/")({
   component: HomeComponent,
@@ -26,6 +27,7 @@ export const Route = createFileRoute("/(home)/")({
       featured: featuredResponse.contents,
     };
   },
+  head: () => pageHead({ title: SITE_TITLE, description: SITE_DESCRIPTION, path: "/" }),
 });
 
 function HomeComponent() {
@@ -34,6 +36,10 @@ function HomeComponent() {
     <div className="min-h-screen bg-white">
       <Header />
       <main>
+        {/* Hero はスライドが2枚あってどちらも見出しになるため h2 のまま。
+            ページの h1 が無いと、サイトで一番重要なページだけ見出しの
+            起点が欠ける（下層ページは全て h1 を持つ）ので視覚的に隠して置く。 */}
+        <h1 className="sr-only">{SITE_TITLE}</h1>
         <Hero />
         <FeaturedBanner items={featured} />
         <AboutIntro />
