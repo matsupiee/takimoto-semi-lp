@@ -11,6 +11,12 @@
   "observability": {
     "enabled": true,
   },
+  // 既定では workers.dev サブドメインでも同じ内容が配信される。Basic 認証を
+  // 外すとその URL も公開され、canonical と食い違う重複コンテンツになるため、
+  // 独自ドメインだけで配信する。
+  "workers_dev": false,
+  "preview_urls": false,
+  "routes": [{ "pattern": "tsemiseisaku.com", "custom_domain": true }],
   "vars": {
     "VITE_SERVER_URL": "https://tsemiseisaku.com",
     "CORS_ORIGIN": "https://tsemiseisaku.com",
