@@ -18,6 +18,7 @@ export const Route = createFileRoute("/report/(detail)/$id")({
     loaderData
       ? pageHead({
           title: `${loaderData.report.title} | ${SITE_NAME}`,
+          description: loaderData.report.summary,
           path: `/report/${params.id}`,
         })
       : { meta: [], links: [] },

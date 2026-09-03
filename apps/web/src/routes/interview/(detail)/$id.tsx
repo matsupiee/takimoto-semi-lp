@@ -18,6 +18,7 @@ export const Route = createFileRoute("/interview/(detail)/$id")({
     loaderData
       ? pageHead({
           title: `${loaderData.interview.title} | ${SITE_NAME}`,
+          description: loaderData.interview.excerpt,
           path: `/interview/${params.id}`,
         })
       : { meta: [], links: [] },

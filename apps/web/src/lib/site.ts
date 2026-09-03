@@ -14,8 +14,14 @@ export const SITE_DESCRIPTION =
 /** <title> と og:title の既定値。トップページと __root.tsx で共有する */
 export const SITE_TITLE = `${SITE_NAME} | 社会課題を政策として考える学生主体の公共政策コミュニティ`;
 
-/** OGP 画像。1200x630 で apps/web/public/images/og.jpg に配置。 */
-export const OG_IMAGE_URL = `${SITE_URL}/images/og.jpg`;
+/**
+ * OGP 画像。1200x630 で apps/web/public/images/ に配置。
+ *
+ * 差し替えるときはファイル名も変えること。SNS は URL 単位で画像を
+ * キャッシュするため、同じ URL のまま中身だけ替えても、しばらく古い画像が
+ * 表示され続ける。
+ */
+export const OG_IMAGE_URL = `${SITE_URL}/images/og-card.jpg`;
 
 type PageHeadInput = {
   title: string;
