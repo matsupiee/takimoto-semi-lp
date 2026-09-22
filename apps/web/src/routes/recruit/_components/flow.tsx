@@ -1,4 +1,4 @@
-import { ORIENTATION } from "./orientation-info";
+import { ORIENTATION } from "../_utils/season";
 
 type Step = {
   title: string;
@@ -14,7 +14,7 @@ const steps: Step[] = [
     title: "サークルオリエンテーション",
     status: ORIENTATION.date,
     fixed: true,
-    body: "駒場Iキャンパス 1号館 152教室でお待ちしています。ゼミ生が活動の内容と雰囲気を直接ご紹介します。",
+    body: `${ORIENTATION.place}でお待ちしています。ゼミ生が活動の内容と雰囲気を直接ご紹介します。`,
   },
   {
     title: "説明会",

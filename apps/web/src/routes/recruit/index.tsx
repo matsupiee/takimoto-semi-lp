@@ -12,6 +12,7 @@ import Faq from "./_components/faq";
 import Flow from "./_components/flow";
 import LineInvite from "./_components/line-invite";
 import OrientationInfo from "./_components/orientation-info";
+import { ORIENTATION, SEASON_LABEL } from "./_utils/season";
 
 export const Route = createFileRoute("/recruit/")({
   component: RecruitPage,
@@ -21,9 +22,8 @@ export const Route = createFileRoute("/recruit/")({
   },
   head: () =>
     pageHead({
-      title: "2026年度 秋新歓 | 瀧本ゼミ政策分析パート",
-      description:
-        "瀧本ゼミ政策分析パート 2026年度秋新歓のご案内。9月28日（月）のサークルオリエンテーション（東京大学 駒場Iキャンパス 1号館 152教室）に出展します。説明会・政策立案ワークショップの日程は公式LINEでお知らせします。",
+      title: `${SEASON_LABEL} | 瀧本ゼミ政策分析パート`,
+      description: `瀧本ゼミ政策分析パート ${SEASON_LABEL}のご案内。${ORIENTATION.date}のサークルオリエンテーション（${ORIENTATION.place}）に出展します。説明会・政策立案ワークショップの日程は公式LINEでお知らせします。`,
       path: "/recruit",
     }),
 });
@@ -37,11 +37,11 @@ function RecruitPage() {
       <Header />
       <main>
         <PageContainer as="section" width="default" className="py-12 md:py-16">
-          <SectionHeader eyebrow="Recruit" title="2026年度 秋新歓" as="h1" />
+          <SectionHeader eyebrow="Recruit" title={SEASON_LABEL} as="h1" />
           <div className="mt-5 h-0.5 w-10 bg-brand" />
           <p className="mt-6 max-w-2xl text-pretty text-base leading-jp-body text-ink/80 md:text-lg">
             瀧本ゼミ政策分析パートは、社会課題をリサーチし、実装可能な政策提言へと落とし込む学生主体の自主ゼミです。
-            2026年度の秋新歓は、9月28日のサークルオリエンテーションから始まります。
+            秋新歓は、{ORIENTATION.date}のサークルオリエンテーションから始まります。
           </p>
 
           {/* サーオリと公式LINEが今回の新歓のゴールなので、他の情報より先に置く */}
