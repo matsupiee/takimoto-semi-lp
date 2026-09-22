@@ -28,6 +28,12 @@ const steps: Step[] = [
     fixed: false,
     body: "実際に手を動かして政策を考えるプロセスを体験できる企画です。春新歓でも好評でした。",
   },
+  {
+    title: "選考・入ゼミ",
+    status: "日程調整中",
+    fixed: false,
+    body: "入ゼミにあたっては選考があります。形式や時期は決まり次第、公式LINEでお知らせします。",
+  },
 ];
 
 export default function Flow() {

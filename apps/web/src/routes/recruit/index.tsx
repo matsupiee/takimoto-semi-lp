@@ -8,6 +8,7 @@ import Footer from "../../shared/_components/layout/footer";
 import Header from "../../shared/_components/layout/header";
 import PageContainer from "../../shared/_components/layout/page-container";
 import SectionHeader from "../../shared/_components/section-header";
+import Faq from "./_components/faq";
 import Flow from "./_components/flow";
 import LineInvite from "./_components/line-invite";
 import OrientationInfo from "./_components/orientation-info";
@@ -76,7 +77,7 @@ function RecruitPage() {
           <SectionHeader eyebrow="Schedule" title="秋新歓の流れ" />
           <p className="mt-6 max-w-2xl text-pretty text-base leading-jp-body text-ink/70 md:text-lg">
             サークルオリエンテーションのあと、説明会と政策立案ワークショップを開催します。
-            どの段階からの参加でも構いません。
+            途中の企画からの参加でも構いません。
           </p>
           <div className="mt-8 md:mt-10">
             <Flow />
@@ -91,6 +92,13 @@ function RecruitPage() {
             </div>
           </PageContainer>
         ) : null}
+
+        <PageContainer as="section" width="default" className="pb-12 md:pb-16">
+          <SectionHeader eyebrow="FAQ" title="よくある質問" />
+          <div className="mt-8 md:mt-10">
+            <Faq />
+          </div>
+        </PageContainer>
 
         <PageContainer as="section" width="default" className="pb-12 md:pb-16">
           <div className="border-t border-ink/15 pt-8">
