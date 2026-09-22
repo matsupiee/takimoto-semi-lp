@@ -14,11 +14,10 @@ type Step = {
   fixed?: boolean;
   body?: string;
   /**
-   * 並行して開催するもの。どちらか一方だけに参加する人がいるため、
-   * 順番のある段階として縦に積まず、横に並べて対等に見せる。
+   * 並行して開催するもの。一方だけに参加する人がいるため、順番のある段階と
+   * して縦に積まず、同じ番号のもとに横に並べて対等に見せる。
    */
   items?: FlowItem[];
-  note?: string;
 };
 
 const steps: Step[] = [
@@ -34,15 +33,14 @@ const steps: Step[] = [
       {
         title: "説明会",
         status: "日程調整中",
-        body: "活動の内容と、入ゼミまでの流れを詳しくご説明します。春新歓でも好評だった企画です。",
+        body: "活動の内容と、入ゼミまでの流れを詳しくご説明します。",
       },
       {
         title: "政策立案ワークショップ",
         status: "日程調整中",
-        body: "実際に手を動かして政策を考えるプロセスを体験できる企画です。春新歓でも好評でした。",
+        body: "実際に手を動かして政策を考えるプロセスを体験できる企画です。",
       },
     ],
-    note: "どちらか一方の参加でも構いません。",
   },
   {
     title: "選考・入ゼミ",
@@ -82,14 +80,6 @@ export default function Flow() {
             <p className="mt-2 pl-9 text-sm leading-jp-body text-ink/75 md:text-base">
               {step.body}
             </p>
-          ) : null}
-
-          {/*
-            注記はグリッドの前に置く。後ろに回すと、横並びの左カラムの直下に
-            見えて片方だけの補足に読めるため、先に2つの関係を示す。
-          */}
-          {step.note ? (
-            <p className="mt-2 pl-9 text-sm leading-jp-body text-ink/70">{step.note}</p>
           ) : null}
 
           {step.items ? (

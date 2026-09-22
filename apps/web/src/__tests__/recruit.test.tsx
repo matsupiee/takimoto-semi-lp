@@ -54,12 +54,16 @@ describe("Flow", () => {
     expect(screen.getAllByText("日程調整中")).toHaveLength(2);
   });
 
-  it("説明会とワークショップは対等に並べ、片方だけでもよいと伝える", () => {
+  it("説明会とワークショップを同じ段階にまとめて対等に並べる", () => {
     render(<Flow />);
 
-    // 一方だけに参加する人がいるため、順番のある段階として扱わない
+    // 一方だけに参加する人がいるため、順番のある別々の段階としては扱わない
     expect(screen.getByText("説明会・政策立案ワークショップ")).toBeTruthy();
-    expect(screen.getByText("どちらか一方の参加でも構いません。")).toBeTruthy();
+    expect(screen.getByText("説明会")).toBeTruthy();
+    expect(screen.getByText("政策立案ワークショップ")).toBeTruthy();
+
+    // 段階の番号は 01 サーオリ / 02 説明会・WS / 03 選考 の3つ
+    expect(screen.getAllByRole("listitem")).toHaveLength(3);
   });
 
   it("選考はエントリーシートと面接であることを示す", () => {
