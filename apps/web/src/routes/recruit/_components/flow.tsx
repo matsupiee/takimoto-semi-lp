@@ -4,7 +4,7 @@ type Step = {
   title: string;
   /** 開催日が決まっているものは日付、未定のものは調整中である旨を出す */
   status: string;
-  /** 日程が確定済みかどうか。未確定のバッジは控えめな色にする */
+  /** 日程が確定済みかどうか。確定しているものだけブランド色で前に出す */
   fixed: boolean;
   body: string;
 };
@@ -38,29 +38,30 @@ const steps: Step[] = [
 
 export default function Flow() {
   return (
-    <ol className="flex flex-col gap-0">
+    <ol className="border-b border-ink/15">
       {steps.map((step, index) => (
         <li key={step.title} className="border-t border-ink/15 py-6">
-          {/*
-            スマホでバッジを同じ行に置くと、長い見出し（サークルオリエンテーション）が
-            バッジに押されて不自然な位置で折り返す。狭い幅では行を分ける。
-          */}
-          <div className="flex flex-col gap-2 sm:flex-row sm:items-baseline sm:gap-3">
-            <div className="flex items-baseline gap-3">
-              <span className="text-sm font-bold text-brand">
-                {String(index + 1).padStart(2, "0")}
-              </span>
-              <h3 className="text-base font-semibold text-ink md:text-lg">{step.title}</h3>
-            </div>
-            <span
-              className={`self-start shrink-0 rounded-full px-3 py-1 text-xs font-semibold sm:ml-auto ${
-                step.fixed ? "bg-brand text-white" : "bg-ink/10 text-ink/70"
-              }`}
-            >
-              {step.status}
+          <div className="flex items-baseline gap-3">
+            <span className="text-sm font-bold text-brand">
+              {String(index + 1).padStart(2, "0")}
             </span>
+            <h3 className="text-base font-semibold leading-jp-heading text-ink md:text-lg">
+              {step.title}
+            </h3>
           </div>
-          <p className="mt-2 text-sm leading-jp-body text-ink/70 md:text-base">{step.body}</p>
+
+          {/*
+            日程は色ではなく文言そのもので状態が分かるようにする（確定日付か
+            「日程調整中」か）。色はあくまで補助で、色だけに意味を持たせない。
+          */}
+          <p
+            className={`mt-2 pl-9 text-sm font-semibold md:text-base ${
+              step.fixed ? "text-brand" : "text-ink/70"
+            }`}
+          >
+            {step.status}
+          </p>
+          <p className="mt-2 pl-9 text-sm leading-jp-body text-ink/75 md:text-base">{step.body}</p>
         </li>
       ))}
     </ol>

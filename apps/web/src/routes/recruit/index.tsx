@@ -45,8 +45,10 @@ function RecruitPage() {
           </p>
 
           {/* サーオリと公式LINEが今回の新歓のゴールなので、他の情報より先に置く */}
-          <div className="mt-10 flex flex-col gap-6">
+          <div className="mt-10 md:mt-12">
             <OrientationInfo />
+          </div>
+          <div className="mt-12 md:mt-14">
             <LineInvite />
           </div>
         </PageContainer>

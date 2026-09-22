@@ -5,11 +5,14 @@ import LineButton from "@/shared/_components/line-button";
  *
  * 説明会と政策立案ワークショップは開催が決まっている一方で日程が未確定なので、
  * 「決まり次第ここで知らせる」ことを友だち追加の理由として前に出す。
+ *
+ * 枠の扱いは contact ページの LineCta と揃える。同じ公式LINEへの導線が
+ * ページごとに違う見た目になると、サイトとして一貫しなくなる。
  */
 export default function LineInvite() {
   return (
-    <div className="rounded-2xl bg-ink/[0.04] p-6 md:p-8">
-      <h2 className="text-xl font-bold leading-jp-heading text-ink md:text-2xl">
+    <div className="border-t border-ink/15 pt-8">
+      <h2 className="text-xl font-semibold leading-jp-heading text-ink md:text-2xl">
         説明会・ワークショップの日程は公式LINEでお知らせします
       </h2>
       <p className="mt-4 text-base leading-jp-body text-ink/80">
