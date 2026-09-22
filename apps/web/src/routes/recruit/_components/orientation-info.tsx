@@ -1,5 +1,7 @@
 import SectionHeader from "@/shared/_components/section-header";
 
+import { ORIENTATION, type Orientation } from "../_utils/season";
+
 /**
  * 秋のサークルオリエンテーション（サーオリ）の開催情報。
  *
@@ -10,22 +12,18 @@ import SectionHeader from "@/shared/_components/section-header";
  * ページが罫線とフラットな白地だけで組まれており、ここだけ塗った面を持ち込むと
  * 新歓ページが浮くため。太罫は about の Process（border-t-2）と同じ語彙。
  *
- * time は開催時間。オリエンテーション委員会の確定案内が出たら入れる。
- * 未確定のあいだは行ごと出さない（空欄や「未定」を出すより、行が無い方がよい）。
+ * 値を引数で受けるのは、いずれ microCMS から供給するときに呼び出し側だけを
+ * 変えれば済むようにするため。
  */
-export const ORIENTATION = {
-  date: "2026年9月28日（月）",
-  time: null as string | null,
-  place: "東京大学 駒場Iキャンパス 1号館 152教室",
-};
-
-type Row = { term: string; description: string };
-
-export default function OrientationInfo() {
-  const rows: Row[] = [
-    { term: "日程", description: ORIENTATION.date },
-    ...(ORIENTATION.time ? [{ term: "時間", description: ORIENTATION.time }] : []),
-    { term: "会場", description: ORIENTATION.place },
+export default function OrientationInfo({
+  orientation = ORIENTATION,
+}: {
+  orientation?: Orientation;
+}) {
+  const rows = [
+    { term: "日程", description: orientation.date },
+    ...(orientation.time ? [{ term: "時間", description: orientation.time }] : []),
+    { term: "会場", description: orientation.place },
   ];
 
   return (

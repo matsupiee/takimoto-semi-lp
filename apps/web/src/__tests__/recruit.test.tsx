@@ -4,7 +4,8 @@ import { describe, expect, it } from "vitest";
 import Faq from "@/routes/recruit/_components/faq";
 import Flow from "@/routes/recruit/_components/flow";
 import LineInvite from "@/routes/recruit/_components/line-invite";
-import OrientationInfo, { ORIENTATION } from "@/routes/recruit/_components/orientation-info";
+import OrientationInfo from "@/routes/recruit/_components/orientation-info";
+import { ORIENTATION } from "@/routes/recruit/_utils/season";
 import { LINE_URL } from "@/shared/_components/line-button";
 
 describe("OrientationInfo", () => {
@@ -15,12 +16,17 @@ describe("OrientationInfo", () => {
     expect(screen.getByText(ORIENTATION.place)).toBeTruthy();
   });
 
-  it("開催時間が未確定のあいだは時間の行を出さない", () => {
-    render(<OrientationInfo />);
+  it("開催時間が未確定のときは時間の行を出さない", () => {
+    render(<OrientationInfo orientation={{ ...ORIENTATION, time: null }} />);
 
-    // 時間が決まったら ORIENTATION.time に入れる。その時点でこの期待は逆になる
-    expect(ORIENTATION.time).toBeNull();
     expect(screen.queryByText("時間")).toBeNull();
+  });
+
+  it("開催時間が入っていれば時間の行を出す", () => {
+    render(<OrientationInfo orientation={{ ...ORIENTATION, time: "13:00〜16:00" }} />);
+
+    expect(screen.getByText("時間")).toBeTruthy();
+    expect(screen.getByText("13:00〜16:00")).toBeTruthy();
   });
 });
 
@@ -45,6 +51,13 @@ describe("Flow", () => {
     render(<Flow />);
 
     expect(screen.getByText(ORIENTATION.date)).toBeTruthy();
+  });
+
+  it("会場はサーオリ情報と同じ出どころを使う", () => {
+    render(<Flow />);
+
+    // 会場を文字列で持つと、教室が変わったときに告知と流れで食い違う
+    expect(screen.getByText(new RegExp(ORIENTATION.place))).toBeTruthy();
   });
 });
 
