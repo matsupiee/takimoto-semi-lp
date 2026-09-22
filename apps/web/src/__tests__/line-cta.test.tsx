@@ -1,7 +1,8 @@
 import { render, screen } from "@testing-library/react";
 import { describe, expect, it } from "vitest";
 
-import LineCta, { LINE_URL } from "@/routes/contact/_components/line-cta";
+import LineCta from "@/routes/contact/_components/line-cta";
+import { LINE_URL } from "@/shared/_components/line-button";
 
 describe("LineCta", () => {
   it("公式LINEの友だち追加リンクを描画する", () => {
