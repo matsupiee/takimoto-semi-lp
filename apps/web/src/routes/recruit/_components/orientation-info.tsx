@@ -32,8 +32,11 @@ export default function OrientationInfo({
         見出しは他セクションと同じ SectionHeader を使う。ページで一番大事な
         ブロックの見出しだけ小さいと、下位のセクションに見た目で負けてしまう。
         優先度は見出しの大きさではなく、上の赤い太罫と置き位置で示す。
+
+        eyebrow は置かない。見出しに「サークルオリエンテーション」と入っており、
+        その上に Orientation と重ねても情報が増えないため。
       */}
-      <SectionHeader eyebrow="Orientation" title="秋のサークルオリエンテーションに出展します" />
+      <SectionHeader title="秋のサークルオリエンテーションでお待ちしています" />
 
       <dl className="mt-6 flex flex-col divide-y divide-ink/10 border-t border-b border-ink/10">
         {rows.map((row) => (
@@ -47,8 +50,8 @@ export default function OrientationInfo({
       </dl>
 
       <p className="mt-5 text-base leading-jp-body text-ink/75">
-        出入りは自由です。ゼミ生が教室でお待ちしていますので、活動の内容や雰囲気について、
-        気になることを何でも聞きにきてください。事前の申し込みは要りません。
+        出入りは自由です。事前の申し込みも要りません。
+        活動の内容や雰囲気について、気になることを何でも聞きにきてください。
       </p>
     </div>
   );

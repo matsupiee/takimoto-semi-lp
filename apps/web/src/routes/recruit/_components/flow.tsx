@@ -1,12 +1,23 @@
 import { ORIENTATION } from "../_utils/season";
 
+type FlowItem = {
+  title: string;
+  status: string;
+  body: string;
+};
+
 type Step = {
   title: string;
-  /** 開催日が決まっているものは日付、未定のものは調整中である旨を出す */
-  status: string;
+  /** 日程が決まっているものだけ出す。選考のように日付を持たない段階では省く */
+  status?: string;
   /** 日程が確定済みかどうか。確定しているものだけブランド色で前に出す */
-  fixed: boolean;
-  body: string;
+  fixed?: boolean;
+  body?: string;
+  /**
+   * 並行して開催するもの。一方だけに参加する人がいるため、順番のある段階と
+   * して縦に積まず、同じ番号のもとに横に並べて対等に見せる。
+   */
+  items?: FlowItem[];
 };
 
 const steps: Step[] = [
@@ -17,22 +28,23 @@ const steps: Step[] = [
     body: `${ORIENTATION.place}でお待ちしています。ゼミ生が活動の内容と雰囲気を直接ご紹介します。`,
   },
   {
-    title: "説明会",
-    status: "日程調整中",
-    fixed: false,
-    body: "活動の内容と、入ゼミまでの流れを詳しくご説明します。春新歓でも好評だった企画です。",
-  },
-  {
-    title: "政策立案ワークショップ",
-    status: "日程調整中",
-    fixed: false,
-    body: "実際に手を動かして政策を考えるプロセスを体験できる企画です。春新歓でも好評でした。",
+    title: "説明会・政策立案ワークショップ",
+    items: [
+      {
+        title: "説明会",
+        status: "日程調整中",
+        body: "活動の内容と、入ゼミまでの流れを詳しくご説明します。",
+      },
+      {
+        title: "政策立案ワークショップ",
+        status: "日程調整中",
+        body: "実際に手を動かして政策を考えるプロセスを体験できる企画です。",
+      },
+    ],
   },
   {
     title: "選考・入ゼミ",
-    status: "日程調整中",
-    fixed: false,
-    body: "入ゼミにあたっては選考があります。形式や時期は決まり次第、公式LINEでお知らせします。",
+    body: "エントリーシートのご提出と面接を経て、入ゼミが決まります。提出方法と期限は、説明会および公式LINEでお伝えします。",
   },
 ];
 
@@ -54,14 +66,35 @@ export default function Flow() {
             日程は色ではなく文言そのもので状態が分かるようにする（確定日付か
             「日程調整中」か）。色はあくまで補助で、色だけに意味を持たせない。
           */}
-          <p
-            className={`mt-2 pl-9 text-sm font-semibold md:text-base ${
-              step.fixed ? "text-brand" : "text-ink/70"
-            }`}
-          >
-            {step.status}
-          </p>
-          <p className="mt-2 pl-9 text-sm leading-jp-body text-ink/75 md:text-base">{step.body}</p>
+          {step.status ? (
+            <p
+              className={`mt-2 pl-9 text-sm font-semibold md:text-base ${
+                step.fixed ? "text-brand" : "text-ink/70"
+              }`}
+            >
+              {step.status}
+            </p>
+          ) : null}
+
+          {step.body ? (
+            <p className="mt-2 pl-9 text-sm leading-jp-body text-ink/75 md:text-base">
+              {step.body}
+            </p>
+          ) : null}
+
+          {step.items ? (
+            <div className="mt-4 grid grid-cols-1 gap-x-8 gap-y-6 pl-9 sm:grid-cols-2">
+              {step.items.map((item) => (
+                <div key={item.title} className="border-t border-ink/15 pt-4">
+                  <h4 className="text-sm font-semibold leading-jp-heading text-ink md:text-base">
+                    {item.title}
+                  </h4>
+                  <p className="mt-1 text-sm font-semibold text-ink/70">{item.status}</p>
+                  <p className="mt-2 text-sm leading-jp-body text-ink/75">{item.body}</p>
+                </div>
+              ))}
+            </div>
+          ) : null}
         </li>
       ))}
     </ol>

@@ -78,8 +78,7 @@ function RecruitPage() {
         <PageContainer as="section" width="default" className="pb-12 md:pb-16">
           <SectionHeader eyebrow="Schedule" title="秋新歓の流れ" />
           <p className="mt-6 max-w-2xl text-pretty text-base leading-jp-body text-ink/70 md:text-lg">
-            サークルオリエンテーションのあと、説明会と政策立案ワークショップを開催します。
-            途中の企画からの参加でも構いません。
+            サークルオリエンテーションを皮切りに、説明会と政策立案ワークショップを開催します。
           </p>
           <div className="mt-8 md:mt-10">
             <Flow />
