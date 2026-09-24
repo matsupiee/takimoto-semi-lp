@@ -20,6 +20,6 @@ export const SEASON_LABEL = "2026年度 秋新歓";
 
 export const ORIENTATION: Orientation = {
   date: "2026年9月28日（月）",
-  time: null,
+  time: "13:00〜16:00",
   place: "東京大学 駒場Iキャンパス 1号館 152教室",
 };
