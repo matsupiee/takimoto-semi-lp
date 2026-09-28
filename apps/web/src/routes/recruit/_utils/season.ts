@@ -23,3 +23,28 @@ export const ORIENTATION: Orientation = {
   time: "13:00〜16:00",
   place: "東京大学 駒場Iキャンパス 1号館 152教室",
 };
+
+/**
+ * 説明会・政策立案ワークショップの日程。ビラ（public/flyer.pdf）と同じ内容にすること。
+ * 曜日はビラに無いが、取り違えを防ぐためここでは付ける。
+ */
+export type Session = { date: string; place: string };
+
+export const BRIEFING = {
+  time: "19:00〜20:00",
+  sessions: [
+    { date: "10月6日（火）", place: "駒場" },
+    { date: "10月8日（木）", place: "駒場" },
+    { date: "10月15日（木）", place: "オンライン" },
+    { date: "10月16日（金）", place: "駒場" },
+  ] satisfies Session[],
+};
+
+export const WORKSHOP = {
+  time: "13:30〜16:00",
+  sessions: [{ date: "10月10日（土）", place: "駒場" }] satisfies Session[],
+};
+
+/** 説明会・ワークショップ共通の申し込みフォーム。ビラの QR と、public/flyer.pdf に埋め込んだリンクと同じ URL */
+export const ENTRY_FORM_URL =
+  "https://docs.google.com/forms/d/e/1FAIpQLSeKrKX9zH3JjTRY-60_5CMZGM1-fUcXomjLEyuUpHyV35c1Ig/viewform?usp=header";
