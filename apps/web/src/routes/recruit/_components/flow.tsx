@@ -11,8 +11,6 @@ type Step = {
   title: string;
   /** 日程が決まっているものだけ出す。選考のように日付を持たない段階では省く */
   status?: string;
-  /** 日程が確定済みかどうか。確定しているものだけブランド色で前に出す */
-  fixed?: boolean;
   body?: string;
   /**
    * 並行して開催するもの。一方だけに参加する人がいるため、順番のある段階と
@@ -25,7 +23,6 @@ const steps: Step[] = [
   {
     title: "サークルオリエンテーション",
     status: ORIENTATION.date,
-    fixed: true,
     body: `${ORIENTATION.place}でお待ちしています。ゼミ生が活動の内容と雰囲気を直接ご紹介します。`,
   },
   {
@@ -65,18 +62,8 @@ export default function Flow() {
             </h3>
           </div>
 
-          {/*
-            日程は色ではなく文言そのもので状態が分かるようにする（確定日付か
-            「日程調整中」か）。色はあくまで補助で、色だけに意味を持たせない。
-          */}
           {step.status ? (
-            <p
-              className={`mt-2 pl-9 text-sm font-semibold md:text-base ${
-                step.fixed ? "text-brand" : "text-ink/70"
-              }`}
-            >
-              {step.status}
-            </p>
+            <p className="mt-2 pl-9 text-sm font-semibold text-ink md:text-base">{step.status}</p>
           ) : null}
 
           {step.body ? (
@@ -92,9 +79,9 @@ export default function Flow() {
                   <h4 className="text-sm font-semibold leading-jp-heading text-ink md:text-base">
                     {item.title}
                   </h4>
-                  <p className="mt-1 text-sm font-semibold text-brand">{item.time}</p>
+                  <p className="mt-1 text-sm font-semibold text-ink">{item.time}</p>
                   {item.sessions.map((session) => (
-                    <p key={session.date} className="text-sm font-semibold text-brand">
+                    <p key={session.date} className="text-sm font-semibold text-ink">
                       {session.date} @{session.place}
                     </p>
                   ))}
