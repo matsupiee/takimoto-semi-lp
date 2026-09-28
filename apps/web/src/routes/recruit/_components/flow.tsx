@@ -1,8 +1,9 @@
-import { ORIENTATION } from "../_utils/season";
+import { BRIEFING, ORIENTATION, WORKSHOP, type Session } from "../_utils/season";
 
 type FlowItem = {
   title: string;
-  status: string;
+  time: string;
+  sessions: Session[];
   body: string;
 };
 
@@ -32,12 +33,14 @@ const steps: Step[] = [
     items: [
       {
         title: "説明会",
-        status: "日程調整中",
-        body: "活動の内容と、入ゼミまでの流れを詳しくご説明します。",
+        time: BRIEFING.time,
+        sessions: BRIEFING.sessions,
+        body: "活動の内容と、入ゼミまでの流れを詳しくご説明します。軽食もご用意しています。",
       },
       {
         title: "政策立案ワークショップ",
-        status: "日程調整中",
+        time: WORKSHOP.time,
+        sessions: WORKSHOP.sessions,
         body: "実際に手を動かして政策を考えるプロセスを体験できる企画です。",
       },
     ],
@@ -89,7 +92,12 @@ export default function Flow() {
                   <h4 className="text-sm font-semibold leading-jp-heading text-ink md:text-base">
                     {item.title}
                   </h4>
-                  <p className="mt-1 text-sm font-semibold text-ink/70">{item.status}</p>
+                  <p className="mt-1 text-sm font-semibold text-brand">{item.time}</p>
+                  {item.sessions.map((session) => (
+                    <p key={session.date} className="text-sm font-semibold text-brand">
+                      {session.date} @{session.place}
+                    </p>
+                  ))}
                   <p className="mt-2 text-sm leading-jp-body text-ink/75">{item.body}</p>
                 </div>
               ))}
