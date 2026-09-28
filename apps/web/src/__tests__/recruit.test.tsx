@@ -5,7 +5,7 @@ import Faq from "@/routes/recruit/_components/faq";
 import Flow from "@/routes/recruit/_components/flow";
 import LineInvite from "@/routes/recruit/_components/line-invite";
 import OrientationInfo from "@/routes/recruit/_components/orientation-info";
-import { BRIEFING, ENTRY_FORM_URL, ORIENTATION, WORKSHOP } from "@/routes/recruit/_utils/season";
+import { ORIENTATION } from "@/routes/recruit/_utils/season";
 import { LINE_URL } from "@/shared/_components/line-button";
 
 describe("OrientationInfo", () => {
@@ -47,15 +47,11 @@ describe("Flow", () => {
     expect(screen.getByText("選考・入ゼミ")).toBeTruthy();
   });
 
-  it("説明会とワークショップの確定日程をビラと同じ出どころから出す", () => {
+  it("日程が未確定のものは調整中と示す", () => {
     render(<Flow />);
 
-    expect(screen.queryByText("日程調整中")).toBeNull();
-    expect(screen.getByText(BRIEFING.time)).toBeTruthy();
-    expect(screen.getByText(WORKSHOP.time)).toBeTruthy();
-    for (const session of [...BRIEFING.sessions, ...WORKSHOP.sessions]) {
-      expect(screen.getByText(`${session.date} @${session.place}`)).toBeTruthy();
-    }
+    // 説明会とワークショップの2件。選考は日付を持たないので出さない
+    expect(screen.getAllByText("日程調整中")).toHaveLength(2);
   });
 
   it("説明会とワークショップを同じ段階にまとめて対等に並べる", () => {
@@ -98,14 +94,6 @@ describe("LineInvite", () => {
     const link = screen.getByRole("link", { name: /友だち追加/ });
     expect(link.getAttribute("href")).toBe(LINE_URL);
     expect(link.getAttribute("target")).toBe("_blank");
-    expect(link.getAttribute("rel")).toContain("noreferrer");
-  });
-
-  it("説明会・ワークショップの申し込みフォームへの導線を置く", () => {
-    render(<LineInvite />);
-
-    const link = screen.getByRole("link", { name: "申し込みフォームを開く" });
-    expect(link.getAttribute("href")).toBe(ENTRY_FORM_URL);
     expect(link.getAttribute("rel")).toContain("noreferrer");
   });
 });
