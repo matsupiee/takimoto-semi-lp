@@ -23,7 +23,7 @@ export const Route = createFileRoute("/recruit/")({
   head: () =>
     pageHead({
       title: `${SEASON_LABEL} | 瀧本ゼミ政策分析パート`,
-      description: `瀧本ゼミ政策分析パート ${SEASON_LABEL}のご案内。${ORIENTATION.date}のサークルオリエンテーション（${ORIENTATION.place}）に出展します。説明会・政策立案ワークショップの日程は公式LINEでお知らせします。`,
+      description: `瀧本ゼミ政策分析パート ${SEASON_LABEL}のご案内。${ORIENTATION.date}のサークルオリエンテーション（${ORIENTATION.place}）に出展します。説明会は10月6日から、政策立案ワークショップは10月10日に開催します。`,
       path: "/recruit",
     }),
 });
@@ -44,7 +44,7 @@ function RecruitPage() {
             秋新歓は、{ORIENTATION.date}のサークルオリエンテーションから始まります。
           </p>
 
-          {/* サーオリと公式LINEが今回の新歓のゴールなので、他の情報より先に置く */}
+          {/* サーオリと説明会の申し込みが今回の新歓のゴールなので、他の情報より先に置く */}
           <div className="mt-10 md:mt-12">
             <OrientationInfo />
           </div>
@@ -78,7 +78,7 @@ function RecruitPage() {
         <PageContainer as="section" width="default" className="pb-12 md:pb-16">
           <SectionHeader eyebrow="Schedule" title="秋新歓の流れ" />
           <p className="mt-6 max-w-2xl text-pretty text-base leading-jp-body text-ink/70 md:text-lg">
-            サークルオリエンテーションを皮切りに、説明会と政策立案ワークショップを開催します。
+            サークルオリエンテーションを皮切りに、10月に説明会と政策立案ワークショップを開催します。
           </p>
           <div className="mt-8 md:mt-10">
             <Flow />
