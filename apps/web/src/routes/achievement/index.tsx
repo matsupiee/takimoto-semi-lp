@@ -23,20 +23,8 @@ export const Route = createFileRoute("/achievement/")({
     }),
 });
 
-function formatDate(value?: string) {
-  if (!value) return null;
-  return new Date(value).toLocaleDateString("ja-JP", { year: "numeric", month: "long" });
-}
-
 function AchievementItem({ item }: { item: Achievement }) {
-  const row = (
-    <ItemRow
-      date={formatDate(item.achievedAt) ?? undefined}
-      title={item.title}
-      summary={item.summary}
-      external={!!item.externalLink}
-    />
-  );
+  const row = <ItemRow title={item.title} summary={item.summary} external={!!item.externalLink} />;
 
   return (
     <li>
